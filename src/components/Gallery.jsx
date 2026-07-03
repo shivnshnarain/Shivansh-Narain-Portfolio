@@ -3,7 +3,6 @@ import { motion, AnimatePresence, useMotionValue, useTransform, animate } from '
 import { useScrollContext } from '../context/ScrollContext';
 import PdfViewer from './PdfViewer';
 import SectionNumberBackground from './SectionNumberBackground';
-import './Gallery.css';
 const PORTFOLIO_DATA = [
   { id: 1, title: 'Republic Day Poster', cat: 'posters', software: 'Adobe Photoshop', img: '/poster1.jpg' },
   { id: 2, title: 'Valentine Campaign', cat: 'social', software: 'Canva', img: '/poster2.jpg' },

@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
-import 'react-pdf/dist/Page/TextLayer.css';
 
 // Set up the worker using local Vite URL to avoid CORS/CDN issues
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(

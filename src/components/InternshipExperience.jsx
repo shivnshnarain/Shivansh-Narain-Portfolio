@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PdfViewer from './PdfViewer';
-import '../index.css'; // Adjust based on your setup if needed
 
 const INTERNSHIP_DOCS = [
   {
