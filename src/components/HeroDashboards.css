@@ -1,0 +1,609 @@
+/* Hero Dashboards Base Styles */
+.designer-dashboard,
+.developer-dashboard {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through to background unless on widgets */
+  z-index: 1;
+}
+
+/* Glass Widget Shared Styles */
+.glass-widget {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  pointer-events: auto; /* Re-enable clicks on widgets */
+  color: #fff;
+}
+
+.glass-widget h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* -------------------------------------
+   DESIGNER DASHBOARD
+-------------------------------------- */
+.designer-dashboard .glass-widget {
+  background: rgba(255, 255, 255, 0.96); /* Opaque white */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  color: #1A1A1A;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.designer-dashboard .glass-widget h3 {
+  color: #1A1A1A;
+}
+
+/* Positions around the main text */
+.designer-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.tools-widget {
+  position: absolute;
+  top: 15%;
+  left: 8%;
+  width: 320px;
+}
+
+.skills-widget {
+  position: absolute;
+  bottom: 15%;
+  left: 8%;
+  width: 320px;
+}
+
+.achievements-widget {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.palette-widget {
+  position: absolute;
+  bottom: 20%;
+  right: 15%;
+  width: 240px;
+}
+
+/* Widgets Internals */
+.tools-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.tool-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tool-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 0 15px rgba(255,255,255,0.4);
+}
+
+.skill-bar-container {
+  margin-bottom: 16px;
+}
+.skill-bar-container:last-child {
+  margin-bottom: 0;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.skill-track {
+  height: 6px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF9A00, #FF1493);
+  border-radius: 999px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px !important;
+  width: 140px;
+  height: 140px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #FF1493;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555555;
+}
+
+.palette-colors {
+  display: flex;
+  gap: 12px;
+}
+
+.color-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.color-circle:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 15px rgba(255,255,255,0.3), 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* Marquee Animations */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Achievement Icons */
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  animation: float-icon 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.icon-projects { color: #00C4CC; filter: drop-shadow(0 2px 6px rgba(0, 196, 204, 0.4)); }
+.icon-clients { color: #8B5CF6; filter: drop-shadow(0 2px 6px rgba(139, 92, 246, 0.4)); }
+.icon-experience { color: #FF9A00; filter: drop-shadow(0 2px 6px rgba(255, 154, 0, 0.4)); }
+
+.stat-item:hover .icon-projects { filter: drop-shadow(0 0 12px rgba(0, 196, 204, 0.7)); transform: scale(1.1); }
+.stat-item:hover .icon-clients { filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.7)); transform: scale(1.1); }
+.stat-item:hover .icon-experience { filter: drop-shadow(0 0 12px rgba(255, 154, 0, 0.7)); transform: scale(1.1); }
+
+.stat-item:nth-child(2) .stat-icon { animation-delay: -1.3s; }
+.stat-item:nth-child(3) .stat-icon { animation-delay: -2.6s; }
+
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* -------------------------------------
+   DEVELOPER DASHBOARD
+-------------------------------------- */
+.developer-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.terminal-widget {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 380px;
+  padding: 0 !important;
+  overflow: hidden;
+  background: #2B2D31 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 8px;
+}
+
+.term-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.term-dot.red { background: #FF5F56; }
+.term-dot.yellow { background: #FFBD2E; }
+.term-dot.green { background: #27C93F; }
+
+.term-title {
+  margin-left: 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.terminal-body {
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.term-line {
+  margin-bottom: 8px;
+}
+
+.term-line .prompt {
+  color: #00FFB2;
+  margin-right: 8px;
+}
+
+.term-line .cmd {
+  color: #FFFFFF;
+}
+
+.term-line.success {
+  color: #00D2FF;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #fff;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.tech-widget {
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+  width: 380px;
+  background: #2B2D31 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 24px;
+}
+
+.tech-widget h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.tech-icon {
+  width: 64px;
+  height: 64px;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.tech-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.profile-widget {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  width: 380px;
+  background: #2B2D31 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.profile-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px rgba(0, 255, 178, 0.15);
+  border-color: rgba(0, 255, 178, 0.3) !important;
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-icon {
+  font-size: 40px;
+  color: #00FFB2;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 178, 0.4));
+  animation: pulse-icon 2s infinite alternate;
+}
+
+@keyframes pulse-icon {
+  0% { filter: drop-shadow(0 0 5px rgba(0, 255, 178, 0.2)); }
+  100% { filter: drop-shadow(0 0 15px rgba(0, 255, 178, 0.6)); }
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.profile-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+/* Developer Marquees */
+.dev-marquee-container {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.dev-marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.dev-marquee-track.left {
+  animation: scrollDevLeft 15s linear infinite;
+}
+
+.dev-marquee-track.right {
+  animation: scrollDevRight 15s linear infinite;
+}
+
+.dev-marquee-container:hover .dev-marquee-track {
+  animation-play-state: paused;
+}
+
+.dev-marquee-group {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+@keyframes scrollDevLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollDevRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Old github grid removed */
+
+.code-bg-snippets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.snippet {
+  position: absolute;
+  font-size: 14px;
+  color: #00FFB2;
+}
+
+.snip-1 {
+  top: 10%;
+  right: 5%;
+  transform: rotate(5deg);
+}
+
+.snip-2 {
+  bottom: 20%;
+  right: 25%;
+  transform: rotate(-5deg);
+}
+
+.floating-badges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.float-icon {
+  position: absolute;
+  font-size: 48px;
+  color: #fff;
+  animation: float 6s ease-in-out infinite;
+}
+
+.fi-1 { top: 20%; right: 20%; animation-delay: 0s; }
+.fi-2 { bottom: 30%; left: 40%; animation-delay: -2s; font-size: 64px; }
+.fi-3 { top: 60%; right: 30%; animation-delay: -4s; font-size: 32px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Background elements for Designer */
+.designer-bg-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatShape 10s ease-in-out infinite alternate;
+}
+
+.shape-1 {
+  top: -10%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: #FF1493;
+}
+
+.shape-2 {
+  bottom: 10%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  background: #8B5CF6;
+  animation-delay: -3s;
+}
+
+.shape-3 {
+  top: 40%;
+  left: 40%;
+  width: 250px;
+  height: 250px;
+  background: #FFD54A;
+  animation-delay: -6s;
+}
+
+@keyframes floatShape {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* Responsiveness adjustments */
+@media (max-width: 1400px) {
+  .tools-widget { left: 2%; width: 280px; }
+  .skills-widget { left: 2%; width: 280px; }
+  .achievements-widget { right: 5%; }
+  .palette-widget { right: 5%; }
+
+  .terminal-widget { left: 5%; width: 320px; }
+  .tech-widget { left: 5%; width: 280px; }
+  .github-widget { right: 2%; width: 280px; }
+}
+
+@media (max-width: 992px) {
+  /* On mobile, center them or stack them, but since mobile sets it to display flex, we can just position them relative to the scrolling wrapper.
+     Wait, in Hero.jsx, mobile view just displays them based on the toggle.
+     We might want to hide some widgets on mobile to keep it clean. */
+  .tools-widget, .palette-widget, .github-widget, .tech-widget {
+    display: none;
+  }
+
+  .skills-widget {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 20px auto;
+  }
+
+  .achievements-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+  }
+
+  .terminal-widget {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 20px auto;
+  }
+}
