@@ -4569,24 +4569,27 @@ a.contact-info-value:hover {
     gap: 8px;
   }
 
-  /* EXACT DESKTOP CROP IMAGES (Full Background via Img Tag) */
+  /* EXACT DESKTOP CROP IMAGES (Full Background Layer) */
   .mobile-bg-layer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: 1;
   }
 
   /* DESIGNER: Full background, pushed right. Right half of face visible. */
   .designer-bg-mobile {
-    object-position: right center; /* Push left half of face off screen */
+    background-image: url('/hero_designer.png');
+    background-position: right center; /* Push left half of face off screen */
   }
 
   /* DEVELOPER: Full background, pushed left. Left half of face visible. */
   .developer-bg-mobile {
-    object-position: left center; /* Push right half of face off screen */
+    background-image: url('/hero_developer.png');
+    background-position: left center; /* Push right half of face off screen */
   }
 }
