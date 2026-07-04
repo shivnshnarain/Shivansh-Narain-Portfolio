@@ -52,11 +52,8 @@ const EmailIcon = () => (
 
 export default function Contact({ setActiveView }) {
   const { setActiveSection } = useScrollContext();
-  const [nextUrl, setNextUrl] = useState('');
-
-  useEffect(() => {
-    setNextUrl(window.location.origin + '/thank-you');
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const contactInfo = [
     { Icon: PhoneIcon, label: 'Phone', value: '+91 95699 83385', href: 'tel:+919569983385' },
@@ -76,6 +73,45 @@ export default function Contact({ setActiveView }) {
       opacity: 1, y: 0,
       transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
     }),
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.target);
+    const object = Object.fromEntries(formData);
+    
+    // Default subject if empty
+    if (!object.subject) {
+      object.subject = "New Portfolio Contact";
+    }
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/1e1a84f5b38cf5cf4131446388be76f6", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(object)
+      });
+      
+      const result = await response.json();
+      if (result.success === "true" || response.ok) {
+        setSubmitStatus('success');
+        e.target.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => setActiveView('thank-you'), 300);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -170,45 +206,51 @@ export default function Contact({ setActiveView }) {
             <h3 className="contact-form-title">Send a Message</h3>
             <p className="contact-form-subtitle">Fill out the form and I'll respond within 24 hours.</p>
 
-            <form action="https://formsubmit.co/1e1a84f5b38cf5cf4131446388be76f6" method="POST" className="contact-form-v2">
+            {submitStatus === 'error' && (
+              <div style={{ color: '#ff4444', marginBottom: '16px', fontSize: '14px', background: 'rgba(255,0,0,0.1)', padding: '10px', borderRadius: '8px' }}>
+                Failed to send message. Please try again or email directly.
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="contact-form-v2">
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_subject" value="New Portfolio Contact" />
-              <input type="hidden" name="_next" value={nextUrl} />
               <div className="cfv2-row">
                 <div className="form-group-v2">
                   <label htmlFor="cv2-name">Full Name <span className="req">*</span></label>
-                  <input type="text" id="cv2-name" name="name" placeholder="Your Full Name" required />
+                  <input type="text" id="cv2-name" name="name" placeholder="Your Full Name" required disabled={isSubmitting} />
                 </div>
                 <div className="form-group-v2">
                   <label htmlFor="cv2-email">Email Address <span className="req">*</span></label>
-                  <input type="email" id="cv2-email" name="email" placeholder="your@email.com" required />
+                  <input type="email" id="cv2-email" name="email" placeholder="your@email.com" required disabled={isSubmitting} />
                 </div>
               </div>
 
               <div className="cfv2-row">
                 <div className="form-group-v2">
                   <label htmlFor="cv2-phone">Phone Number</label>
-                  <input type="tel" id="cv2-phone" name="phone" placeholder="+91 00000 00000" />
+                  <input type="tel" id="cv2-phone" name="phone" placeholder="+91 00000 00000" disabled={isSubmitting} />
                 </div>
                 <div className="form-group-v2">
                   <label htmlFor="cv2-subject">Subject <span className="req">*</span></label>
-                  <input type="text" id="cv2-subject" name="subject" placeholder="Project / Collaboration / Inquiry" required />
+                  <input type="text" id="cv2-subject" name="subject" placeholder="Project / Collaboration / Inquiry" required disabled={isSubmitting} />
                 </div>
               </div>
 
               <div className="form-group-v2">
                 <label htmlFor="cv2-message">Message <span className="req">*</span></label>
-                <textarea id="cv2-message" name="message" rows="6" placeholder="Tell me about your project, idea, or business inquiry…" required />
+                <textarea id="cv2-message" name="message" rows="6" placeholder="Tell me about your project, idea, or business inquiry…" required disabled={isSubmitting} />
               </div>
 
               <motion.button
                 type="submit"
                 className="contact-submit-btn"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                disabled={isSubmitting}
+                style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
               >
-                SEND MESSAGE →
+                {isSubmitting ? 'SENDING...' : 'SEND MESSAGE →'}
               </motion.button>
             </form>
           </div>
