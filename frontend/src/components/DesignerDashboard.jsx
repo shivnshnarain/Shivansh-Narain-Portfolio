@@ -35,67 +35,52 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
       </div>
 
       <div className="dashboard-grid designer-grid">
-        {/* Right Column: Mathematically spaced */}
-        <div 
-          className="right-column"
-          style={isMobile ? { display: 'contents' } : {
-            position: 'absolute',
-            top: '8%',
-            bottom: '8%',
-            right: '6%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            pointerEvents: 'none',
-            zIndex: 10
-          }}
-        >
+        {/* Designer Widgets Container */}
+        <>
           {/* Top Skills (Top Right) */}
           <div 
             className="glass-widget skills-widget"
             style={isMobile ? { 
-              transform: `translate(${parallaxX * 0.8}px, 0) scale(${scale})`,
-              top: '8%', right: '6%', left: 'auto', bottom: 'auto'
+              transform: `translate(${parallaxX * -1}px, 0) scale(${scale})`,
+              position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
             } : {
-              transform: `translate(${parallaxX * 0.8}px, 0) scale(${scale})`,
-              position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto'
+              transform: `translate(${parallaxX * -1}px, 0) scale(${scale})`
             }}
           >
             <h3>Top Skills</h3>
             <div className="skill-bars">
-              <SkillBar name="Branding" percent={95} isActive={progress > 0.5} />
-              <SkillBar name="UI/UX Design" percent={90} isActive={progress > 0.5} />
-              <SkillBar name="Typography" percent={85} isActive={progress > 0.5} />
-              <SkillBar name="Illustration" percent={80} isActive={progress > 0.5} />
+              <SkillBar name="Branding" percent={95} isActive={isActive} />
+              <SkillBar name="UI/UX Design" percent={90} isActive={isActive} />
+              <SkillBar name="Typography" percent={85} isActive={isActive} />
+              <SkillBar name="Illustration" percent={80} isActive={isActive} />
             </div>
           </div>
 
-          {/* Achievements (Center Right, between Top Skills and Design Tools) */}
+          {/* Achievements (Right Edge) */}
           <div 
             className="achievements-widget"
             style={isMobile ? { 
-              transform: `translate(${parallaxX}px, 0) scale(${scale})`,
-              top: '40%', right: '6%', left: 'auto'
+              transform: `translate(${parallaxX * 0.8}px, 0) scale(${scale})`,
+              position: 'relative', top: 'auto', right: 'auto', flexDirection: 'row', justifyContent: 'center'
             } : {
-              display: 'contents'
+              transform: `translate(${parallaxX * 0.8}px, 0) scale(${scale})`
             }}
           >
-            <div className="glass-widget stat-item" style={!isMobile ? { transform: `translate(${parallaxX}px, 0) scale(${scale})` } : {}}>
+            <div className="glass-widget stat-item">
               <TbBriefcase className="stat-icon icon-projects" />
               <div className="stat-value">100+</div>
               <div className="stat-label">Projects</div>
             </div>
 
-            <div style={!isMobile ? { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '28px' } : { display: 'contents' }}>
+            {/* Color Palette (Left of 50+) */}
+            <div style={{ position: 'relative' }}>
               <div 
                 className="glass-widget palette-widget"
                 style={isMobile ? { 
                   transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
-                  top: 'calc(40% + 78px)', right: 'calc(6% + 200px)', left: 'auto', bottom: 'auto'
-                } : {
-                  transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
                   position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto'
+                } : {
+                  transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`
                 }}
               >
                 <h3>Color Palette</h3>
@@ -137,12 +122,13 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                 </div>
               </div>
 
-              <div className="glass-widget stat-item" style={!isMobile ? { transform: `translate(${parallaxX}px, 0) scale(${scale})` } : {}}>
+              <div className="glass-widget stat-item">
                 <TbUsers className="stat-icon icon-clients" />
                 <div className="stat-value">50+</div>
                 <div className="stat-label">Clients</div>
               </div>
             </div>
+            
             <div className="glass-widget stat-item" style={!isMobile ? { transform: `translate(${parallaxX}px, 0) scale(${scale})` } : {}}>
               <TbTrendingUp className="stat-icon icon-experience" />
               <div className="stat-value">4+</div>
@@ -155,10 +141,9 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
             className="glass-widget tools-widget"
             style={isMobile ? { 
               transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
-              bottom: '8%', right: '6%', top: 'auto', left: 'auto'
+              position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
             } : {
-              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
-              position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto'
+              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`
             }}
           >
             <h3>Design Tools</h3>
@@ -172,7 +157,6 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                   <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
                   <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
                   <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  {/* Canva icon removed */}
                   <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
                   <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
                   <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
@@ -185,7 +169,6 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                   <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
                   <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
                   <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  {/* Canva icon removed */}
                   <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
                   <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
                   <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
@@ -193,8 +176,7 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
               </div>
             </div>
           </div>
-        </div>
-
+        </>
       </div>
     </div>
   );

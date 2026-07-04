@@ -54,22 +54,22 @@
 
 .tools-widget {
   position: absolute;
-  top: 15%;
-  left: 8%;
-  width: 280px;
+  bottom: 5%;
+  right: 5%;
+  width: 320px;
 }
 
 .skills-widget {
   position: absolute;
-  bottom: 15%;
-  left: 8%;
-  width: 320px;
+  top: 12%;
+  right: 5%;
+  width: 280px;
 }
 
 .achievements-widget {
   position: absolute;
-  top: 15%;
-  right: 15%;
+  top: 38%;
+  right: 5%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -78,8 +78,8 @@
 
 .palette-widget {
   position: absolute;
-  bottom: 20%;
-  right: 15%;
+  top: 48%;
+  right: calc(5% + 180px);
   width: 240px;
 }
 
@@ -192,7 +192,7 @@
 .terminal-widget {
   position: absolute;
   top: 15%;
-  left: 15%;
+  left: 8%;
   width: 380px;
   padding: 0 !important;
   overflow: hidden;
@@ -279,11 +279,36 @@
   }
 }
 
+
+
+/* Developer Profile Widget */
+.profile-widget {
+  position: absolute;
+  top: calc(15% + 220px);
+  left: 8%;
+  width: 380px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .tech-widget {
   position: absolute;
-  bottom: 15%;
-  left: 15%;
-  width: 320px;
+  top: calc(15% + 350px);
+  left: 8%;
+  width: 380px;
+  background: #2B2D31 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  padding: 24px;
+  pointer-events: auto;
 }
 
 .tech-icons {
@@ -478,31 +503,36 @@
 /* Responsiveness adjustments */
 @media (max-width: 1400px) {
   .tools-widget {
-    left: 2%;
-    width: 260px;
+    right: 2%;
+    width: 280px;
   }
 
   .skills-widget {
-    left: 2%;
-    width: 280px;
+    right: 2%;
+    width: 260px;
   }
 
   .achievements-widget {
-    right: 5%;
+    right: 2%;
   }
 
   .palette-widget {
-    right: 5%;
+    right: calc(2% + 140px);
   }
 
   .terminal-widget {
-    left: 5%;
-    width: 320px;
+    left: 2%;
+    width: 340px;
+  }
+
+  .profile-widget {
+    left: 2%;
+    width: 340px;
   }
 
   .tech-widget {
-    left: 5%;
-    width: 280px;
+    left: 2%;
+    width: 340px;
   }
 
   .github-widget {

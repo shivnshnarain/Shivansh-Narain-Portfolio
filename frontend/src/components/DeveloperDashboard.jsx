@@ -37,28 +37,15 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
 
 
 
-      <div 
-        className="dashboard-grid developer-grid left-column"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          gap: '32px',
-          position: 'absolute',
-          top: '8%',
-          bottom: '8%',
-          left: '8%',
-          width: '380px',
-          zIndex: 2
-        }}
-      >
+      <div className="developer-grid">
         {/* Terminal Window (Top Left) */}
         <div 
           className="glass-widget terminal-widget" 
-          style={{ 
+          style={isMobile ? { 
             transform: `translate(${parallaxX}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto'
+            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+          } : { 
+            transform: `translate(${parallaxX}px, 0) scale(${scale})`
           }}
         >
           <div className="terminal-header">
@@ -75,9 +62,11 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
         {/* Professional Profile (Middle Left) */}
         <div 
           className="glass-widget profile-widget"
-          style={{ 
+          style={isMobile ? { 
             transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto'
+            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+          } : { 
+            transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`
           }}
         >
           <div className="profile-content">
@@ -92,9 +81,11 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
         {/* Tech Stack (Bottom Left) */}
         <div 
           className="glass-widget tech-widget"
-          style={{ 
+          style={isMobile ? { 
             transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto'
+            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+          } : { 
+            transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`
           }}
         >
           <h3>Tech Stack</h3>
