@@ -56,6 +56,46 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
             </div>
           </div>
 
+          {/* Color Palette (Floating Left of 50+ Clients) */}
+          <div 
+            className="glass-widget palette-widget"
+            style={isMobile ? { 
+              transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
+              position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+            } : {
+              transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`
+            }}
+          >
+            <h3>Color Palette</h3>
+            <div className="palette-colors" style={{ display: 'flex', gap: '12px', flexWrap: 'nowrap' }}>
+              <div className="color-circle" style={{background: '#8B5CF6'}} title="Purple"></div>
+              <div className="color-circle" style={{background: '#EC4899'}} title="Pink"></div>
+              <div className="color-circle" style={{background: '#F97316'}} title="Orange"></div>
+              <div className="color-circle" style={{background: '#06B6D4'}} title="Cyan"></div>
+              <div className="color-circle" style={{background: '#3B82F6'}} title="Blue"></div>
+            </div>
+          </div>
+
+          {/* Design Tools (Below Color Palette) */}
+          <div 
+            className="glass-widget tools-widget"
+            style={isMobile ? { 
+              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
+              position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+            } : {
+              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`
+            }}
+          >
+            <h3>Design Tools</h3>
+            <div className="tools-icons" style={{ display: 'flex', gap: '12px', flexWrap: 'nowrap' }}>
+              <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" size={24} /></div>
+              <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" size={24} /></div>
+              <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" size={20} /></div>
+              <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" size={20} /></div>
+              <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" size={20} /></div>
+            </div>
+          </div>
+
           {/* Achievements (Right Edge) */}
           <div 
             className="achievements-widget"
@@ -71,109 +111,17 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
               <div className="stat-value">100+</div>
               <div className="stat-label">Projects</div>
             </div>
-
-            {/* Color Palette (Left of 50+) */}
-            <div style={{ position: 'relative' }}>
-              <div 
-                className="glass-widget palette-widget"
-                style={isMobile ? { 
-                  transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
-                  position: 'relative', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto'
-                } : {
-                  transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`
-                }}
-              >
-                <h3>Color Palette</h3>
-                <div className="marquee-container">
-                  <div className="marquee-track">
-                    <div className="marquee-group" style={{ gap: '12px', paddingRight: '12px' }}>
-                      <div className="color-circle" style={{background: '#8B5CF6'}} title="Purple"></div>
-                      <div className="color-circle" style={{background: '#EC4899'}} title="Pink"></div>
-                      <div className="color-circle" style={{background: '#F97316'}} title="Orange"></div>
-                      <div className="color-circle" style={{background: '#06B6D4'}} title="Cyan"></div>
-                      <div className="color-circle" style={{background: '#3B82F6'}} title="Blue"></div>
-                      <div className="color-circle" style={{background: '#FACC15'}} title="Yellow"></div>
-                      <div className="color-circle" style={{background: '#22C55E'}} title="Green"></div>
-                      <div className="color-circle" style={{background: '#34D399'}} title="Mint"></div>
-                      <div className="color-circle" style={{background: '#0EA5E9'}} title="Sky Blue"></div>
-                      <div className="color-circle" style={{background: '#4169E1'}} title="Royal Blue"></div>
-                      <div className="color-circle" style={{background: '#4338CA'}} title="Indigo"></div>
-                      <div className="color-circle" style={{background: '#D946EF'}} title="Magenta"></div>
-                      <div className="color-circle" style={{background: '#F43F5E'}} title="Coral"></div>
-                      <div className="color-circle" style={{background: '#14B8A6'}} title="Teal"></div>
-                    </div>
-                    <div className="marquee-group" style={{ gap: '12px', paddingRight: '12px' }}>
-                      <div className="color-circle" style={{background: '#8B5CF6'}} title="Purple"></div>
-                      <div className="color-circle" style={{background: '#EC4899'}} title="Pink"></div>
-                      <div className="color-circle" style={{background: '#F97316'}} title="Orange"></div>
-                      <div className="color-circle" style={{background: '#06B6D4'}} title="Cyan"></div>
-                      <div className="color-circle" style={{background: '#3B82F6'}} title="Blue"></div>
-                      <div className="color-circle" style={{background: '#FACC15'}} title="Yellow"></div>
-                      <div className="color-circle" style={{background: '#22C55E'}} title="Green"></div>
-                      <div className="color-circle" style={{background: '#34D399'}} title="Mint"></div>
-                      <div className="color-circle" style={{background: '#0EA5E9'}} title="Sky Blue"></div>
-                      <div className="color-circle" style={{background: '#4169E1'}} title="Royal Blue"></div>
-                      <div className="color-circle" style={{background: '#4338CA'}} title="Indigo"></div>
-                      <div className="color-circle" style={{background: '#D946EF'}} title="Magenta"></div>
-                      <div className="color-circle" style={{background: '#F43F5E'}} title="Coral"></div>
-                      <div className="color-circle" style={{background: '#14B8A6'}} title="Teal"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass-widget stat-item">
-                <TbUsers className="stat-icon icon-clients" />
-                <div className="stat-value">50+</div>
-                <div className="stat-label">Clients</div>
-              </div>
+            
+            <div className="glass-widget stat-item" style={!isMobile ? { transform: `translate(${parallaxX}px, 0) scale(${scale})` } : {}}>
+              <TbUsers className="stat-icon icon-clients" />
+              <div className="stat-value">50+</div>
+              <div className="stat-label">Clients</div>
             </div>
             
             <div className="glass-widget stat-item" style={!isMobile ? { transform: `translate(${parallaxX}px, 0) scale(${scale})` } : {}}>
               <TbTrendingUp className="stat-icon icon-experience" />
               <div className="stat-value">4+</div>
               <div className="stat-label">Years Exp</div>
-            </div>
-          </div>
-
-          {/* Design Tools (Bottom Right) */}
-          <div 
-            className="glass-widget tools-widget"
-            style={isMobile ? { 
-              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
-              position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
-            } : {
-              transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`
-            }}
-          >
-            <h3>Design Tools</h3>
-            <div className="marquee-container">
-              <div className="marquee-track">
-                <div className="marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
-                  <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" /></div>
-                  <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
-                  <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
-                  <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
-                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
-                  <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
-                  <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
-                  <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
-                  <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
-                </div>
-                <div className="marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
-                  <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" /></div>
-                  <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
-                  <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
-                  <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
-                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
-                  <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
-                  <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
-                  <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
-                  <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
-                </div>
-              </div>
             </div>
           </div>
         </>

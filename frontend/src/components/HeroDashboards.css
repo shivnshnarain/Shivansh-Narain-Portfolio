@@ -54,8 +54,8 @@
 
 .tools-widget {
   position: absolute;
-  bottom: 5%;
-  right: 5%;
+  top: calc(48% + 140px);
+  right: calc(5% + 180px);
   width: 320px;
 }
 
@@ -80,7 +80,7 @@
   position: absolute;
   top: 48%;
   right: calc(5% + 180px);
-  width: 240px;
+  width: 320px;
 }
 
 /* Widgets Internals */
@@ -503,7 +503,7 @@
 /* Responsiveness adjustments */
 @media (max-width: 1400px) {
   .tools-widget {
-    right: 2%;
+    right: calc(2% + 140px);
     width: 280px;
   }
 
@@ -518,6 +518,7 @@
 
   .palette-widget {
     right: calc(2% + 140px);
+    width: 280px;
   }
 
   .terminal-widget {
