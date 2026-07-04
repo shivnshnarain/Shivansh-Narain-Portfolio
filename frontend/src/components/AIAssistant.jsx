@@ -31,7 +31,7 @@ export default function AIAssistant({ isOpen, onClose, onComplete }) {
       
       let speechTimeout;
       
-      window.speechSynthesis.cancel(); // Stop any ongoing speech
+      window.speechSynthesis?.cancel?.(); // Stop any ongoing speech
       const utterance = new SpeechSynthesisUtterance(speechText);
       utterance.rate = 1.02;
       utterance.pitch = 0.96;
@@ -106,17 +106,17 @@ export default function AIAssistant({ isOpen, onClose, onComplete }) {
         if (speechTimeout) clearTimeout(speechTimeout);
         if (intervalRef.current) clearInterval(intervalRef.current);
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-        window.speechSynthesis.cancel();
+        window.speechSynthesis?.cancel?.();
       };
     } else {
-        window.speechSynthesis.cancel();
+        window.speechSynthesis?.cancel?.();
         if (intervalRef.current) clearInterval(intervalRef.current);
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     }
   }, [isOpen]);
 
   const handleClose = () => {
-    window.speechSynthesis.cancel();
+    window.speechSynthesis?.cancel?.();
     onClose();
   };
 
