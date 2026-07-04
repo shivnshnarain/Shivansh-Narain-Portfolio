@@ -172,6 +172,7 @@ export default function Hero({ setActiveView }) {
           transition={{ delay: 1, duration: 0.5 }}
         >
           <div className="mobile-toggle">
+            <div className={`toggle-slider ${mobileMode}`} />
             <button 
               className={`toggle-btn ${mobileMode === 'designer' ? 'active' : ''}`}
               onClick={() => setMobileMode('designer')}

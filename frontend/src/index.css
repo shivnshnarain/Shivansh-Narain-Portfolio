@@ -4411,19 +4411,25 @@ a.contact-info-value:hover {
   .achievements-widget,
   .palette-widget,
   .tools-widget,
-  .github-widget {
+  .github-widget,
+  .hero-desc {
     display: none !important;
   }
 
   /* 1. NAVBAR & TOGGLE */
+  .hero-split-section {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 100vh;
+    padding-top: 100px !important; /* Space for Navbar */
+  }
+
   .mobile-toggle-wrapper {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    width: 92% !important;
-    max-width: 1000px !important;
-    margin: 100px auto 20px auto !important; /* Exactly 20px below navbar which is ~80px tall */
+    width: 90% !important;
+    max-width: 600px !important;
+    margin: 0 auto 32px auto !important; /* 32px below toggle */
     z-index: 50;
     display: flex;
     justify-content: center;
@@ -4432,12 +4438,28 @@ a.contact-info-value:hover {
   .mobile-toggle {
     width: 100%;
     display: flex;
+    position: relative;
     border-radius: 40px !important;
-    background: rgba(18, 20, 24, 0.72) !important;
-    backdrop-filter: blur(28px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
     padding: 6px !important;
+    border: none !important;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: calc(50% - 6px);
+    height: calc(100% - 12px);
+    background: #000000;
+    border-radius: 36px;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .toggle-slider.developer {
+    transform: translateX(100%);
   }
 
   .toggle-btn {
@@ -4445,42 +4467,50 @@ a.contact-info-value:hover {
     text-align: center;
     border-radius: 36px !important;
     padding: 12px 0 !important;
-    color: #fff !important;
     font-size: 15px !important;
+    font-weight: 700 !important;
+    z-index: 2;
+    transition: color 0.3s ease;
+    background: transparent !important;
+    color: #1A1A1A !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer;
   }
 
   .toggle-btn.active {
-    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
   }
 
   /* Image Layout matching Sketch */
+  .hero-bg {
+    width: 50% !important;
+    height: 100% !important;
+    top: 0 !important;
+  }
+
   .hero-bg.designer-bg {
-    background-position: calc(100% + 20vw) bottom !important;
-    background-size: auto 90% !important;
+    left: auto !important;
+    right: 0 !important;
+    background-size: 200% 100% !important;
+    background-position: right bottom !important;
   }
   
   .hero-bg.developer-bg {
-    background-position: calc(0% - 20vw) bottom !important;
-    background-size: auto 90% !important;
-  }
-
-  /* 3 & 4. HERO SPLIT SECTION LAYOUT */
-  .hero-split-section {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    min-height: 100vh;
-    padding-top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    background-size: 200% 100% !important;
+    background-position: left bottom !important;
   }
 
   /* Designer Active (Left Side Text) */
   .hero-left-side {
-    width: 55% !important;
+    width: 50% !important;
     flex: 1 !important;
     padding: 0 16px 20px 24px !important;
     margin-right: auto !important;
     text-align: left !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     justify-content: center !important;
   }
   
@@ -4497,24 +4527,24 @@ a.contact-info-value:hover {
 
   /* Developer Active (Right Side Text) */
   .hero-right-side {
-    width: 55% !important;
+    width: 50% !important;
     flex: 1 !important;
     padding: 0 24px 20px 16px !important;
     margin-left: auto !important;
-    text-align: left !important;
-    align-items: center !important;
+    text-align: right !important;
+    align-items: flex-end !important;
     justify-content: center !important;
   }
   
   .hero-right-side .hero-content {
     max-width: 100% !important;
     margin: 0 !important;
-    align-items: flex-start !important;
-    text-align: left !important;
+    align-items: flex-end !important;
+    text-align: right !important;
   }
   
   .hero-right-side .hero-actions {
-    justify-content: flex-start !important;
+    justify-content: flex-end !important;
   }
 
   .scroll-indicator {
