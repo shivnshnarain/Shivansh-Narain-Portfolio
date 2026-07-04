@@ -4139,9 +4139,13 @@ a.contact-info-value:hover {
     padding-right: 24px;
   }
 
+  .designer-bg {
+    background-image: url('/hero_designer_mobile.png');
+  }
+
   .hero-bg {
-    background-size: cover;
-    background-position: right center;
+    background-size: auto 85%;
+    background-position: right bottom;
   }
 
   .hero-half {
