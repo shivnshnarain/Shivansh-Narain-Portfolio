@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SiFigma, SiCanva, SiFramer, SiBlender, SiSketch } from 'react-icons/si';
+import { SiFigma, SiFramer, SiBlender, SiSketch } from 'react-icons/si';
 import { 
   TbBrandAdobePhotoshop, TbBrandAdobeIllustrator, TbBrandAdobeAfterEffect,
-  TbBrandAdobeXd, TbBrandAdobePremier, TbBrandAdobeIndesign,
+  TbBrandAdobeXd, TbBrandAdobePremiere, TbBrandAdobeIndesign,
   TbBriefcase, TbUsers, TbTrendingUp 
 } from 'react-icons/tb';
 
@@ -169,10 +169,10 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                   <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
                   <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
                   <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
-                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremier color="#EA77FF" /></div>
+                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
                   <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
                   <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  <div className="tool-icon" title="Canva"><SiCanva color="#00C4CC" /></div>
+                  {/* Canva icon removed */}
                   <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
                   <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
                   <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
@@ -182,10 +182,10 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                   <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
                   <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
                   <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
-                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremier color="#EA77FF" /></div>
+                  <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
                   <div className="tool-icon" title="InDesign"><TbBrandAdobeIndesign color="#FF3366" /></div>
                   <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" /></div>
-                  <div className="tool-icon" title="Canva"><SiCanva color="#00C4CC" /></div>
+                  {/* Canva icon removed */}
                   <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" /></div>
                   <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" /></div>
                   <div className="tool-icon" title="Sketch"><SiSketch color="#FDB300" /></div>
