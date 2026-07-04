@@ -37,16 +37,19 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
 
 
 
-      <div className="developer-grid">
+      <motion.div 
+        className="developer-grid"
+        style={isMobile ? { 
+          transform: `translate(${parallaxX}px, 0) scale(${scale})`,
+          position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
+        } : { 
+          transform: `translate(${parallaxX}px, 0) scale(${scale})`
+        }}
+      >
         {/* Terminal Window (Top Left) */}
-        <div 
+        <motion.div 
+          layout
           className="glass-widget terminal-widget" 
-          style={isMobile ? { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
-          } : { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`
-          }}
         >
           <div className="terminal-header">
             <div className="term-dot red"></div>
@@ -57,17 +60,12 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
           <div className="terminal-body">
             <TerminalTyping isActive={progress > 0.5} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Professional Profile (Middle Left) */}
-        <div 
+        <motion.div 
+          layout
           className="glass-widget profile-widget"
-          style={isMobile ? { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
-          } : { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`
-          }}
         >
           <div className="profile-content">
             <FaCode className="profile-icon" />
@@ -76,17 +74,12 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
               <div className="profile-subtitle">React • Node.js • MongoDB</div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Tech Stack (Bottom Left) */}
-        <div 
+        <motion.div 
+          layout
           className="glass-widget tech-widget"
-          style={isMobile ? { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`,
-            position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
-          } : { 
-            transform: `translate(${parallaxX}px, 0) scale(${scale})`
-          }}
         >
           <h3>Tech Stack</h3>
           <div className="dev-marquee-container">
@@ -97,9 +90,6 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
                 <div className="tech-icon" title="JavaScript"><FaJs color="#F7DF1E" /></div>
                 <div className="tech-icon" title="TypeScript"><SiTypescript color="#3178C6" /></div>
                 <div className="tech-icon" title="React"><FaReact color="#61DAFB" /></div>
-                <div className="tech-icon" title="Next.js"><SiNextdotjs color="#000000" /></div>
-                <div className="tech-icon" title="Tailwind CSS"><SiTailwindcss color="#06B6D4" /></div>
-                <div className="tech-icon" title="Bootstrap"><FaBootstrap color="#7952B3" /></div>
               </div>
               <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
                 <div className="tech-icon" title="HTML5"><FaHtml5 color="#E34F26" /></div>
@@ -107,9 +97,6 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
                 <div className="tech-icon" title="JavaScript"><FaJs color="#F7DF1E" /></div>
                 <div className="tech-icon" title="TypeScript"><SiTypescript color="#3178C6" /></div>
                 <div className="tech-icon" title="React"><FaReact color="#61DAFB" /></div>
-                <div className="tech-icon" title="Next.js"><SiNextdotjs color="#000000" /></div>
-                <div className="tech-icon" title="Tailwind CSS"><SiTailwindcss color="#06B6D4" /></div>
-                <div className="tech-icon" title="Bootstrap"><FaBootstrap color="#7952B3" /></div>
               </div>
             </div>
             <div className="dev-marquee-track right">
@@ -119,9 +106,7 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
                 <div className="tech-icon" title="MongoDB"><SiMongodb color="#47A248" /></div>
                 <div className="tech-icon" title="MySQL"><SiMysql color="#4479A1" /></div>
                 <div className="tech-icon" title="PostgreSQL"><SiPostgresql color="#4169E1" /></div>
-                <div className="tech-icon" title="Firebase"><SiFirebase color="#FFCA28" /></div>
                 <div className="tech-icon" title="Docker"><FaDocker color="#2496ED" /></div>
-                <div className="tech-icon" title="Git"><FaGitAlt color="#F05032" /></div>
               </div>
               <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
                 <div className="tech-icon" title="Node.js"><FaNodeJs color="#339933" /></div>
@@ -129,14 +114,12 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
                 <div className="tech-icon" title="MongoDB"><SiMongodb color="#47A248" /></div>
                 <div className="tech-icon" title="MySQL"><SiMysql color="#4479A1" /></div>
                 <div className="tech-icon" title="PostgreSQL"><SiPostgresql color="#4169E1" /></div>
-                <div className="tech-icon" title="Firebase"><SiFirebase color="#FFCA28" /></div>
                 <div className="tech-icon" title="Docker"><FaDocker color="#2496ED" /></div>
-                <div className="tech-icon" title="Git"><FaGitAlt color="#F05032" /></div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
