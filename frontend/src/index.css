@@ -4397,11 +4397,12 @@ a.contact-info-value:hover {
   }
 }
 
+
 /* ==========================================================
    FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
    ========================================================== */
 @media (max-width: 1024px) {
-  /* Hide all floating cards and paragraphs */
+  /* HIDE UNUSED CARDS & DESKTOP WIDGETS */
   .developer-grid,
   .terminal-widget,
   .profile-widget,
@@ -4416,36 +4417,41 @@ a.contact-info-value:hover {
     display: none !important;
   }
 
-  /* 1. NAVBAR & TOGGLE */
-  .hero-split-section {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    min-height: 100vh;
-    padding-top: 100px !important; /* Navbar is at 20px, height ~60px, so top 100px is perfect */
-  }
-
-  .mobile-toggle-wrapper {
-    position: relative !important;
-    width: 90% !important;
-    max-width: 400px !important;
-    height: 54px !important;
-    margin: 0 auto 32px auto !important; /* 32px spacing below toggle */
-    z-index: 50;
+  /* FULL SCREEN MOBILE HERO */
+  .mobile-hero-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 100px; /* Space for Navbar */
+    background: #ffffff; /* Default background */
   }
   
-  .mobile-toggle {
+  .mobile-hero-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
+  }
+
+  /* TOGGLE SWITCH */
+  .mobile-toggle-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .mobile-toggle {
+    width: 90%;
+    max-width: 400px;
+    height: 56px;
+    background: #ffffff;
+    border-radius: 999px;
     display: flex;
     position: relative;
-    border-radius: 40px !important;
-    background: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-    padding: 6px !important;
-    border: none !important;
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
   .toggle-slider {
@@ -4455,8 +4461,8 @@ a.contact-info-value:hover {
     width: calc(50% - 6px);
     height: calc(100% - 12px);
     background: #000000;
-    border-radius: 36px;
-    transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border-radius: 999px;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     z-index: 1;
   }
 
@@ -4467,96 +4473,110 @@ a.contact-info-value:hover {
   .toggle-btn {
     flex: 1;
     text-align: center;
-    border-radius: 36px !important;
+    border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
+    font-size: 15px;
+    font-weight: 700;
     z-index: 2;
-    transition: color 0.25s ease;
-    background: transparent !important;
-    color: #1A1A1A !important;
-    border: none !important;
-    outline: none !important;
+    transition: color 0.3s ease;
+    background: transparent;
+    color: #000000;
+    border: none;
+    outline: none;
     cursor: pointer;
   }
 
   .toggle-btn.active {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 
-  /* 2. ABSOLUTELY POSITIONED HERO IMAGES (Acting as Half-Width Containers via clipPath) */
-  /* This exactly mimics the Desktop Crop */
-  .hero-bg {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    /* We must preserve background-size cover from desktop to get the exact identical zoom level! */
-    background-size: cover !important;
-    background-position: center bottom !important;
+  /* HERO CONTENT FLEXBOX */
+  .mobile-hero-content {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Designer Text (Left Side 55%) */
-  .hero-left-side {
-    position: absolute !important;
-    top: 150px !important; /* Below toggle (100px + 50px) */
-    left: 0 !important;
-    width: 55% !important;
-    height: calc(100vh - 150px) !important;
-    padding: 0 16px 20px 24px !important;
-    margin: 0 !important;
-    text-align: left !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    z-index: 10 !important;
-  }
-  
-  .hero-left-side .hero-content {
-    max-width: 100% !important;
-    margin: 0 !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-  
-  .hero-left-side .hero-actions {
-    justify-content: flex-start !important;
+  .mobile-layout-designer,
+  .mobile-layout-developer {
+    flex: 1;
+    display: flex;
+    width: 100%;
   }
 
-  /* Developer Text (Right Side 55%) */
-  .hero-right-side {
-    position: absolute !important;
-    top: 150px !important;
-    right: 0 !important;
-    width: 55% !important;
-    height: calc(100vh - 150px) !important;
-    padding: 0 24px 20px 16px !important;
-    margin: 0 !important;
-    text-align: right !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important;
-    justify-content: center !important;
-    z-index: 10 !important;
-  }
-  
-  .hero-right-side .hero-content {
-    max-width: 100% !important;
-    margin: 0 !important;
-    align-items: flex-end !important;
-    text-align: right !important;
-  }
-  
-  .hero-right-side .hero-actions {
-    justify-content: flex-end !important;
+  /* TEXT COLUMN */
+  .mobile-text-col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    z-index: 10;
   }
 
-  .scroll-indicator {
-    display: none !important;
+  .mobile-text-col.right-align {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .mobile-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .mobile-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .mobile-title.title-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mobile-title.title-solid {
+    color: #000000;
+  }
+
+  .mobile-btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* EXACT DESKTOP CROP IMAGES */
+  /* The image containers are exactly 50% width and fill the vertical space */
+  .mobile-img-col {
+    width: 50%;
+    height: 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+
+  /* DESIGNER: Right side. Image should align its center to the left edge of this container */
+  .mobile-designer-img {
+    background-image: url('/hero_designer.png');
+    background-position: left center;
+  }
+
+  /* DEVELOPER: Left side. Image should align its center to the right edge of this container */
+  .mobile-developer-img {
+    background-image: url('/hero_developer.png');
+    background-position: right center;
   }
 }
