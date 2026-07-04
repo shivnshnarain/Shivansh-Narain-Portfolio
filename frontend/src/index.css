@@ -4424,9 +4424,10 @@ a.contact-info-value:hover {
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    padding-top: 100px; /* Space for Navbar */
-    background: #ffffff; /* Default background */
+    padding-top: 65px; /* Directly below navbar */
+    background: #ffffff;
     overflow: hidden;
+    animation: none !important; /* Force remove any leak/animation */
   }
   
   .mobile-hero-wrapper {
@@ -4441,29 +4442,30 @@ a.contact-info-value:hover {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     z-index: 50;
     position: relative;
   }
 
   .mobile-toggle {
-    width: 90%;
-    max-width: 400px;
-    height: 56px;
+    width: 75%;
+    max-width: 320px;
+    height: 42px;
     background: #ffffff;
     border-radius: 999px;
     display: flex;
     position: relative;
-    padding: 6px;
+    padding: 4px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
   .toggle-slider {
     position: absolute;
-    top: 6px;
-    left: 6px;
-    width: calc(50% - 6px);
-    height: calc(100% - 12px);
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
     background: #000000;
     border-radius: 999px;
     transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -4481,7 +4483,7 @@ a.contact-info-value:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     z-index: 2;
     transition: color 0.3s ease;
@@ -4579,6 +4581,8 @@ a.contact-info-value:hover {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 1;
+    animation: none !important;
+    filter: none !important;
   }
 
   /* DESIGNER: Full background, pushed right. Right half of face visible. */
