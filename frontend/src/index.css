@@ -4152,18 +4152,18 @@ a.contact-info-value:hover {
   }
 
   .designer-bg {
-    background-color: #F8F8F8;
+    background-color: #FFFFFF;
   }
 
   .developer-bg {
-    background-color: #0d0d0d;
+    background-color: #FFFFFF;
   }
 
   .designer-bg::after, .developer-bg::after {
     content: "";
     position: absolute;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    height: 85%;
     aspect-ratio: 1 / 1;
     background-size: 100% 100%;
     background-repeat: no-repeat;
