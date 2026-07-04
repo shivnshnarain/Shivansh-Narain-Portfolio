@@ -650,38 +650,35 @@ button {
 
 /* Mobile Toggle */
 .mobile-toggle-wrapper {
-  position: absolute;
-  top: 90px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   z-index: 30;
+  margin-bottom: 32px;
 }
 
 .mobile-toggle {
-  display: flex;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 4px;
-  border-radius: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  background: #FFFFFF;
+  padding: 6px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-btn {
   border: none;
   background: transparent;
-  padding: 8px 24px;
-  border-radius: 24px;
-  font-size: 13px;
+  padding: 12px 32px;
+  border-radius: 32px;
+  font-size: 15px;
   font-weight: 700;
-  color: var(--gray);
+  color: #1A1A1A;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .toggle-btn.active {
-  background: var(--black);
+  background: #1A1A1A;
   color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .hero-half {
@@ -4134,30 +4131,40 @@ a.contact-info-value:hover {
   .hero-split-section {
     flex-direction: column;
     min-height: 100vh;
-    padding-top: 140px;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero-bg {
+    background-size: cover;
+    background-position: right center;
   }
 
   .hero-half {
-    padding: 20px 24px;
+    padding: 0;
     justify-content: center !important;
-    text-align: center;
+    text-align: left;
+    flex: none;
+    width: 100%;
   }
 
-  .hero-left-side {
-    padding: 0 24px;
-  }
-
-  .hero-right-side {
-    padding: 0 24px;
+  .hero-left-side, .hero-right-side {
+    padding: 0;
   }
 
   .hero-content {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0;
+    align-items: flex-start;
   }
 
   .hero-actions {
-    justify-content: center;
+    justify-content: flex-start;
+    margin-top: 32px;
   }
 
   .scroll-indicator {
@@ -4314,7 +4321,7 @@ a.contact-info-value:hover {
   letter-spacing: -0.05em;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .section-number-container {
     width: 350px;
     height: 250px;

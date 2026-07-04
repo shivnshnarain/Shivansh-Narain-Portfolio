@@ -21,7 +21,7 @@ export default function Hero({ setActiveView }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 992);
+      setIsMobile(window.innerWidth <= 1024);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -161,8 +161,8 @@ export default function Hero({ setActiveView }) {
       ></motion.div>
 
       {/* FULL SCREEN DASHBOARDS */}
-      <DesignerDashboard sliderPosition={sliderPosition} isMobile={isMobile} designerOpacity={designerOpacity} />
-      <DeveloperDashboard sliderPosition={sliderPosition} isMobile={isMobile} developerOpacity={developerOpacity} />
+      {!isMobile && <DesignerDashboard sliderPosition={sliderPosition} isMobile={isMobile} designerOpacity={designerOpacity} />}
+      {!isMobile && <DeveloperDashboard sliderPosition={sliderPosition} isMobile={isMobile} developerOpacity={developerOpacity} />}
 
       {isMobile && (
         <motion.div 
@@ -213,13 +213,15 @@ export default function Hero({ setActiveView }) {
           <motion.h1 className="hero-title title-gradient" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
             {textToLetters("Designer")}
           </motion.h1>
-          <motion.p variants={itemVariants} className="hero-desc desc-left">
-            Graphic Designer passionate about creating visually appealing designs,
-            branding, social media creatives, posters, and user-centered experiences.
-          </motion.p>
+          {!isMobile && (
+            <motion.p variants={itemVariants} className="hero-desc desc-left">
+              Graphic Designer passionate about creating visually appealing designs,
+              branding, social media creatives, posters, and user-centered experiences.
+            </motion.p>
+          )}
           <motion.div variants={itemVariants} className="hero-actions">
             <button className="btn btn-gradient-fill hover-lift" onClick={() => navigateToProjectSection('graphic-design-portfolio')}>
-              View My Works <span className="arrow">→</span>
+              View My Works {!isMobile && <span className="arrow">→</span>}
             </button>
           </motion.div>
         </motion.div>
@@ -250,13 +252,15 @@ export default function Hero({ setActiveView }) {
           <motion.h1 className="hero-title title-solid" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
             {textToLetters("Developer")}
           </motion.h1>
-          <motion.p variants={itemVariants} className="hero-desc desc-right">
-            Full Stack Developer who builds modern, scalable, and secure web
-            applications with clean code and efficient solutions.
-          </motion.p>
+          {!isMobile && (
+            <motion.p variants={itemVariants} className="hero-desc desc-right">
+              Full Stack Developer who builds modern, scalable, and secure web
+              applications with clean code and efficient solutions.
+            </motion.p>
+          )}
           <motion.div variants={itemVariants} className="hero-actions">
             <button className="btn btn-solid-dark hover-lift" onClick={() => navigateToProjectSection('website-showcase')}>
-              View Projects <span className="arrow">→</span>
+              View Projects {!isMobile && <span className="arrow">→</span>}
             </button>
           </motion.div>
         </motion.div>
