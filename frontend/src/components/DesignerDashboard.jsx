@@ -49,10 +49,10 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
           >
             <h3>Top Skills</h3>
             <div className="skill-bars">
-              <SkillBar name="Branding" percent={95} isActive={isActive} />
-              <SkillBar name="UI/UX Design" percent={90} isActive={isActive} />
-              <SkillBar name="Typography" percent={85} isActive={isActive} />
-              <SkillBar name="Illustration" percent={80} isActive={isActive} />
+              <SkillBar name="Branding" percent={95} isActive={progress > 0.5} />
+              <SkillBar name="UI/UX Design" percent={90} isActive={progress > 0.5} />
+              <SkillBar name="Typography" percent={85} isActive={progress > 0.5} />
+              <SkillBar name="Illustration" percent={80} isActive={progress > 0.5} />
             </div>
           </div>
 
