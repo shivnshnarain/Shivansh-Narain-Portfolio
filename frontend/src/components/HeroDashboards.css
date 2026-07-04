@@ -53,10 +53,7 @@
 }
 
 .tools-widget {
-  position: absolute;
-  top: calc(48% + 140px);
-  right: calc(5% + 180px);
-  width: 320px;
+  width: 280px;
 }
 
 .skills-widget {
@@ -74,13 +71,43 @@
   flex-direction: column;
   gap: 16px;
   pointer-events: auto;
+  align-items: flex-end;
 }
 
 .palette-widget {
   position: absolute;
   top: 48%;
   right: calc(5% + 180px);
-  width: 320px;
+  width: 280px;
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marqueeLeftToRight 20s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* Widgets Internals */
