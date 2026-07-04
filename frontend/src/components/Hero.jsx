@@ -202,29 +202,29 @@ export default function Hero({ setActiveView }) {
         }}
         transition={{ type: "tween", ease: "easeInOut", duration: isMobile ? 0.3 : 0 }}
       >
-        <motion.div 
-          className="hero-content left-content"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          <motion.p variants={itemVariants} className="hero-eyebrow eyebrow-left">I'M A CREATIVE</motion.p>
-          <motion.h1 className="hero-title title-gradient" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
-            {textToLetters("Designer")}
-          </motion.h1>
-          {!isMobile && (
+        {!isMobile && (
+          <motion.div 
+            className="hero-content left-content"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.p variants={itemVariants} className="hero-eyebrow eyebrow-left">I'M A CREATIVE</motion.p>
+            <motion.h1 className="hero-title title-gradient" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
+              {textToLetters("Designer")}
+            </motion.h1>
             <motion.p variants={itemVariants} className="hero-desc desc-left">
               Graphic Designer passionate about creating visually appealing designs,
               branding, social media creatives, posters, and user-centered experiences.
             </motion.p>
-          )}
-          <motion.div variants={itemVariants} className="hero-actions">
-            <button className="btn btn-gradient-fill hover-lift" onClick={() => navigateToProjectSection('graphic-design-portfolio')}>
-              View My Works {!isMobile && <span className="arrow">→</span>}
-            </button>
+            <motion.div variants={itemVariants} className="hero-actions">
+              <button className="btn btn-gradient-fill hover-lift" onClick={() => navigateToProjectSection('graphic-design-portfolio')}>
+                View My Works <span className="arrow">→</span>
+              </button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </motion.div>
 
       {/* RIGHT SIDE — DEVELOPER CONTENT */}

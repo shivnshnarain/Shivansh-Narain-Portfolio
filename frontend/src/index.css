@@ -4141,6 +4141,9 @@ a.contact-info-value:hover {
 
   .designer-bg {
     background-image: url('/hero_designer_left.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .hero-bg {
