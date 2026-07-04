@@ -4192,7 +4192,7 @@ a.contact-info-value:hover {
 
   .hero-half {
     padding: 0;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     text-align: left;
     flex: none;
     width: 100%;
@@ -4206,11 +4206,36 @@ a.contact-info-value:hover {
     max-width: 100%;
     margin: 0;
     align-items: flex-start;
+    padding-top: 180px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Designer: Portrait is on the right. Text on left. */
+  .hero-left-side .hero-content {
+    padding-left: 24px;
+    padding-right: 40%;
+  }
+
+  /* Developer: Portrait is on the left. Text on left, but shifted right to avoid face. */
+  .hero-right-side .hero-content {
+    padding-left: 35%;
+    padding-right: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(38px, 10vw, 60px) !important;
+    margin-bottom: 12px;
+  }
+
+  .hero-desc {
+    font-size: clamp(14px, 4vw, 16px) !important;
+    margin-bottom: 24px;
   }
 
   .hero-actions {
     justify-content: flex-start;
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   .scroll-indicator {
