@@ -241,29 +241,29 @@ export default function Hero({ setActiveView }) {
         }}
         transition={{ type: "tween", ease: "easeInOut", duration: isMobile ? 0.3 : 0 }}
       >
-        <motion.div 
-          className="hero-content right-content"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          <motion.p variants={itemVariants} className="hero-eyebrow eyebrow-right">I'M A FULL STACK</motion.p>
-          <motion.h1 className="hero-title title-solid" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
-            {textToLetters("Developer")}
-          </motion.h1>
-          {!isMobile && (
+        {!isMobile && (
+          <motion.div 
+            className="hero-content right-content"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.p variants={itemVariants} className="hero-eyebrow eyebrow-right">I'M A FULL STACK</motion.p>
+            <motion.h1 className="hero-title title-solid" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
+              {textToLetters("Developer")}
+            </motion.h1>
             <motion.p variants={itemVariants} className="hero-desc desc-right">
               Full Stack Developer who builds modern, scalable, and secure web
               applications with clean code and efficient solutions.
             </motion.p>
-          )}
-          <motion.div variants={itemVariants} className="hero-actions">
-            <button className="btn btn-solid-dark hover-lift" onClick={() => navigateToProjectSection('website-showcase')}>
-              View Projects {!isMobile && <span className="arrow">→</span>}
-            </button>
+            <motion.div variants={itemVariants} className="hero-actions">
+              <button className="btn btn-solid-dark hover-lift" onClick={() => navigateToProjectSection('website-showcase')}>
+                View Projects <span className="arrow">→</span>
+              </button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </motion.div>
 
       {/* SLIDER HANDLE & LINE */}

@@ -650,15 +650,17 @@ button {
 
 /* Mobile Toggle */
 .mobile-toggle-wrapper {
-  position: relative;
+  position: absolute;
+  top: 104px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 30;
-  margin-bottom: 32px;
 }
 
 .mobile-toggle {
   display: inline-flex;
   background: #FFFFFF;
-  padding: 6px;
+  padding: 4px;
   border-radius: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
@@ -666,9 +668,9 @@ button {
 .toggle-btn {
   border: none;
   background: transparent;
-  padding: 12px 32px;
+  padding: 10px 24px;
   border-radius: 32px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   color: #1A1A1A;
   cursor: pointer;
@@ -4141,6 +4143,13 @@ a.contact-info-value:hover {
 
   .designer-bg {
     background-image: url('/hero_designer_left.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .developer-bg {
+    background-image: url('/hero_developer.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
