@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollContext } from '../context/ScrollContext';
 
@@ -52,59 +52,11 @@ const EmailIcon = () => (
 
 export default function Contact({ setActiveView }) {
   const { setActiveSection } = useScrollContext();
-  const [formStatus, setFormStatus] = useState({ state: 'idle', message: '' });
+  const [nextUrl, setNextUrl] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const name = fd.get('name')?.trim();
-    const email = fd.get('email')?.trim();
-    const phone = fd.get('phone')?.trim() || 'Not provided';
-    const subject = fd.get('subject')?.trim();
-    const message = fd.get('message')?.trim();
-
-    if (!name || !email || !subject || !message) {
-      setFormStatus({ state: 'error', message: 'Please fill in all required fields.' });
-      return;
-    }
-
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setFormStatus({ state: 'error', message: 'Please enter a valid email address.' });
-      return;
-    }
-
-    setFormStatus({ state: 'loading', message: '' });
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/1e1a84f5b38cf5cf4131446388be76f6", {
-        method: "POST",
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          phone: phone,
-          subject: subject,
-          message: message,
-          _subject: "New Portfolio Contact Form Submission",
-          _captcha: "false",
-          _template: "table"
-        })
-      });
-
-      if (response.ok) {
-        setFormStatus({ state: 'success', message: "Thank you! Your message has been sent successfully." });
-        e.target.reset();
-        setTimeout(() => setFormStatus({ state: 'idle', message: '' }), 5000);
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      setFormStatus({ state: 'error', message: "Failed to send message. Please try again." });
-    }
-  };
+  useEffect(() => {
+    setNextUrl(window.location.origin + '/thank-you');
+  }, []);
 
   const contactInfo = [
     { Icon: PhoneIcon, label: 'Phone', value: '+91 95699 83385', href: 'tel:+919569983385' },
@@ -218,15 +170,19 @@ export default function Contact({ setActiveView }) {
             <h3 className="contact-form-title">Send a Message</h3>
             <p className="contact-form-subtitle">Fill out the form and I'll respond within 24 hours.</p>
 
-            <form onSubmit={handleSubmit} noValidate className="contact-form-v2">
+            <form action="https://formsubmit.co/1e1a84f5b38cf5cf4131446388be76f6" method="POST" className="contact-form-v2">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="New Portfolio Contact" />
+              <input type="hidden" name="_next" value={nextUrl} />
               <div className="cfv2-row">
                 <div className="form-group-v2">
                   <label htmlFor="cv2-name">Full Name <span className="req">*</span></label>
-                  <input type="text" id="cv2-name" name="name" placeholder="Your Full Name" />
+                  <input type="text" id="cv2-name" name="name" placeholder="Your Full Name" required />
                 </div>
                 <div className="form-group-v2">
                   <label htmlFor="cv2-email">Email Address <span className="req">*</span></label>
-                  <input type="email" id="cv2-email" name="email" placeholder="your@email.com" />
+                  <input type="email" id="cv2-email" name="email" placeholder="your@email.com" required />
                 </div>
               </div>
 
@@ -237,31 +193,23 @@ export default function Contact({ setActiveView }) {
                 </div>
                 <div className="form-group-v2">
                   <label htmlFor="cv2-subject">Subject <span className="req">*</span></label>
-                  <input type="text" id="cv2-subject" name="subject" placeholder="Project / Collaboration / Inquiry" />
+                  <input type="text" id="cv2-subject" name="subject" placeholder="Project / Collaboration / Inquiry" required />
                 </div>
               </div>
 
               <div className="form-group-v2">
                 <label htmlFor="cv2-message">Message <span className="req">*</span></label>
-                <textarea id="cv2-message" name="message" rows="6" placeholder="Tell me about your project, idea, or business inquiry…" />
+                <textarea id="cv2-message" name="message" rows="6" placeholder="Tell me about your project, idea, or business inquiry…" required />
               </div>
 
               <motion.button
                 type="submit"
                 className="contact-submit-btn"
-                disabled={formStatus.state === 'loading'}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                style={formStatus.state === 'success' ? { background: '#1a9e5c' } : {}}
               >
-                {formStatus.state === 'loading' ? 'Sending…' : formStatus.state === 'success' ? '✓ Message Sent!' : 'SEND MESSAGE →'}
+                SEND MESSAGE →
               </motion.button>
-
-              {formStatus.message && (
-                <p className="cfv2-status" style={{ color: formStatus.state === 'error' ? '#f87171' : '#4ade80' }}>
-                  {formStatus.message}
-                </p>
-              )}
             </form>
           </div>
           

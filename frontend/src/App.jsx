@@ -11,13 +11,19 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ExploreJourney from './components/ExploreJourney';
 import PaymentPage from './components/PaymentPage';
+import ThankYou from './components/ThankYou';
 import { ScrollProvider } from './context/ScrollContext';
 import BackgroundManager from './components/BackgroundManager';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
-  const [activeView, setActiveView] = useState('home');
+  const [activeView, setActiveView] = useState(() => {
+    if (window.location.pathname === '/thank-you') {
+      return 'thank-you';
+    }
+    return 'home';
+  });
 
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -30,7 +36,7 @@ export default function App() {
       <BackgroundManager />
       <Header activeView={activeView} setActiveView={setActiveView} />
       
-      {activeView !== 'home' && activeView !== 'education' && activeView !== 'skills' && activeView !== 'projects' && activeView !== 'payment' && (
+      {activeView !== 'home' && activeView !== 'education' && activeView !== 'skills' && activeView !== 'projects' && activeView !== 'payment' && activeView !== 'thank-you' && (
         <div className="back-nav-container">
           <button className="btn-back" onClick={() => setActiveView('home')}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -76,6 +82,12 @@ export default function App() {
           {activeView === 'payment' && (
             <motion.div key="payment" variants={pageVariants} initial="initial" animate="animate" exit="exit" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
               <PaymentPage setActiveView={setActiveView} />
+            </motion.div>
+          )}
+
+          {activeView === 'thank-you' && (
+            <motion.div key="thank-you" variants={pageVariants} initial="initial" animate="animate" exit="exit" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+              <ThankYou setActiveView={setActiveView} />
             </motion.div>
           )}
 
