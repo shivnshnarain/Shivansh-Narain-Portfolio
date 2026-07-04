@@ -18,26 +18,6 @@ const PORTFOLIO_DATA = [
   { id: 12, title: 'DC Link New Year 2026', cat: 'posters', software: 'Adobe Illustrator', img: '/graphic-project-new-02.jpg' },
 ];
 
-const FloatingParticles = () => {
-  // 15 white dots, 10 golden dots
-  const particles = Array.from({ length: 25 }).map((_, i) => {
-    const isGold = i >= 15;
-    const size = Math.random() * 3 + 2; // 2-5px
-    const style = {
-      width: `${size}px`,
-      height: `${size}px`,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDuration: `${Math.random() * 15 + 10}s`, // 10-25s
-      animationDelay: `-${Math.random() * 15}s`,
-      opacity: isGold ? Math.random() * 0.4 + 0.2 : Math.random() * 0.3 + 0.1,
-      background: isGold ? '#FFD54F' : '#FFF',
-      boxShadow: isGold ? '0 0 8px 1px rgba(255,213,79,0.4)' : '0 0 6px 1px rgba(255,255,255,0.4)'
-    };
-    return <div key={i} className="gallery-particle" style={style}></div>;
-  });
-  return <div className="gallery-particles-container">{particles}</div>;
-};
 
 const CATEGORIES = [
   { id: 'all', label: 'All' },
@@ -191,8 +171,6 @@ export default function Gallery() {
       {/* Background Effects */}
       <div className="gallery-bg-effects">
         <div className="gallery-ambient-glow"></div>
-        <div className="gallery-noise"></div>
-        <FloatingParticles />
       </div>
 
       <div className="gallery-v2-container">
