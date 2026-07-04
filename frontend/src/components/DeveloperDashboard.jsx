@@ -63,10 +63,10 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
         <div 
           className="glass-widget profile-widget"
           style={isMobile ? { 
-            transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`,
+            transform: `translate(${parallaxX}px, 0) scale(${scale})`,
             position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
           } : { 
-            transform: `translate(${parallaxX * 1.2}px, 0) scale(${scale})`
+            transform: `translate(${parallaxX}px, 0) scale(${scale})`
           }}
         >
           <div className="profile-content">
@@ -82,10 +82,10 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
         <div 
           className="glass-widget tech-widget"
           style={isMobile ? { 
-            transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`,
+            transform: `translate(${parallaxX}px, 0) scale(${scale})`,
             position: 'relative', top: 'auto', left: 'auto', margin: '20px auto'
           } : { 
-            transform: `translate(${parallaxX * 1.4}px, 0) scale(${scale})`
+            transform: `translate(${parallaxX}px, 0) scale(${scale})`
           }}
         >
           <h3>Tech Stack</h3>

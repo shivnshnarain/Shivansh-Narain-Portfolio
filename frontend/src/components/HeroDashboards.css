@@ -221,6 +221,7 @@
   top: 15%;
   left: 8%;
   width: 380px;
+  height: 310px;
   padding: 0 !important;
   overflow: hidden;
   background: rgba(10, 10, 12, 0.6) !important;
@@ -311,7 +312,7 @@
 /* Developer Profile Widget */
 .profile-widget {
   position: absolute;
-  top: calc(15% + 220px);
+  top: calc(15% + 330px);
   left: 8%;
   width: 380px;
   background: rgba(10, 10, 10, 0.6);
@@ -327,9 +328,10 @@
 
 .tech-widget {
   position: absolute;
-  top: calc(15% + 350px);
+  top: calc(15% + 440px);
   left: 8%;
   width: 380px;
+
   background: #2B2D31 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px;
@@ -360,6 +362,44 @@
 .tech-icon:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: scale(1.1);
+}
+
+.dev-marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dev-marquee-track {
+  display: flex;
+}
+
+.dev-marquee-track.left {
+  animation: marqueeLeftToRight 20s linear infinite;
+}
+
+.dev-marquee-track.right {
+  animation: marqueeRightToLeft 20s linear infinite;
+}
+
+.dev-marquee-container:hover .dev-marquee-track {
+  animation-play-state: paused;
+}
+
+.dev-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .github-widget {
