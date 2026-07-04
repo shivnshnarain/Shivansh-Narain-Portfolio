@@ -4401,7 +4401,7 @@ a.contact-info-value:hover {
    FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
    ========================================================== */
 @media (max-width: 1024px) {
-  /* 8. REMOVE THESE ON MOBILE/TABLET */
+  /* Hide all floating cards and paragraphs */
   .developer-grid,
   .terminal-widget,
   .profile-widget,
@@ -4422,15 +4422,15 @@ a.contact-info-value:hover {
     flex-direction: column !important;
     justify-content: flex-start !important;
     min-height: 100vh;
-    padding-top: 100px !important; /* Space for Navbar */
+    padding-top: 100px !important; /* Navbar is at 20px, height ~60px, so top 100px is perfect */
   }
 
   .mobile-toggle-wrapper {
     position: relative !important;
     width: 90% !important;
     max-width: 400px !important;
-    height: 52px !important;
-    margin: 0 auto 32px auto !important;
+    height: 54px !important;
+    margin: 0 auto 32px auto !important; /* 32px spacing below toggle */
     z-index: 50;
     display: flex;
     justify-content: center;
@@ -4487,37 +4487,34 @@ a.contact-info-value:hover {
     color: #ffffff !important;
   }
 
-  /* 4, 5, 6. IMAGE POSITION */
+  /* 2. ABSOLUTELY POSITIONED HERO IMAGES (Acting as Half-Width Containers via clipPath) */
+  /* This exactly mimics the Desktop Crop */
   .hero-bg {
-    width: 100% !important;
-    height: 100% !important;
+    position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    /* We must preserve background-size cover from desktop to get the exact identical zoom level! */
+    background-size: cover !important;
+    background-position: center bottom !important;
   }
 
-  /* Designer: Image starts from RIGHT edge. Crop so only right half visible. */
-  .hero-bg.designer-bg {
-    background-size: auto 90% !important;
-    background-position: calc(100% + 35vw) bottom !important; 
-  }
-  
-  /* Developer: Image starts from LEFT edge. Crop so only left half visible. */
-  .hero-bg.developer-bg {
-    background-size: auto 90% !important;
-    background-position: calc(0% - 35vw) bottom !important; 
-  }
-
-  /* Designer Active (Left Side Text) */
+  /* Designer Text (Left Side 55%) */
   .hero-left-side {
-    width: 60% !important;
-    flex: 1 !important;
-    padding: 0 16px 32px 24px !important;
-    margin-right: auto !important;
+    position: absolute !important;
+    top: 150px !important; /* Below toggle (100px + 50px) */
+    left: 0 !important;
+    width: 55% !important;
+    height: calc(100vh - 150px) !important;
+    padding: 0 16px 20px 24px !important;
+    margin: 0 !important;
     text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: center !important;
-    z-index: 10;
+    z-index: 10 !important;
   }
   
   .hero-left-side .hero-content {
@@ -4531,16 +4528,21 @@ a.contact-info-value:hover {
     justify-content: flex-start !important;
   }
 
-  /* Developer Active (Right Side Text) */
+  /* Developer Text (Right Side 55%) */
   .hero-right-side {
-    width: 60% !important;
-    flex: 1 !important;
-    padding: 0 24px 32px 16px !important;
-    margin-left: auto !important;
+    position: absolute !important;
+    top: 150px !important;
+    right: 0 !important;
+    width: 55% !important;
+    height: calc(100vh - 150px) !important;
+    padding: 0 24px 20px 16px !important;
+    margin: 0 !important;
     text-align: right !important;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: flex-end !important;
     justify-content: center !important;
-    z-index: 10;
+    z-index: 10 !important;
   }
   
   .hero-right-side .hero-content {
@@ -4558,4 +4560,3 @@ a.contact-info-value:hover {
     display: none !important;
   }
 }
-
