@@ -4132,32 +4132,55 @@ a.contact-info-value:hover {
 
   /* Responsive Hero */
   .hero-split-section {
-    flex-direction: column;
-    min-height: 100vh;
-    padding-top: 140px;
-  }
-
-  .hero-half {
-    padding: 20px 24px;
+    display: flex !important;
+    flex-direction: column !important;
     justify-content: center !important;
-    text-align: center;
+    min-height: 100vh;
+    padding-top: 0 !important;
   }
 
+  /* Designer Active (Left Side) */
   .hero-left-side {
-    padding: 0 24px;
+    width: 55% !important;
+    flex: none !important;
+    padding: 0 16px 0 24px !important;
+    margin-right: auto !important;
+    text-align: left !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  
+  .hero-left-side .hero-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  .hero-left-side .hero-actions {
+    justify-content: flex-start !important;
   }
 
+  /* Developer Active (Right Side) */
   .hero-right-side {
-    padding: 0 24px;
+    width: 55% !important;
+    flex: none !important;
+    padding: 0 24px 0 16px !important;
+    margin-left: auto !important;
+    text-align: left !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
   }
-
-  .hero-content {
-    max-width: 100%;
-    margin: 0 auto;
+  
+  .hero-right-side .hero-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
-
-  .hero-actions {
-    justify-content: center;
+  
+  .hero-right-side .hero-actions {
+    justify-content: flex-start !important;
   }
 
   .scroll-indicator {
@@ -4371,5 +4394,118 @@ a.contact-info-value:hover {
 
   .fw-project-stack {
     justify-content: center;
+  }
+}
+/* ==========================================================
+   FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
+   ========================================================== */
+@media (max-width: 1024px) {
+  /* 2. REMOVE ALL FLOATING CARDS */
+  .developer-grid,
+  .terminal-widget,
+  .profile-widget,
+  .tech-widget,
+  .designer-dashboard .glass-widget,
+  .skills-widget,
+  .achievements-widget,
+  .palette-widget,
+  .tools-widget,
+  .github-widget {
+    display: none !important;
+  }
+
+  /* 1. NAVBAR & TOGGLE */
+  .mobile-toggle-wrapper {
+    position: absolute !important;
+    top: 104px !important; /* Below navbar (approx 80px) + 24px margin */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 92% !important;
+    max-width: 1000px !important;
+    margin: 0 !important;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mobile-toggle {
+    width: 100%;
+    display: flex;
+    border-radius: 40px !important;
+    background: rgba(18, 20, 24, 0.72) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 6px !important;
+  }
+
+  .toggle-btn {
+    flex: 1;
+    text-align: center;
+    border-radius: 36px !important;
+    padding: 12px 0 !important;
+    color: #fff !important;
+    font-size: 15px !important;
+  }
+
+  .toggle-btn.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* 3 & 4. HERO SPLIT SECTION LAYOUT */
+  .hero-split-section {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 100vh;
+    padding-top: 0 !important;
+  }
+
+  /* Designer Active (Left Side) */
+  .hero-left-side {
+    width: 55% !important;
+    flex: none !important;
+    padding: 0 16px 0 24px !important;
+    margin-right: auto !important;
+    text-align: left !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  
+  .hero-left-side .hero-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  .hero-left-side .hero-actions {
+    justify-content: flex-start !important;
+  }
+
+  /* Developer Active (Right Side) */
+  .hero-right-side {
+    width: 55% !important;
+    flex: none !important;
+    padding: 0 24px 0 16px !important;
+    margin-left: auto !important;
+    text-align: left !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  
+  .hero-right-side .hero-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  .hero-right-side .hero-actions {
+    justify-content: flex-start !important;
+  }
+
+  .scroll-indicator {
+    display: none !important;
   }
 }

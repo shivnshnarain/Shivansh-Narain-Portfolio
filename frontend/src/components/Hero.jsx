@@ -21,7 +21,7 @@ export default function Hero({ setActiveView }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 992);
+      setIsMobile(window.innerWidth <= 1024);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -88,11 +88,11 @@ export default function Hero({ setActiveView }) {
     : (sliderPosition > 80 ? 0 : sliderPosition > 60 ? (80 - sliderPosition) / 20 : 1);
 
   const designerClip = isMobile 
-    ? (mobileMode === 'designer' ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 0 0, 0 100%, 0 100%)')
+    ? (mobileMode === 'designer' ? 'polygon(55% 0, 100% 0, 100% 100%, 55% 100%)' : 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)')
     : `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`;
 
   const developerClip = isMobile
-    ? (mobileMode === 'developer' ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' : 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)')
+    ? (mobileMode === 'developer' ? 'polygon(0 0, 45% 0, 45% 100%, 0 100%)' : 'polygon(0 0, 0 0, 0 100%, 0 100%)')
     : `polygon(${sliderPosition}% 0, 100% 0, 100% 100%, ${sliderPosition}% 100%)`;
 
   // Animation Variants
