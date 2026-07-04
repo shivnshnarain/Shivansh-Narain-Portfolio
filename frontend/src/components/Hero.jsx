@@ -52,18 +52,18 @@ export default function Hero({ setActiveView }) {
           <div className="mobile-hero-content">
             {mobileMode === 'designer' ? (
               <div className="mobile-layout-designer">
-                <div className="mobile-text-col">
+                <div className="mobile-bg-layer designer-bg-mobile"></div>
+                <div className="mobile-text-col left-align">
                   <p className="mobile-eyebrow">I'M A CREATIVE</p>
                   <h1 className="mobile-title title-gradient">Designer</h1>
                   <button className="btn btn-gradient-fill hover-lift mobile-btn" onClick={() => navigateToProjectSection('graphic-design-portfolio')}>
                     View My Works <span className="arrow">→</span>
                   </button>
                 </div>
-                <div className="mobile-img-col mobile-designer-img"></div>
               </div>
             ) : (
               <div className="mobile-layout-developer">
-                <div className="mobile-img-col mobile-developer-img"></div>
+                <div className="mobile-bg-layer developer-bg-mobile"></div>
                 <div className="mobile-text-col right-align">
                   <p className="mobile-eyebrow">I'M A FULL STACK</p>
                   <h1 className="mobile-title title-solid">Developer</h1>

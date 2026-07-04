@@ -4398,6 +4398,7 @@ a.contact-info-value:hover {
 }
 
 
+
 /* ==========================================================
    FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
    ========================================================== */
@@ -4425,6 +4426,7 @@ a.contact-info-value:hover {
     width: 100%;
     padding-top: 100px; /* Space for Navbar */
     background: #ffffff; /* Default background */
+    overflow: hidden;
   }
   
   .mobile-hero-wrapper {
@@ -4440,6 +4442,8 @@ a.contact-info-value:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    z-index: 50;
+    position: relative;
   }
 
   .mobile-toggle {
@@ -4504,13 +4508,15 @@ a.contact-info-value:hover {
   .mobile-layout-designer,
   .mobile-layout-developer {
     flex: 1;
-    display: flex;
+    position: relative;
     width: 100%;
+    height: 100%;
+    display: flex;
   }
 
   /* TEXT COLUMN */
   .mobile-text-col {
-    width: 50%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -4518,9 +4524,15 @@ a.contact-info-value:hover {
     z-index: 10;
   }
 
+  .mobile-text-col.left-align {
+    text-align: left;
+    align-items: flex-start;
+  }
+
   .mobile-text-col.right-align {
     text-align: right;
     align-items: flex-end;
+    margin-left: auto;
   }
 
   .mobile-eyebrow {
@@ -4532,22 +4544,19 @@ a.contact-info-value:hover {
   }
 
   .mobile-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 28px;
     letter-spacing: -0.02em;
   }
 
-  .mobile-title.title-gradient {
-    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
+  /* Title colors */
   .mobile-title.title-solid {
     color: #000000;
   }
+  
+  /* We let .title-gradient inherit from the main CSS for the designer view! */
 
   .mobile-btn {
     padding: 12px 24px;
@@ -4559,24 +4568,27 @@ a.contact-info-value:hover {
     gap: 8px;
   }
 
-  /* EXACT DESKTOP CROP IMAGES */
-  /* The image containers are exactly 50% width and fill the vertical space */
-  .mobile-img-col {
-    width: 50%;
+  /* EXACT DESKTOP CROP IMAGES (Full Background) */
+  .mobile-bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background-size: auto 100%;
+    background-size: cover;
     background-repeat: no-repeat;
+    z-index: 1;
   }
 
-  /* DESIGNER: Right side. Image should align its center to the left edge of this container */
-  .mobile-designer-img {
+  /* DESIGNER: Full background, pushed right. Right half of face visible. */
+  .designer-bg-mobile {
     background-image: url('/hero_designer.png');
-    background-position: left center;
+    background-position: right center;
   }
 
-  /* DEVELOPER: Left side. Image should align its center to the right edge of this container */
-  .mobile-developer-img {
+  /* DEVELOPER: Full background, pushed left. Left half of face visible. */
+  .developer-bg-mobile {
     background-image: url('/hero_developer.png');
-    background-position: right center;
+    background-position: left center;
   }
 }
