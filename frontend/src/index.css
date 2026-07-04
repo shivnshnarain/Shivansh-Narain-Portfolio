@@ -4401,7 +4401,7 @@ a.contact-info-value:hover {
    FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
    ========================================================== */
 @media (max-width: 1024px) {
-  /* Hide all floating cards completely */
+  /* 8. REMOVE THESE ON MOBILE/TABLET */
   .developer-grid,
   .terminal-widget,
   .profile-widget,
@@ -4428,8 +4428,9 @@ a.contact-info-value:hover {
   .mobile-toggle-wrapper {
     position: relative !important;
     width: 90% !important;
-    max-width: 600px !important;
-    margin: 0 auto 32px auto !important; /* 32px below toggle */
+    max-width: 400px !important;
+    height: 52px !important;
+    margin: 0 auto 32px auto !important;
     z-index: 50;
     display: flex;
     justify-content: center;
@@ -4437,6 +4438,7 @@ a.contact-info-value:hover {
   
   .mobile-toggle {
     width: 100%;
+    height: 100%;
     display: flex;
     position: relative;
     border-radius: 40px !important;
@@ -4454,7 +4456,7 @@ a.contact-info-value:hover {
     height: calc(100% - 12px);
     background: #000000;
     border-radius: 36px;
-    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
     z-index: 1;
   }
 
@@ -4466,11 +4468,14 @@ a.contact-info-value:hover {
     flex: 1;
     text-align: center;
     border-radius: 36px !important;
-    padding: 12px 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
     font-size: 15px !important;
     font-weight: 700 !important;
     z-index: 2;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
     background: transparent !important;
     color: #1A1A1A !important;
     border: none !important;
@@ -4482,36 +4487,37 @@ a.contact-info-value:hover {
     color: #ffffff !important;
   }
 
-  /* Image Layout matching Sketch */
+  /* 4, 5, 6. IMAGE POSITION */
   .hero-bg {
-    width: 50% !important;
+    width: 100% !important;
     height: 100% !important;
     top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
   }
 
+  /* Designer: Image starts from RIGHT edge. Crop so only right half visible. */
   .hero-bg.designer-bg {
-    left: auto !important;
-    right: 0 !important;
-    background-size: 200% 100% !important;
-    background-position: right bottom !important;
+    background-size: auto 90% !important;
+    background-position: calc(100% + 35vw) bottom !important; 
   }
   
+  /* Developer: Image starts from LEFT edge. Crop so only left half visible. */
   .hero-bg.developer-bg {
-    left: 0 !important;
-    right: auto !important;
-    background-size: 200% 100% !important;
-    background-position: left bottom !important;
+    background-size: auto 90% !important;
+    background-position: calc(0% - 35vw) bottom !important; 
   }
 
   /* Designer Active (Left Side Text) */
   .hero-left-side {
-    width: 50% !important;
+    width: 60% !important;
     flex: 1 !important;
-    padding: 0 16px 20px 24px !important;
+    padding: 0 16px 32px 24px !important;
     margin-right: auto !important;
     text-align: left !important;
     align-items: flex-start !important;
     justify-content: center !important;
+    z-index: 10;
   }
   
   .hero-left-side .hero-content {
@@ -4527,13 +4533,14 @@ a.contact-info-value:hover {
 
   /* Developer Active (Right Side Text) */
   .hero-right-side {
-    width: 50% !important;
+    width: 60% !important;
     flex: 1 !important;
-    padding: 0 24px 20px 16px !important;
+    padding: 0 24px 32px 16px !important;
     margin-left: auto !important;
     text-align: right !important;
     align-items: flex-end !important;
     justify-content: center !important;
+    z-index: 10;
   }
   
   .hero-right-side .hero-content {
@@ -4551,3 +4558,4 @@ a.contact-info-value:hover {
     display: none !important;
   }
 }
+
