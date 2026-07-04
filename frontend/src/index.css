@@ -4396,11 +4396,12 @@ a.contact-info-value:hover {
     justify-content: center;
   }
 }
+
 /* ==========================================================
    FINAL MOBILE & TABLET REDESIGN (max-width: 1024px)
    ========================================================== */
 @media (max-width: 1024px) {
-  /* 2. REMOVE ALL FLOATING CARDS */
+  /* Hide all floating cards completely */
   .developer-grid,
   .terminal-widget,
   .profile-widget,
@@ -4416,13 +4417,13 @@ a.contact-info-value:hover {
 
   /* 1. NAVBAR & TOGGLE */
   .mobile-toggle-wrapper {
-    position: absolute !important;
-    top: 104px !important; /* Below navbar (approx 80px) + 24px margin */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
     width: 92% !important;
     max-width: 1000px !important;
-    margin: 0 !important;
+    margin: 100px auto 20px auto !important; /* Exactly 20px below navbar which is ~80px tall */
     z-index: 50;
     display: flex;
     justify-content: center;
@@ -4452,24 +4453,35 @@ a.contact-info-value:hover {
     background: rgba(255, 255, 255, 0.1) !important;
   }
 
+  /* Image Layout matching Sketch */
+  .hero-bg.designer-bg {
+    background-position: calc(100% + 20vw) bottom !important;
+    background-size: auto 90% !important;
+  }
+  
+  .hero-bg.developer-bg {
+    background-position: calc(0% - 20vw) bottom !important;
+    background-size: auto 90% !important;
+  }
+
   /* 3 & 4. HERO SPLIT SECTION LAYOUT */
   .hero-split-section {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     min-height: 100vh;
     padding-top: 0 !important;
   }
 
-  /* Designer Active (Left Side) */
+  /* Designer Active (Left Side Text) */
   .hero-left-side {
     width: 55% !important;
-    flex: none !important;
-    padding: 0 16px 0 24px !important;
+    flex: 1 !important;
+    padding: 0 16px 20px 24px !important;
     margin-right: auto !important;
     text-align: left !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
   }
   
   .hero-left-side .hero-content {
@@ -4483,15 +4495,15 @@ a.contact-info-value:hover {
     justify-content: flex-start !important;
   }
 
-  /* Developer Active (Right Side) */
+  /* Developer Active (Right Side Text) */
   .hero-right-side {
     width: 55% !important;
-    flex: none !important;
-    padding: 0 24px 0 16px !important;
+    flex: 1 !important;
+    padding: 0 24px 20px 16px !important;
     margin-left: auto !important;
     text-align: left !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
   }
   
   .hero-right-side .hero-content {
