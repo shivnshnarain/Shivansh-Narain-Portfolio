@@ -5,7 +5,6 @@ import { useScrollContext } from '../context/ScrollContext';
 import DesignerDashboard from './DesignerDashboard';
 import DeveloperDashboard from './DeveloperDashboard';
 import { smoothScrollTo } from '../utils/smoothScroll';
-import './HeroDashboards.css';
 
 export default function Hero({ setActiveView }) {
   const [sliderPosition, setSliderPosition] = useState(50);

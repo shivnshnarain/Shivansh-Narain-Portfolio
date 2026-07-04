@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCheck, FiX, FiCreditCard } from 'react-icons/fi';
-import './PaymentPage.css';
 
 export default function PaymentPage({ setActiveView }) {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', amount: '' });
