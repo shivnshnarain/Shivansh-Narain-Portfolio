@@ -4141,18 +4141,48 @@ a.contact-info-value:hover {
     padding-right: 24px;
   }
 
+  .designer-bg, .developer-bg {
+    background-image: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
   .designer-bg {
-    background-image: url('/hero_designer_left.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #F8F8F8;
   }
 
   .developer-bg {
-    background-image: url('/hero_developer.png');
-    background-size: cover;
-    background-position: center;
+    background-color: #0d0d0d;
+  }
+
+  .designer-bg::after, .developer-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+  }
+
+  .designer-bg::after {
+    right: 0;
+    transform: translateX(50%);
+    background-image: url('/hero_designer.png');
+    -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);
+    mask-image: linear-gradient(to left, black 80%, transparent 100%);
+  }
+
+  .developer-bg::after {
+    left: 0;
+    transform: translateX(-50%);
+    background-image: url('/hero_developer.png');
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
   }
 
   .hero-bg {
