@@ -116,6 +116,8 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -4387,6 +4389,48 @@ a.contact-info-value:hover {
 
   .pdf-sidebar {
     display: none;
+  }
+
+  /* --- Global / Contact Responsive Fixes --- */
+  .contact-info-card {
+    width: 100% !important;
+  }
+  .contact-info-value {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .cfv2-row {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-form-card {
+    padding: 32px 24px !important;
+  }
+
+  /* --- Skills Section Stacked Fix --- */
+  .marquee-content {
+    animation: none !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    transform: none !important;
+    padding-left: 0 !important;
+  }
+  .marquee-group:nth-child(2) {
+    display: none !important; /* Hide infinite loop duplicate */
+  }
+  .marquee-group {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .marquee-container::before,
+  .marquee-container::after {
+    display: none !important; /* Remove blur masks */
+  }
+  .skill-card {
+    width: 100% !important;
+    max-width: 380px !important;
+    height: auto !important;
+    min-height: auto !important;
   }
 }
 
