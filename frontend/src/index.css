@@ -4406,32 +4406,7 @@ a.contact-info-value:hover {
     padding: 32px 24px !important;
   }
 
-  /* --- Skills Section Stacked Fix --- */
-  .marquee-content {
-    animation: none !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    transform: none !important;
-    padding-left: 0 !important;
-  }
-  .marquee-group:nth-child(2) {
-    display: none !important; /* Hide infinite loop duplicate */
-  }
-  .marquee-group {
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    width: 100% !important;
-  }
-  .marquee-container::before,
-  .marquee-container::after {
-    display: none !important; /* Remove blur masks */
-  }
-  .skill-card {
-    width: 100% !important;
-    max-width: 380px !important;
-    height: auto !important;
-    min-height: auto !important;
-  }
+
 }
 
 @media (max-width: 768px) {

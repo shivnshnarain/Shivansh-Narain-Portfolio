@@ -1,6 +1,7 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useScrollContext } from '../context/ScrollContext';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { 
   SiReact, SiNodedotjs, SiKalilinux, SiFigma, SiDocker, SiLinux
 } from 'react-icons/si';
@@ -177,6 +178,34 @@ export default function Skills() {
   const [pauseMarquee, setPauseMarquee] = useState(false);
   const sectionRef = useRef(null);
 
+  // Mobile Carousel State
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentCard, setCurrentCard] = useState(0);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const nextCard = () => {
+    setCurrentCard((prev) => (prev + 1) % categories.length);
+  };
+  
+  const prevCard = () => {
+    setCurrentCard((prev) => (prev - 1 + categories.length) % categories.length);
+  };
+  
+  const handleDragEnd = (e, { offset }) => {
+    const swipe = offset.x;
+    if (swipe < -50) {
+      nextCard();
+    } else if (swipe > 50) {
+      prevCard();
+    }
+  };
+
   // Subtle parallax effect for background logos
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -241,64 +270,108 @@ export default function Skills() {
           </motion.div>
 
           {/* Marquee Container */}
-          <motion.div 
-            className="marquee-container"
-            onMouseEnter={() => setPauseMarquee(true)}
-            onMouseLeave={() => setPauseMarquee(false)}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            <div className={`marquee-content ${pauseMarquee ? 'paused' : ''}`}>
-              <div className="marquee-group">
-                {categories.map((cat, index) => (
-                  <div
-                    key={cat.id}
-                    className="skill-card"
-                    style={{ '--card-bg': cat.color }}
+          {isMobile ? (
+            <div className="mobile-carousel-container">
+              <button className="carousel-nav-btn left" onClick={prevCard} aria-label="Previous skill">
+                <FaChevronLeft />
+              </button>
+              
+              <div className="carousel-viewport">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentCard}
+                    className="skill-card mobile-skill-card"
+                    style={{ '--card-bg': categories[currentCard].color }}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.3 }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    onDragEnd={handleDragEnd}
                   >
                     <div className="card-top">
-                      <div className="card-main-icon">{cat.icon}</div>
-                      <h3 className="card-title">{cat.title}</h3>
+                      <div className="card-main-icon">{categories[currentCard].icon}</div>
+                      <h3 className="card-title">{categories[currentCard].title}</h3>
                     </div>
-                    <p className="card-desc">{cat.desc}</p>
-                    <div className="card-tools">
-                      {cat.tools.map((tool, tIdx) => (
+                    <p className="card-desc mobile-card-desc">{categories[currentCard].desc}</p>
+                    <div className="card-tools mobile-card-tools">
+                      {categories[currentCard].tools.slice(0, 4).map((tool, tIdx) => (
                         <div key={tIdx} className="card-tool-item">
                           <div className="card-tool-icon">{tool.icon}</div>
                           <span className="card-tool-name">{tool.name}</span>
                         </div>
                       ))}
                     </div>
-                  </div>
-                ))}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-              <div className="marquee-group">
-                {categories.map((cat, index) => (
-                  <div
-                    key={`${cat.id}-dup`}
-                    className="skill-card"
-                    style={{ '--card-bg': cat.color }}
-                  >
-                    <div className="card-top">
-                      <div className="card-main-icon">{cat.icon}</div>
-                      <h3 className="card-title">{cat.title}</h3>
-                    </div>
-                    <p className="card-desc">{cat.desc}</p>
-                    <div className="card-tools">
-                      {cat.tools.map((tool, tIdx) => (
-                        <div key={tIdx} className="card-tool-item">
-                          <div className="card-tool-icon">{tool.icon}</div>
-                          <span className="card-tool-name">{tool.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+
+              <button className="carousel-nav-btn right" onClick={nextCard} aria-label="Next skill">
+                <FaChevronRight />
+              </button>
             </div>
-          </motion.div>
+          ) : (
+            /* Desktop Marquee Container */
+            <motion.div 
+              className="marquee-container"
+              onMouseEnter={() => setPauseMarquee(true)}
+              onMouseLeave={() => setPauseMarquee(false)}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
+              <div className={`marquee-content ${pauseMarquee ? 'paused' : ''}`}>
+                <div className="marquee-group">
+                  {categories.map((cat, index) => (
+                    <div
+                      key={cat.id}
+                      className="skill-card"
+                      style={{ '--card-bg': cat.color }}
+                    >
+                      <div className="card-top">
+                        <div className="card-main-icon">{cat.icon}</div>
+                        <h3 className="card-title">{cat.title}</h3>
+                      </div>
+                      <p className="card-desc">{cat.desc}</p>
+                      <div className="card-tools">
+                        {cat.tools.map((tool, tIdx) => (
+                          <div key={tIdx} className="card-tool-item">
+                            <div className="card-tool-icon">{tool.icon}</div>
+                            <span className="card-tool-name">{tool.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="marquee-group">
+                  {categories.map((cat, index) => (
+                    <div
+                      key={`${cat.id}-dup`}
+                      className="skill-card"
+                      style={{ '--card-bg': cat.color }}
+                    >
+                      <div className="card-top">
+                        <div className="card-main-icon">{cat.icon}</div>
+                        <h3 className="card-title">{cat.title}</h3>
+                      </div>
+                      <p className="card-desc">{cat.desc}</p>
+                      <div className="card-tools">
+                        {cat.tools.map((tool, tIdx) => (
+                          <div key={tIdx} className="card-tool-item">
+                            <div className="card-tool-icon">{tool.icon}</div>
+                            <span className="card-tool-name">{tool.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Technology Stack Showcase */}
@@ -696,6 +769,88 @@ export default function Skills() {
             }
             .card-tools {
               grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          
+          /* --- Mobile Carousel Styles --- */
+          .mobile-carousel-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 100vw;
+            gap: 12px;
+            padding: 20px 0;
+            position: relative;
+            z-index: 2;
+          }
+          
+          .carousel-viewport {
+            width: 85%;
+            max-width: 700px;
+            position: relative;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+          }
+          
+          .carousel-nav-btn {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            z-index: 10;
+            flex-shrink: 0;
+          }
+          
+          .carousel-nav-btn:hover, .carousel-nav-btn:active {
+            background: #FFFFFF;
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+          }
+          
+          .mobile-skill-card {
+            width: 100% !important;
+            height: auto !important;
+            min-height: auto !important;
+            padding: 24px !important;
+            margin: 0 !important;
+            cursor: grab;
+          }
+          
+          .mobile-skill-card:active {
+            cursor: grabbing;
+          }
+          
+          .mobile-card-tools {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          
+          .mobile-card-desc {
+            margin-bottom: 24px !important;
+            font-size: 13px !important;
+          }
+
+          @media (max-width: 480px) {
+            .carousel-viewport {
+              width: 80%;
+            }
+            .carousel-nav-btn {
+              width: 36px;
+              height: 36px;
+              font-size: 14px;
             }
           }
         `}</style>
