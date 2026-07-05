@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import AIAssistant from './AIAssistant';
-import FloatingAIButton from './FloatingAIButton';
 import { smoothScrollTo, scrollToTargetWhenReady } from '../utils/smoothScroll';
 
 export default function Header({ activeView, setActiveView }) {
@@ -119,7 +118,6 @@ export default function Header({ activeView, setActiveView }) {
           }, 1000);
         }} 
       />
-      <FloatingAIButton onClick={() => setIsAIOpen(true)} isAIOpen={isAIOpen} />
     </header>
   );
 }
