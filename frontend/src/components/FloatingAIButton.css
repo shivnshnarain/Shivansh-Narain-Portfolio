@@ -1,0 +1,144 @@
+/* FloatingAIButton.css */
+
+.floating-ai-container {
+  position: fixed;
+  right: 24px;
+  bottom: 104px; /* 24px + 64px(WhatsApp) + 16px(Gap) */
+  z-index: 99998; /* Just under nav menu but above content */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  animation: waFadeInScale 0.5s ease backwards;
+  animation-delay: 0.1s;
+}
+
+/* Hide on Desktop, only show on Tablets and Mobile (<=1024px) */
+@media (min-width: 1025px) {
+  .floating-ai-container {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .floating-ai-container {
+    right: 20px;
+    bottom: 100px; /* 20px + 64px + 16px */
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-ai-container {
+    right: 18px;
+    bottom: 98px; /* 18px + 64px + 16px */
+  }
+}
+
+.floating-ai-btn {
+  position: relative;
+  height: 56px;
+  width: 56px; /* Compact circular state by default */
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+
+.floating-ai-btn.expanded {
+  width: 140px; /* Expanded pill state */
+  padding: 0 20px;
+}
+
+.floating-ai-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  left: 20px; /* Keeps the icon centered when width is 56px (56/2 - 16/2 = 20) */
+  z-index: 2;
+  transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+}
+
+.floating-ai-btn.expanded .floating-ai-content {
+  left: 18px; /* Slightly adjust for text padding when expanded */
+}
+
+.floating-ai-icon {
+  color: #FFFFFF;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.floating-ai-text {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-ai-btn.expanded .floating-ai-text {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  transition-delay: 0.1s; /* Show text slightly after expansion starts */
+}
+
+/* Glassmorphism gradient border mimicking Desktop Say Hello */
+.floating-ai-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 220ms ease;
+}
+
+.floating-ai-border::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px; /* Use fixed large width to cover even expanded state */
+  height: 300px;
+  background: conic-gradient(from 0deg,
+      #FF4D4D,
+      #FFB800,
+      #00D2FF,
+      #00FFB2,
+      #8B5CF6,
+      #FF4DA6,
+      #FF4D4D);
+  transform: translate(-50%, -50%);
+  animation: rotateGradient 14s linear infinite;
+}
+
+.floating-ai-border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: rgba(18, 20, 24, 0.92);
+  border-radius: 999px;
+}
+
+.floating-ai-btn:hover {
+  transform: scale(1.04);
+}
+
+.floating-ai-btn:hover .floating-ai-border {
+  box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25);
+}
+
+.floating-ai-btn:hover .floating-ai-border::before {
+  animation-duration: 8s;
+}
