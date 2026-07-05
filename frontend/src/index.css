@@ -1599,7 +1599,7 @@ button {
 }
 
 /* On mobile, fallback to flex */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .reference-layout {
     position: relative;
     height: auto;
@@ -1626,7 +1626,7 @@ button {
 }
 
 /* Absolute Positioning for Desktop Orbital Animation */
-@media (min-width: 1025px) {
+@media (min-width: 769px) {
   .orbit-x {
     position: absolute;
     top: 50%;
@@ -2713,7 +2713,7 @@ button {
 }
 
 /* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .gallery-hero-left {
     width: 100%;
     align-items: center;
@@ -2728,10 +2728,7 @@ button {
     z-index: 5;
     opacity: 0.5;
   }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
   .gallery-hero-showcase-grid {
     grid-template-columns: 1fr;
   }
@@ -3903,26 +3900,19 @@ a.contact-info-value:hover {
   margin-top: 4px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .contact-v2-inner {
     grid-template-columns: 1fr;
-    gap: 56px;
-    padding: 0 32px;
+    gap: 40px;
+    padding: 0 20px;
   }
 
   .contact-v2-desc {
     max-width: 100%;
   }
-}
 
-@media (max-width: 768px) {
   .contact-section-v2 {
     padding: 80px 0;
-  }
-
-  .contact-v2-inner {
-    padding: 0 20px;
-    gap: 40px;
   }
 
   .contact-form-card {
@@ -4449,5 +4439,77 @@ a.contact-info-value:hover {
 
   .fw-project-stack {
     justify-content: center;
+  }
+}
+/* =========================================================================
+   TABLET LAYOUT (769px - 1024px)
+   Replicates the Desktop experience with Mobile Toggle
+========================================================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Toggle positioning */
+  .mobile-toggle-wrapper {
+    top: 110px;
+  }
+
+  /* We use the desktop backgrounds, not the mobile pseudo elements */
+  .designer-bg::after, .developer-bg::after {
+    display: none !important;
+  }
+
+  .designer-bg {
+    background-image: url('/hero_designer.png') !important;
+    background-position: center bottom !important;
+    background-size: auto 100% !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .developer-bg {
+    background-image: url('/hero_developer.png') !important;
+    background-position: center bottom !important;
+    background-size: auto 100% !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .hero-half {
+    width: 100%;
+    flex: none;
+  }
+
+  .hero-content {
+    max-width: 40%; /* Keeps it contained like Desktop */
+    padding-top: 60px;
+    z-index: 10;
+  }
+
+  /* Designer: Text on left, Portrait in center */
+  .hero-left-side {
+    justify-content: flex-start !important;
+    padding-left: 5% !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-left-side .hero-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  /* Developer: Text on right, Portrait in center */
+  .hero-right-side {
+    justify-content: flex-end !important;
+    padding-right: 5% !important;
+    padding-left: 0 !important;
+  }
+
+  .hero-right-side .hero-content {
+    text-align: right;
+    align-items: flex-end;
+  }
+  
+  .hero-right-side .hero-actions {
+    justify-content: flex-end;
+  }
+
+  .hero-title {
+    font-size: clamp(50px, 7vw, 80px) !important;
   }
 }
