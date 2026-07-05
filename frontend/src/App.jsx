@@ -13,6 +13,7 @@ import ExploreJourney from './components/ExploreJourney';
 import PaymentPage from './components/PaymentPage';
 import ThankYou from './components/ThankYou';
 import WhatsAppButton from './components/WhatsAppButton';
+import SayHelloButton from './components/SayHelloButton';
 import { ScrollProvider } from './context/ScrollContext';
 import BackgroundManager from './components/BackgroundManager';
 import { useState } from 'react';
@@ -96,6 +97,7 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer activeView={activeView} setActiveView={setActiveView} />
+      <SayHelloButton />
       <WhatsAppButton />
     </ScrollProvider>
   );
