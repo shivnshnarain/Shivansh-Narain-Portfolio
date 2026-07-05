@@ -4219,13 +4219,12 @@ a.contact-info-value:hover {
   }
 
   .hero-desc {
-    font-size: clamp(14px, 4vw, 16px) !important;
-    margin-bottom: 24px;
+    display: none !important;
   }
 
   .hero-actions {
     justify-content: flex-start;
-    margin-top: 24px;
+    margin-top: 12px;
   }
 
   .scroll-indicator {
@@ -4512,4 +4511,8 @@ a.contact-info-value:hover {
   .hero-title {
     font-size: clamp(50px, 7vw, 80px) !important;
   }
+  .hero-desc {
+    display: none !important;
+  }
 }
+
