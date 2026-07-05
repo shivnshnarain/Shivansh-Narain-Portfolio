@@ -4516,3 +4516,82 @@ a.contact-info-value:hover {
   }
 }
 
+/* =========================================================================
+   MOBILE & TABLET FLOATING AI BUTTON (<= 1024px)
+========================================================================= */
+.mobile-floating-ai-btn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  /* Hide the desktop Say Hello pill button */
+  .nav-social-and-cta .nav-cta {
+    display: none !important;
+  }
+  
+  /* Show the circular floating AI button */
+  .mobile-floating-ai-btn {
+    display: flex;
+    position: fixed;
+    bottom: 104px; /* WhatsApp is at 24px + 64px height + 16px spacing */
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00B9F5 0%, #009FE3 45%, #0078D7 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 153, 255, 0.35);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    animation: float-subtle 5s ease-in-out infinite, waFadeInScale 0.5s ease backwards;
+    transition: all 300ms ease;
+  }
+  
+  .mobile-floating-ai-btn:hover, .mobile-floating-ai-btn:active {
+    transform: scale(1.08);
+  }
+  
+  .mobile-floating-ai-tooltip {
+    position: absolute;
+    right: 70px;
+    background-color: #1A1A1A;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 300ms ease;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .mobile-floating-ai-btn:hover .mobile-floating-ai-tooltip,
+  .mobile-floating-ai-btn:focus .mobile-floating-ai-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .mobile-floating-ai-btn {
+    bottom: 100px; /* WhatsApp is at 20px + 64px + 16px */
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-floating-ai-btn {
+    bottom: 98px; /* WhatsApp is at 18px + 64px + 16px */
+    right: 18px;
+  }
+}
+

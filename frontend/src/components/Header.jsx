@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import AIAssistant from './AIAssistant';
 import { smoothScrollTo, scrollToTargetWhenReady } from '../utils/smoothScroll';
+import { FaCommentDots } from 'react-icons/fa';
 
 export default function Header({ activeView, setActiveView }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -108,6 +109,16 @@ export default function Header({ activeView, setActiveView }) {
           <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : '' }} />
         </button>
       </nav>
+
+      <button 
+        className="mobile-floating-ai-btn"
+        onClick={() => setIsAIOpen(true)}
+        aria-label="Say Hello"
+      >
+        <div className="mobile-floating-ai-tooltip">Say Hello</div>
+        <FaCommentDots size={24} />
+      </button>
+
       <AIAssistant 
         isOpen={isAIOpen} 
         onClose={() => setIsAIOpen(false)} 
