@@ -296,7 +296,7 @@ export default function Skills() {
                     </div>
                     <p className="card-desc mobile-card-desc">{categories[currentCard].desc}</p>
                     <div className="card-tools mobile-card-tools">
-                      {categories[currentCard].tools.slice(0, 4).map((tool, tIdx) => (
+                      {categories[currentCard].tools.map((tool, tIdx) => (
                         <div key={tIdx} className="card-tool-item">
                           <div className="card-tool-icon">{tool.icon}</div>
                           <span className="card-tool-name">{tool.name}</span>
@@ -834,8 +834,16 @@ export default function Skills() {
           }
           
           .mobile-card-tools {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 12px 8px !important;
+          }
+          
+          .mobile-card-tools .card-tool-item {
+            flex: 0 0 calc(25% - 8px) !important;
+            width: auto !important;
+            min-width: 50px;
           }
           
           .mobile-card-desc {
