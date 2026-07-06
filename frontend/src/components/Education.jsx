@@ -880,6 +880,18 @@ export default function Education({ setActiveView }) {
           font-size: 18px;
         }
 
+        @media (max-width: 1024px) {
+          .edu-learning-badges {
+            flex-direction: column;
+            align-items: center;
+          }
+          .edu-badge {
+            width: 280px !important;
+            height: 52px !important;
+            justify-content: flex-start !important;
+          }
+        }
+
         /* --- Strict Text Color Override to defeat global inheritances --- */
         #education h1, #education h2, #education h3, #education h4, #education h5, #education h6,
         #education p, #education span, #education a, #education li, #education strong, 
