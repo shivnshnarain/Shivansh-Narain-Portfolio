@@ -620,6 +620,7 @@
     bottom: auto;
     left: auto;
     margin: 20px auto;
+    max-width: 90vw !important;
   }
 
   .achievements-widget {
@@ -629,6 +630,7 @@
     flex-direction: row;
     justify-content: center;
     margin: 20px auto;
+    max-width: 90vw !important;
   }
 
   .terminal-widget {
@@ -636,5 +638,6 @@
     top: auto;
     left: auto;
     margin: 20px auto;
+    max-width: 90vw !important;
   }
 }

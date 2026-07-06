@@ -4527,3 +4527,67 @@ a.contact-info-value:hover {
   }
 }
 
+/* =========================================================================
+   COMPREHENSIVE RESPONSIVE AUDIT FIXES (MOBILE & TABLET ONLY)
+   ========================================================================= */
+
+/* Ensure html and body don't overflow horizontally */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  /* Aggressive universal max-width for common containers to prevent viewport blowout */
+  .container, .section, .contact-v2-inner, .about-grid, .about-text-col, .contact-v2-right, .contact-form-card, .cfv2-row {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+  
+  /* Fix Interest grid item blowout */
+  .interest-item {
+    white-space: normal !important;
+    text-align: center;
+    height: auto !important;
+  }
+
+  .corner-glow {
+    max-width: 100% !important;
+  }
+  
+  /* Fix Header Overflow on tiny screens */
+  .nav-cta {
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center;
+    padding: 0 12px !important;
+  }
+  
+  /* Ensure grids downgrade gracefully */
+  .about-grid, .contact-v2-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-v2-inner {
+    padding: 0 16px !important;
+  }
+  
+  .contact-form-card {
+    padding: 24px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ensure Interest grid items don't overflow the screen */
+  .interest-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .nav-cta-text {
+    font-size: 11px !important;
+  }
+}
