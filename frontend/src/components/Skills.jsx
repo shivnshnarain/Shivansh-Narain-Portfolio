@@ -7,7 +7,7 @@ import {
 } from 'react-icons/si';
 
 const TechIcon = ({ src, alt }) => (
-  <img src={src} alt={alt} style={{ width: '1em', height: '1em', objectFit: 'contain', display: 'block' }} />
+  <img src={src} alt={alt} loading="lazy" style={{ width: '1em', height: '1em', objectFit: 'contain', display: 'block' }} />
 );
 
 // Centralized tools dictionary to ensure zero duplicates across the entire section
@@ -183,10 +183,22 @@ export default function Skills() {
   const [currentCard, setCurrentCard] = useState(0);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
-    checkMobile();
+    let timeoutId;
+    const checkMobile = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(window.innerWidth <= 1024);
+      }, 150);
+    };
+    
+    // Initial check without delay
+    setIsMobile(window.innerWidth <= 1024);
+    
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const nextCard = () => {
@@ -281,11 +293,16 @@ export default function Skills() {
                   <motion.div
                     key={currentCard}
                     className="skill-card mobile-skill-card"
-                    style={{ '--card-bg': categories[currentCard].color }}
+                    style={{ 
+                      '--card-bg': categories[currentCard].color,
+                      willChange: 'transform, opacity',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transform: 'translateZ(0)'
+                    }}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}
@@ -783,6 +800,7 @@ export default function Skills() {
             padding: 20px 0;
             position: relative;
             z-index: 2;
+            min-height: 480px; /* Lock height to prevent arrow shifting */
           }
           
           .carousel-viewport {
@@ -836,7 +854,7 @@ export default function Skills() {
           .mobile-card-tools {
             display: flex !important;
             flex-wrap: wrap !important;
-            justify-content: center !important;
+            justify-content: flex-start !important;
             gap: 12px 8px !important;
           }
           
