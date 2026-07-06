@@ -342,15 +342,21 @@
 /* Responsive Design */
 @media (max-width: 1100px) {
   .gallery-v2-container {
-    display: block !important; /* Enforce proper document flow */
+    display: flex !important;
+    flex-direction: column !important;
     padding: 60px 20px 0 20px;
+    height: auto !important;
   }
 
   .gallery-left-content {
-    display: block !important;
-    width: 100%;
-    text-align: center;
-    padding-top: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
   }
 
   .eyebrow-glowing {
@@ -370,9 +376,9 @@
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 10px !important;
-    margin: 40px auto 0 auto;
-    width: 100%;
-    max-width: 600px;
+    margin: 40px auto 0 auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
     align-items: flex-start !important;
   }
 
@@ -401,54 +407,71 @@
 
   .gallery-internship-block {
     display: flex !important;
-    text-align: left;
-    width: 100%;
-    min-width: unset;
-    max-width: 600px;
-    margin: 40px auto 40px auto !important; /* Space above and below */
-    flex-direction: column;
+    text-align: left !important;
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: 600px !important;
+    margin: 40px auto 0 auto !important;
+    flex-direction: column !important;
     height: auto !important;
+    position: relative !important;
   }
 
   .gallery-right-stacked {
-    display: block !important; /* Proper flow */
+    display: flex !important;
+    flex-direction: column !important;
     position: relative !important;
-    top: auto !important; /* Reset desktop top translation */
-    margin: 0 auto 80px auto !important;
-    width: 100%;
-    max-width: 600px;
-    height: 550px;
-    perspective: 1200px;
+    top: 0 !important;
+    margin: 40px auto 80px auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    perspective: 1200px !important;
+    padding: 0 !important;
+  }
+
+  .stacked-scene {
+    position: relative !important;
+    width: 100% !important;
+    height: 480px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
   }
 
   .gallery-right-bottom-ui {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    left: 0;
-    right: 0;
-    padding: 0;
-    pointer-events: none;
-    z-index: 100;
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    margin: 20px auto 0 auto !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    z-index: 100 !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 
   .gallery-stack-controls {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    box-sizing: border-box;
+    width: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 60px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .stacked-card-wrapper {
-    position: absolute;
+    position: absolute !important;
     top: 50% !important;
     left: 50% !important;
     margin-left: -160px !important; /* -width/2 */
     margin-top: -210px !important; /* -height/2 */
-    width: 320px;
-    height: 420px;
+    width: 320px !important;
+    height: 420px !important;
   }
 
   .stacked-card-content {
@@ -463,9 +486,12 @@
   }
 
   .gallery-right-stacked {
-    height: 450px;
-    perspective: 800px;
+    perspective: 800px !important;
     margin-bottom: 80px !important;
+  }
+
+  .stacked-scene {
+    height: 380px !important;
   }
 
   .stacked-card-wrapper {
@@ -480,8 +506,12 @@
   }
 
   .gallery-arrow {
-    width: 40px;
-    height: 40px;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .gallery-stack-controls {
+    gap: 40px !important;
   }
 }
 
@@ -490,11 +520,11 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  pointer-events: none; /* Let clicks pass through empty space */
+  pointer-events: none;
 }
 
 .gallery-arrow {
-  pointer-events: auto; /* Re-enable clicks for the button */
+  pointer-events: auto;
   background: rgba(10, 10, 10, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
