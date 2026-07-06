@@ -342,7 +342,7 @@
 @media (max-width: 1100px) {
   .gallery-v2-container {
     flex-direction: column;
-    padding-top: 60px;
+    padding: 60px 20px 0 20px;
   }
 
   .gallery-left-content {
@@ -403,13 +403,15 @@
     width: 100%;
     min-width: unset;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 40px auto 0 auto !important;
     flex-direction: column;
+    height: auto !important;
   }
 
   .gallery-right-stacked {
-    top: 0;
-    margin-top: 0;
+    position: relative;
+    top: 0 !important;
+    margin-top: 40px !important;
   }
   
   .gallery-right-stacked {
@@ -427,17 +429,19 @@
     width: 100%;
     padding: 0;
     pointer-events: none;
+    z-index: 100;
   }
   
   .gallery-stack-controls {
     width: 100%;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 
   .stacked-card-wrapper {
     left: 50% !important;
-    margin-left: 0 !important;
+    margin-left: -160px !important;
     width: 320px;
     height: 420px;
     margin-top: -210px;
@@ -465,18 +469,21 @@
     transform: translateY(-50%);
     width: 100%;
     padding: 0;
-    pointer-events: none; /* Let clicks pass to cards */
+    pointer-events: none;
+    z-index: 100;
   }
 
   .gallery-stack-controls {
     width: 100%;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .stacked-card-wrapper {
     height: 380px;
     width: 280px;
+    margin-left: -140px !important;
   }
 
   .stacked-card-content {
