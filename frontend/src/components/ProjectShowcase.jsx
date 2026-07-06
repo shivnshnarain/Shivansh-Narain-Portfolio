@@ -84,6 +84,7 @@ export default function ProjectShowcase({ setActiveView }) {
           initial={(dir) => ({ opacity: 0, y: dir === 1 ? 50 : -50 })}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }}
           exit={(dir) => ({ opacity: 0, y: dir === 1 ? -50 : 50, transition: { duration: 0.4 } })}
+          className="fw-section-number-wrapper"
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}
         >
           <SectionNumberBackground number={`0${currentIndex + 1}`} />
@@ -93,20 +94,22 @@ export default function ProjectShowcase({ setActiveView }) {
       <div className="fw-glass-bg"></div>
 
       <div className="fw-header container">
-        <button className="fw-nav-btn fw-nav-dark" onClick={handlePrev}><FiChevronLeft /></button>
+        <button className="fw-nav-btn fw-nav-dark desktop-nav-btn" onClick={handlePrev}><FiChevronLeft /></button>
         <motion.h2 
           className="section-title fw-gradient-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ fontWeight: 800, margin: 0 }}
+          style={{ fontWeight: 800, margin: 0, position: 'relative', zIndex: 10 }}
         >
           Website Showcase
         </motion.h2>
-        <button className="fw-nav-btn fw-nav-dark" onClick={handleNext}><FiChevronRight /></button>
+        <button className="fw-nav-btn fw-nav-dark desktop-nav-btn" onClick={handleNext}><FiChevronRight /></button>
       </div>
 
       <div className="fw-main-content">
+        <button className="fw-nav-btn fw-nav-dark mobile-nav-btn" onClick={handlePrev}><FiChevronLeft /></button>
+        
         {/* SLIDER WRAPPER - Layer 2 */}
         <motion.div 
           className="fw-slider-wrapper" 
@@ -156,6 +159,8 @@ export default function ProjectShowcase({ setActiveView }) {
             </motion.div>
           </AnimatePresence>
         </motion.div>
+        
+        <button className="fw-nav-btn fw-nav-dark mobile-nav-btn" onClick={handleNext}><FiChevronRight /></button>
       </div>
 
       <style>{`
@@ -391,6 +396,114 @@ export default function ProjectShowcase({ setActiveView }) {
           opacity: 1;
           transform: translateY(0);
           box-shadow: 0 20px 50px rgba(255,255,255,0.4);
+        }
+        .mobile-nav-btn {
+          display: none;
+        }
+
+        /* Responsive Redesign: Tablet & Mobile (<= 1024px) */
+        @media (max-width: 1024px) {
+          .desktop-nav-btn {
+            display: none !important;
+          }
+          
+          .mobile-nav-btn {
+            display: flex !important;
+            z-index: 50;
+          }
+
+          .fw-header {
+            gap: 0;
+            margin-bottom: 50px;
+          }
+
+          .fw-section-number-wrapper {
+            top: 75px !important;
+            height: auto !important;
+            transform: scale(0.45);
+            transform-origin: top center;
+            opacity: 0.6;
+            z-index: 5 !important;
+          }
+
+          .fw-main-content {
+            gap: 20px;
+            padding: 0 20px;
+          }
+
+          /* Tablet iPad Mockup */
+          .fw-slider-wrapper {
+            width: 80%;
+            aspect-ratio: 4 / 3;
+            max-width: 800px;
+          }
+          
+          .fw-image-container {
+            border: 16px solid #111 !important;
+            border-radius: 24px !important;
+            background: #000 !important;
+            box-shadow: inset 0 0 0 2px #222, 0 40px 100px rgba(0,0,0,0.2) !important;
+            /* Force hardware acceleration for smooth iframe render inside thick border */
+            transform: translateZ(0);
+          }
+        }
+
+        /* Responsive Redesign: Mobile (<= 768px) */
+        @media (max-width: 768px) {
+          .fw-section-number-wrapper {
+            top: 55px !important;
+          }
+
+          .fw-main-content {
+            gap: 12px;
+            padding: 0 10px;
+          }
+
+          .mobile-nav-btn {
+            width: 44px;
+            height: 44px;
+            font-size: 20px;
+          }
+
+          /* Mobile iPhone Mockup */
+          .fw-slider-wrapper {
+            width: 78%;
+            max-width: 400px;
+            aspect-ratio: 9 / 19.5;
+          }
+          
+          .fw-image-container {
+            border: 10px solid #111 !important;
+            border-radius: 36px !important;
+            box-shadow: inset 0 0 0 2px #222, 0 30px 80px rgba(0,0,0,0.25) !important;
+          }
+
+          /* iPhone Notch */
+          .fw-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45%;
+            height: 24px;
+            background: #111;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 100;
+          }
+
+          .fw-project-info {
+            padding: 30px 24px;
+          }
+          
+          .fw-title {
+            font-size: 32px;
+          }
+          
+          .fw-desc {
+            font-size: 16px;
+          }
         }
       `}</style>
     </motion.section>
