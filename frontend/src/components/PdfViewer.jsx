@@ -12,14 +12,23 @@ export default function PdfViewer({ file }) {
   const [scale, setScale] = useState(1.0);
   const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
   const [activePage, setActivePage] = useState(1);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 1100 : false);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1100);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Desktop continues to use react-pdf for secure viewing
     // Mobile browsers (especially iOS Safari) can fail when using fetch() and URL.createObjectURL()
-    // for large PDFs due to memory limits or security restrictions.
-    // Instead of downloading it to a blob first, we just pass the file URL directly to react-pdf.
-    setPdfBlobUrl(file);
-  }, [file]);
+    // or fail to load the worker. We pass the URL directly for desktop.
+    if (!isMobile) {
+      setPdfBlobUrl(file);
+    }
+  }, [file, isMobile]);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -41,70 +50,80 @@ export default function PdfViewer({ file }) {
       <div className="pdf-toolbar">
         <div className="pdf-controls">
           <span className="pdf-page-info">
-            {numPages ? `${numPages} Pages Document` : 'Loading Secure Viewer...'}
+            {isMobile ? 'Document Viewer' : (numPages ? `${numPages} Pages Document` : 'Loading Secure Viewer...')}
           </span>
         </div>
-        <div className="pdf-controls">
-          <button onClick={zoomOut} className="pdf-btn">-</button>
-          <span className="pdf-zoom-info">{Math.round(scale * 100)}%</span>
-          <button onClick={zoomIn} className="pdf-btn">+</button>
-        </div>
+        {!isMobile && (
+          <div className="pdf-controls">
+            <button onClick={zoomOut} className="pdf-btn">-</button>
+            <span className="pdf-zoom-info">{Math.round(scale * 100)}%</span>
+            <button onClick={zoomIn} className="pdf-btn">+</button>
+          </div>
+        )}
       </div>
       
       <div 
         className="pdf-main-area protected-pdf"
-        onContextMenu={(e) => e.preventDefault()} 
-        onDragStart={(e) => e.preventDefault()}
-        onCopy={(e) => e.preventDefault()}
+        onContextMenu={(e) => !isMobile && e.preventDefault()} 
+        onDragStart={(e) => !isMobile && e.preventDefault()}
+        onCopy={(e) => !isMobile && e.preventDefault()}
       >
-        {pdfBlobUrl ? (
-          <Document
-            file={pdfBlobUrl}
-            onLoadSuccess={onDocumentLoadSuccess}
-            className="pdf-document-wrapper"
-            loading={<div className="pdf-loading">Loading Protected Document...</div>}
-          >
-            {/* Sidebar for thumbnails */}
-            <div className="pdf-sidebar">
-              {Array.from(new Array(numPages), (el, index) => (
-                <div 
-                  key={`thumb_${index + 1}`} 
-                  className={`pdf-thumbnail-wrap ${activePage === index + 1 ? 'active' : ''}`}
-                  onClick={() => scrollToPage(index)}
-                >
-                  <Page 
-                    pageNumber={index + 1} 
-                    width={100}
-                    renderTextLayer={false} 
-                    renderAnnotationLayer={false} 
-                    className="pdf-thumbnail-page"
-                  />
-                  <span className="pdf-thumb-num">{index + 1}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Main scrollable area */}
-            <div className="pdf-document-container" ref={scrollContainerRef}>
-              <div className="pdf-pages-scroll-container">
+        {isMobile ? (
+          <iframe 
+            src={file} 
+            title="Mobile PDF Viewer"
+            style={{ width: '100%', height: '100%', border: 'none', backgroundColor: '#fff' }}
+          />
+        ) : (
+          pdfBlobUrl ? (
+            <Document
+              file={pdfBlobUrl}
+              onLoadSuccess={onDocumentLoadSuccess}
+              className="pdf-document-wrapper"
+              loading={<div className="pdf-loading">Loading Protected Document...</div>}
+            >
+              {/* Sidebar for thumbnails */}
+              <div className="pdf-sidebar">
                 {Array.from(new Array(numPages), (el, index) => (
-                  <div className="pdf-page-wrapper" id={`pdf-page-${index + 1}`} key={`page_${index + 1}`}>
+                  <div 
+                    key={`thumb_${index + 1}`} 
+                    className={`pdf-thumbnail-wrap ${activePage === index + 1 ? 'active' : ''}`}
+                    onClick={() => scrollToPage(index)}
+                  >
                     <Page 
                       pageNumber={index + 1} 
-                      scale={scale} 
+                      width={100}
                       renderTextLayer={false} 
                       renderAnnotationLayer={false} 
-                      className="pdf-page"
+                      className="pdf-thumbnail-page"
                     />
-                    {/* The Mandatory Watermark */}
-                    <div className="pdf-watermark-overlay"></div>
+                    <span className="pdf-thumb-num">{index + 1}</span>
                   </div>
                 ))}
               </div>
-            </div>
-          </Document>
-        ) : (
-          <div className="pdf-loading">Initializing Secure Viewer...</div>
+
+              {/* Main scrollable area */}
+              <div className="pdf-document-container" ref={scrollContainerRef}>
+                <div className="pdf-pages-scroll-container">
+                  {Array.from(new Array(numPages), (el, index) => (
+                    <div className="pdf-page-wrapper" id={`pdf-page-${index + 1}`} key={`page_${index + 1}`}>
+                      <Page 
+                        pageNumber={index + 1} 
+                        scale={scale} 
+                        renderTextLayer={false} 
+                        renderAnnotationLayer={false} 
+                        className="pdf-page"
+                      />
+                      {/* The Mandatory Watermark */}
+                      <div className="pdf-watermark-overlay"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Document>
+          ) : (
+            <div className="pdf-loading">Initializing Secure Viewer...</div>
+          )
         )}
       </div>
     </div>
