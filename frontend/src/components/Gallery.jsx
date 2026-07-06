@@ -375,8 +375,8 @@ export default function Gallery() {
                 position: 'relative'
               }}
             >
-              {/* Navigation Arrows */}
-              {!selectedImage.isOfferLetter && (
+              {/* Navigation Arrows (Desktop) */}
+              {(!selectedImage.isOfferLetter && windowWidth > 1100) && (
                 <>
                   <button 
                     onClick={handlePrev}
@@ -408,15 +408,15 @@ export default function Gallery() {
                 height: selectedImage.isPdf || selectedImage.isOfferLetter ? '100%' : 'auto',
                 flex: selectedImage.isPdf || selectedImage.isOfferLetter ? 1 : 'none',
                 position: 'relative', 
-                borderRadius: selectedImage.isOfferLetter ? '0' : '16px', 
+                borderRadius: selectedImage.isOfferLetter ? '0' : (windowWidth <= 1100 ? '8px' : '16px'), 
                 overflow: 'hidden', 
-                border: selectedImage.isOfferLetter ? 'none' : '1px solid rgba(255,255,255,0.4)', 
-                boxShadow: selectedImage.isOfferLetter ? 'none' : '0 0 30px rgba(255,255,255,0.2)',
-                background: selectedImage.isOfferLetter ? 'transparent' : 'rgba(0,0,0,0.4)',
+                border: selectedImage.isOfferLetter ? 'none' : (windowWidth <= 1100 ? 'none' : '1px solid rgba(255,255,255,0.4)'), 
+                boxShadow: selectedImage.isOfferLetter ? 'none' : (windowWidth <= 1100 ? 'none' : '0 0 30px rgba(255,255,255,0.2)'),
+                background: selectedImage.isOfferLetter ? 'transparent' : (windowWidth <= 1100 ? 'transparent' : 'rgba(0,0,0,0.4)'),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: selectedImage.isPdf || selectedImage.isOfferLetter ? '0' : (windowWidth <= 1100 ? '60px' : '20px')
+                marginBottom: selectedImage.isPdf || selectedImage.isOfferLetter ? '0' : (windowWidth <= 1100 ? '24px' : '20px')
               }}>
                 {selectedImage.isPdf ? (
                   <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -451,7 +451,34 @@ export default function Gallery() {
                   </div>
                 )}
               </div>
-              
+
+              {/* Navigation Arrows (Mobile/Tablet) */}
+              {(!selectedImage.isOfferLetter && windowWidth <= 1100) && (
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '40px',
+                  marginBottom: '24px',
+                  width: '100%',
+                  flexShrink: 0
+                }}>
+                  <button 
+                    onClick={handlePrev}
+                    style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', transition: 'all 0.3s' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+                  >&#8592;</button>
+                  
+                  <button 
+                    onClick={handleNext}
+                    style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', transition: 'all 0.3s' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+                  >&#8594;</button>
+                </div>
+              )}
+
               {/* Details Box */}
               {!selectedImage.isPdf && !selectedImage.isOfferLetter && (
                 <div style={{ 
