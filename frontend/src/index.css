@@ -4091,11 +4091,36 @@ a.contact-info-value:hover {
   }
 }
 
-@media(max-width:768px) {
-  .section {
-    padding: 72px 0;
+@media(min-width: 600px) and (max-width: 1024px) {
+  .nav {
+    padding: 0 16px;
   }
+  .nav-links {
+    gap: clamp(8px, 1.5vw, 24px);
+  }
+  .nav-link {
+    font-size: clamp(10px, 1.2vw, 13px);
+  }
+  .nav-social-and-cta {
+    gap: clamp(8px, 1.5vw, 20px);
+  }
+  .nav-social {
+    gap: clamp(2px, 0.5vw, 8px);
+  }
+  .social-icon {
+    width: clamp(28px, 3.5vw, 36px);
+    height: clamp(28px, 3.5vw, 36px);
+  }
+  .nav-cta {
+    padding: 0 16px;
+    height: 38px;
+  }
+  .nav-cta-text {
+    font-size: 12px;
+  }
+}
 
+@media(max-width:599px) {
   .nav-links,
   .nav-social-and-cta {
     display: none;
@@ -4110,7 +4135,6 @@ a.contact-info-value:hover {
     flex-direction: column;
     position: fixed;
     top: 80px;
-    /* adjusted slightly for the new 64px header */
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.98);
@@ -4129,6 +4153,12 @@ a.contact-info-value:hover {
   .nav-links.open .nav-link:hover,
   .nav-links.open .nav-link.active {
     color: var(--accent-primary);
+  }
+}
+
+@media(max-width:768px) {
+  .section {
+    padding: 72px 0;
   }
 
   /* Responsive Hero */
