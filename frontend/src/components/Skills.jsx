@@ -579,7 +579,7 @@ export default function Skills() {
           }
 
           .skill-card:hover {
-            transform: scale(1.08) translateY(-8px);
+            transform: scale(1.02) translateY(-4px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
             z-index: 10;
           }
@@ -850,10 +850,27 @@ export default function Skills() {
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
+            
+            /* Premium Glassmorphism UI Polish */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), var(--card-bg) !important;
+            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            border-radius: 24px !important;
+            box-shadow: 
+              0 2px 4px rgba(0, 0, 0, 0.02),
+              0 8px 16px rgba(0, 0, 0, 0.03),
+              0 16px 32px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease, background 300ms ease !important;
           }
           
           .mobile-skill-card:active {
             cursor: grabbing;
+            transform: scale(0.98) !important;
+            box-shadow: 
+              0 2px 8px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
           }
           
           .mobile-card-tools {
