@@ -307,6 +307,10 @@ export default function ProjectShowcase({ setActiveView }) {
           background: #fff;
           border-radius: 24px;
           box-shadow: 0 40px 100px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.8);
+          /* Fix for Android Chrome ignoring border-radius on overflow: hidden */
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
         }
 
         .fw-image {

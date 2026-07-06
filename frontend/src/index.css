@@ -3709,9 +3709,8 @@ a.contact-info-value:hover {
 /* RIGHT – FORM */
 .contact-form-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  /* Solid fallback for extremely old browsers */
+  background: rgba(30, 34, 42, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 24px;
   padding: 60px 56px;
@@ -3720,6 +3719,23 @@ a.contact-info-value:hover {
     0 0 30px rgba(244, 197, 66, 0.15),
     inset 0 0 40px rgba(244, 197, 66, 0.1);
   overflow: hidden;
+  
+  /* Fix Samsung Android Backdrop Blur Bug with Overflow */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  isolation: isolate;
+}
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .contact-form-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  }
 }
 
 /* Corner glows */
