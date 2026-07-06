@@ -263,23 +263,29 @@ export default function Gallery() {
               <div className="stat-divider"></div>
               <div className="gallery-stat-label">Years Experience</div>
             </div>
+          </motion.div>
 
-            <div className="gallery-internship-block">
-              <div className="internship-content">
-                <span className="internship-tag">Graphic Design Internship</span>
-                <p className="internship-desc">
-                  Gained practical experience in branding, marketing materials, and professional design workflows.
-                </p>
-              </div>
-              <button 
-                id="view-offer-letter-btn"
-                className="internship-btn"
-                onClick={() => setSelectedImage({ id: 'offer-letter', img: '/offer-letter-uploaded-new.png', isOfferLetter: true, title: 'Offer Letter' })}
-                style={{ position: 'relative', zIndex: 9999, pointerEvents: 'auto' }}
-              >
-                View Offer Letter
-              </button>
+          <motion.div 
+            className="gallery-internship-block"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          >
+            <div className="internship-content">
+              <span className="internship-tag">Graphic Design Internship</span>
+              <p className="internship-desc">
+                Gained practical experience in branding, marketing materials, and professional design workflows.
+              </p>
             </div>
+            <button 
+              id="view-offer-letter-btn"
+              className="internship-btn"
+              onClick={() => setSelectedImage({ id: 'offer-letter', img: '/offer-letter-uploaded-new.png', isOfferLetter: true, title: 'Offer Letter' })}
+              style={{ position: 'relative', zIndex: 9999, pointerEvents: 'auto' }}
+            >
+              View Offer Letter
+            </button>
           </motion.div>
         </div>
 

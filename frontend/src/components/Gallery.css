@@ -198,10 +198,9 @@
   gap: 20px;
   position: relative;
   overflow: hidden;
-  width: 850px; /* Wider card */
-  min-width: 850px;
-  max-width: 900px;
-  flex-shrink: 0;
+  width: 850px;
+  max-width: 100%;
+  margin-top: 40px;
 }
 
 .internship-content {
@@ -423,7 +422,17 @@
   }
 
   .gallery-right-bottom-ui {
-    top: 550px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0;
+    pointer-events: none;
+  }
+  
+  .gallery-stack-controls {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 40px;
   }
 
   .stacked-card-wrapper {
@@ -432,6 +441,11 @@
     width: 320px;
     height: 420px;
     margin-top: -210px;
+  }
+
+  .stacked-card-content {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   }
 }
 
@@ -447,12 +461,27 @@
   }
 
   .gallery-right-bottom-ui {
-    top: 450px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0;
+    pointer-events: none; /* Let clicks pass to cards */
+  }
+
+  .gallery-stack-controls {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
   }
 
   .stacked-card-wrapper {
     height: 380px;
     width: 280px;
+  }
+
+  .stacked-card-content {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   }
 
   .stacked-card-content img {
