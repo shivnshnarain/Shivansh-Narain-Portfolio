@@ -850,27 +850,31 @@ export default function Skills() {
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
-            
-            /* Premium Glassmorphism UI Polish */
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), var(--card-bg) !important;
-            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            /* Premium Glass UI Upgrade */
+            background: 
+              radial-gradient(120% 120% at 50% -10%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 60%),
+              linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%), 
+              var(--card-bg) !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
             border-radius: 24px !important;
             box-shadow: 
-              0 2px 4px rgba(0, 0, 0, 0.02),
-              0 8px 16px rgba(0, 0, 0, 0.03),
-              0 16px 32px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 rgba(255, 255, 255, 1) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease, background 300ms ease !important;
+              0 4px 20px -2px rgba(0, 0, 0, 0.04),
+              0 16px 40px -4px rgba(0, 0, 0, 0.03),
+              inset 0 1px 1px rgba(255, 255, 255, 0.9),
+              inset 0 0 40px rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: transform 300ms ease, box-shadow 300ms ease !important;
           }
           
           .mobile-skill-card:active {
             cursor: grabbing;
-            transform: scale(0.98) !important;
+            transform: translateY(-2px) !important;
             box-shadow: 
-              0 2px 8px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+              0 8px 24px -2px rgba(0, 0, 0, 0.05),
+              0 20px 48px -4px rgba(0, 0, 0, 0.04),
+              inset 0 1px 1px rgba(255, 255, 255, 0.9),
+              inset 0 0 40px rgba(255, 255, 255, 0.25) !important;
           }
           
           .mobile-card-tools {
