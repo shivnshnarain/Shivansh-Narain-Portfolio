@@ -800,12 +800,13 @@ export default function Skills() {
             padding: 20px 0;
             position: relative;
             z-index: 2;
-            min-height: 480px; /* Lock height to prevent arrow shifting */
+            min-height: 400px;
           }
           
           .carousel-viewport {
             width: 85%;
             max-width: 700px;
+            height: 400px;
             position: relative;
             overflow: visible;
             display: flex;
@@ -813,10 +814,8 @@ export default function Skills() {
           }
           
           .carousel-nav-btn {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.06);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -826,8 +825,8 @@ export default function Skills() {
             color: #111;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            transition: transform 0.2s ease;
             z-index: 10;
             flex-shrink: 0;
           }
@@ -840,11 +839,17 @@ export default function Skills() {
           
           .mobile-skill-card {
             width: 100% !important;
-            height: auto !important;
-            min-height: auto !important;
+            height: 400px !important;
+            min-height: 400px !important;
             padding: 24px !important;
             margin: 0 !important;
             cursor: grab;
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
           }
           
           .mobile-skill-card:active {
