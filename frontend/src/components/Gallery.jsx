@@ -404,7 +404,7 @@ export default function Gallery() {
               {/* Image Section */}
               <div style={{ 
                 width: selectedImage.isOfferLetter ? 'auto' : '100%', 
-                aspectRatio: selectedImage.isPdf || selectedImage.isOfferLetter ? 'auto' : '1 / 1',
+                aspectRatio: selectedImage.isPdf || selectedImage.isOfferLetter ? 'auto' : (windowWidth <= 1100 ? 'auto' : '1 / 1'),
                 height: selectedImage.isPdf || selectedImage.isOfferLetter ? '100%' : 'auto',
                 flex: selectedImage.isPdf || selectedImage.isOfferLetter ? 1 : 'none',
                 position: 'relative', 
@@ -416,7 +416,7 @@ export default function Gallery() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: selectedImage.isPdf || selectedImage.isOfferLetter ? '0' : '20px'
+                marginBottom: selectedImage.isPdf || selectedImage.isOfferLetter ? '0' : (windowWidth <= 1100 ? '60px' : '20px')
               }}>
                 {selectedImage.isPdf ? (
                   <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -424,7 +424,7 @@ export default function Gallery() {
                   </div>
                 ) : (
                   <>
-                    <img src={selectedImage.img} alt={selectedImage.title} style={{ width: selectedImage.isOfferLetter ? 'auto' : '100%', height: '100%', objectFit: 'contain' }} draggable="false" />
+                    <img src={selectedImage.img} alt={selectedImage.title} style={{ width: selectedImage.isOfferLetter ? 'auto' : '100%', height: (windowWidth <= 1100 && !selectedImage.isOfferLetter) ? 'auto' : '100%', objectFit: 'contain', display: 'block' }} draggable="false" />
                     {!selectedImage.isOfferLetter && <div className="portfolio-watermark"></div>}
                   </>
                 )}
