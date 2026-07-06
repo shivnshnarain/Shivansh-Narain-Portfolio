@@ -187,12 +187,12 @@ export default function Skills() {
     const checkMobile = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        setIsMobile(window.innerWidth <= 1024);
+        setIsMobile(window.innerWidth < 768);
       }, 150);
     };
     
     // Initial check without delay
-    setIsMobile(window.innerWidth <= 1024);
+    setIsMobile(window.innerWidth < 768);
     
     window.addEventListener('resize', checkMobile);
     return () => {

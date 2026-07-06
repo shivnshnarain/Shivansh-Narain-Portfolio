@@ -880,7 +880,7 @@ export default function Education({ setActiveView }) {
           font-size: 18px;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 767px) {
           .edu-learning-badges {
             flex-direction: column;
             align-items: center;
@@ -889,6 +889,22 @@ export default function Education({ setActiveView }) {
             width: 280px !important;
             height: 52px !important;
             justify-content: flex-start !important;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .edu-learning-badges {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+          }
+          .edu-badge {
+            width: 100% !important;
+            height: 52px !important;
+            justify-content: center !important;
           }
         }
 
