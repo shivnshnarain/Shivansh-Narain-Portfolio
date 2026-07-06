@@ -15,24 +15,10 @@ export default function PdfViewer({ file }) {
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    let objectUrl = null;
-    const fetchPdf = async () => {
-      try {
-        const response = await fetch(file);
-        const blob = await response.blob();
-        objectUrl = URL.createObjectURL(blob);
-        setPdfBlobUrl(objectUrl);
-      } catch (error) {
-        console.error("Error fetching PDF securely:", error);
-      }
-    };
-    fetchPdf();
-
-    return () => {
-      if (objectUrl) {
-        URL.revokeObjectURL(objectUrl);
-      }
-    };
+    // Mobile browsers (especially iOS Safari) can fail when using fetch() and URL.createObjectURL()
+    // for large PDFs due to memory limits or security restrictions.
+    // Instead of downloading it to a blob first, we just pass the file URL directly to react-pdf.
+    setPdfBlobUrl(file);
   }, [file]);
 
   function onDocumentLoadSuccess({ numPages }) {

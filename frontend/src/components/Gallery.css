@@ -471,12 +471,20 @@
     margin-left: 0 !important;
     margin-top: 0 !important;
     width: 320px !important;
-    height: 420px !important;
+    height: auto !important;
   }
 
   .stacked-card-content {
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+  
+  .stacked-card-content img {
+    height: auto !important;
+    width: 100% !important;
+    display: block !important;
   }
 }
 
@@ -496,7 +504,7 @@
 
   .stacked-card-wrapper {
     width: 240px !important;
-    height: 340px !important;
+    height: auto !important;
     margin-left: 0 !important;
     margin-top: 0 !important;
   }
