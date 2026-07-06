@@ -29,26 +29,36 @@ const CATEGORIES = [
   { id: 'branding', label: 'Branding' },
 ];
 
-const StackedCard = ({ item, index, total, currentIndex, setSelectedImage }) => {
+const StackedCard = ({ item, index, total, currentIndex, setSelectedImage, windowWidth }) => {
+  const isMobile = windowWidth <= 768;
+  const isTablet = windowWidth <= 1100 && windowWidth > 768;
+
   let diff = (index - currentIndex + total) % total;
   let isFront = diff === 0;
   let isOutgoing = diff === total - 1;
-  let isHiddenRight = diff > 7 && !isOutgoing;
+  
+  // Max visible cards on mobile is 2, on tablet is 4, on desktop is 7
+  const maxVisible = isMobile ? 2 : (isTablet ? 4 : 7);
+  let isHiddenRight = diff > maxVisible && !isOutgoing;
 
-  // For visual math, cap diff at 7 for the standard stack calculations
   let visualDiff = diff;
-  if (isHiddenRight) visualDiff = 8; // push one step further right than 7
-  if (diff > 7 && !isHiddenRight && !isOutgoing) visualDiff = 7; // just in case
+  if (isHiddenRight) visualDiff = maxVisible + 1;
+  if (diff > maxVisible && !isHiddenRight && !isOutgoing) visualDiff = maxVisible;
 
-  let xOffset = isOutgoing ? -150 : (isHiddenRight ? 8 * 115 : visualDiff * 115);
+  // Responsive offsets
+  const baseOffset = isMobile ? 35 : (isTablet ? 60 : 115);
+  const baseZOffset = isMobile ? -80 : (isTablet ? -100 : -160);
+  const scaleReduction = isMobile ? 0.08 : 0.07;
+
+  let xOffset = isOutgoing ? (isMobile ? -100 : -150) : (isHiddenRight ? (maxVisible + 1) * baseOffset : visualDiff * baseOffset);
   let x = `calc(-50% + ${xOffset}px)`;
   let y = "-50%";
   
-  let z = isFront || isOutgoing ? 50 : (isHiddenRight ? 7 * -160 : visualDiff * -160);
-  let scale = isFront || isOutgoing ? 1 : Math.max(1 - (isHiddenRight ? 7 : visualDiff) * 0.07, 0);
-  let rotateY = isFront ? 0 : (isOutgoing ? 8 : -8);
+  let z = isFront || isOutgoing ? 50 : (isHiddenRight ? (maxVisible + 1) * baseZOffset : visualDiff * baseZOffset);
+  let scale = isFront || isOutgoing ? 1 : Math.max(1 - (isHiddenRight ? maxVisible + 1 : visualDiff) * scaleReduction, 0);
+  let rotateY = isFront ? 0 : (isOutgoing ? 8 : (isMobile ? -3 : -8));
   let zIndex = isOutgoing ? total + 1 : (isHiddenRight ? 0 : total - visualDiff);
-  let opacity = isOutgoing || isHiddenRight ? 0 : 1;
+  let opacity = isOutgoing || isHiddenRight ? 0 : (isFront ? 1 : (isMobile ? Math.max(1 - visualDiff * 0.3, 0) : 1));
 
   let shadowBlur = isFront || isOutgoing ? 30 : Math.max(12 - visualDiff * 2, 2);
   let shadowY = isFront || isOutgoing ? 20 : Math.max(10 - visualDiff * 1.5, 4);
@@ -85,6 +95,13 @@ export default function Gallery() {
   const [hoveredImage, setHoveredImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isHoveringStack, setIsHoveringStack] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const lastScrollTime = React.useRef(0);
@@ -288,6 +305,7 @@ export default function Gallery() {
                 total={PORTFOLIO_DATA.length}
                 currentIndex={currentIndex}
                 setSelectedImage={setSelectedImage}
+                windowWidth={windowWidth}
               />
             ))}
           </motion.div>

@@ -367,10 +367,36 @@
   }
 
   .gallery-stats-row {
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
     margin-top: 40px;
     width: 100%;
+    max-width: 600px;
+    align-items: flex-start !important;
+  }
+
+  .gallery-stat-item {
+    align-items: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+  }
+
+  .gallery-stat-value {
+    justify-content: center !important;
+    font-size: 1.5rem !important;
+  }
+
+  .stat-divider {
+    display: none !important;
+  }
+
+  .gallery-stat-label {
+    text-align: center !important;
+    white-space: normal !important;
+    max-width: 90px;
+    line-height: 1.4 !important;
+    margin: 0 auto;
   }
 
   .gallery-internship-block {
@@ -401,8 +427,8 @@
   }
 
   .stacked-card-wrapper {
-    left: 50%;
-    margin-left: -160px;
+    left: 50% !important;
+    margin-left: 0 !important;
     width: 320px;
     height: 420px;
     margin-top: -210px;
@@ -426,6 +452,7 @@
 
   .stacked-card-wrapper {
     height: 380px;
+    width: 280px;
   }
 
   .stacked-card-content img {
