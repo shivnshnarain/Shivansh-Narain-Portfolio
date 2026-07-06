@@ -468,8 +468,8 @@
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
-    margin-left: -160px !important; /* -width/2 */
-    margin-top: -210px !important; /* -height/2 */
+    margin-left: 0 !important;
+    margin-top: 0 !important;
     width: 320px !important;
     height: 420px !important;
   }
@@ -497,8 +497,8 @@
   .stacked-card-wrapper {
     width: 240px !important;
     height: 340px !important;
-    margin-left: -120px !important; /* -width/2 */
-    margin-top: -170px !important; /* -height/2 */
+    margin-left: 0 !important;
+    margin-top: 0 !important;
   }
 
   .stacked-card-content img {
