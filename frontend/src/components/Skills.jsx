@@ -800,13 +800,13 @@ export default function Skills() {
             padding: 20px 0;
             position: relative;
             z-index: 2;
-            min-height: 400px;
+            min-height: 360px;
           }
           
           .carousel-viewport {
             width: 85%;
             max-width: 700px;
-            height: 400px;
+            height: 360px;
             position: relative;
             overflow: visible;
             display: flex;
@@ -839,8 +839,8 @@ export default function Skills() {
           
           .mobile-skill-card {
             width: 100% !important;
-            height: 400px !important;
-            min-height: 400px !important;
+            height: 360px !important;
+            min-height: 360px !important;
             padding: 24px !important;
             margin: 0 !important;
             cursor: grab;
@@ -849,7 +849,7 @@ export default function Skills() {
             left: 0;
             display: flex !important;
             flex-direction: column !important;
-            justify-content: flex-start !important;
+            justify-content: center !important;
           }
           
           .mobile-skill-card:active {
