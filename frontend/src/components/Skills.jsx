@@ -187,12 +187,12 @@ export default function Skills() {
     const checkMobile = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        setIsMobile(window.innerWidth < 600);
+        setIsMobile(window.innerWidth <= 403);
       }, 150);
     };
     
     // Initial check without delay
-    setIsMobile(window.innerWidth < 600);
+    setIsMobile(window.innerWidth <= 403);
     
     window.addEventListener('resize', checkMobile);
     return () => {
@@ -215,6 +215,26 @@ export default function Skills() {
       nextCard();
     } else if (swipe > 50) {
       prevCard();
+    }
+  };
+
+  const handleMarqueeNext = () => {
+    const el = document.querySelector('.marquee-content');
+    if (el) {
+      const anims = el.getAnimations();
+      if (anims.length > 0) {
+        anims[0].currentTime += 2000;
+      }
+    }
+  };
+
+  const handleMarqueePrev = () => {
+    const el = document.querySelector('.marquee-content');
+    if (el) {
+      const anims = el.getAnimations();
+      if (anims.length > 0) {
+        anims[0].currentTime -= 2000;
+      }
     }
   };
 
@@ -339,6 +359,10 @@ export default function Skills() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
+              <button className="carousel-nav-btn left marquee-arrow" onClick={handleMarqueePrev} aria-label="Previous skill">
+                <FaChevronLeft />
+              </button>
+
               <div className={`marquee-content ${pauseMarquee ? 'paused' : ''}`}>
                 <div className="marquee-group">
                   {categories.map((cat, index) => (
@@ -387,6 +411,10 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
+
+              <button className="carousel-nav-btn right marquee-arrow" onClick={handleMarqueeNext} aria-label="Next skill">
+                <FaChevronRight />
+              </button>
             </motion.div>
           )}
         </div>
@@ -835,6 +863,22 @@ export default function Skills() {
             background: #FFFFFF;
             transform: scale(1.1);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+          }
+          
+          .marquee-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+          }
+          .marquee-arrow:hover, .marquee-arrow:active {
+            transform: translateY(-50%) scale(1.1);
+          }
+          .marquee-arrow.left { left: 16px; }
+          .marquee-arrow.right { right: 16px; }
+          
+          @media (min-width: 1025px) {
+            .marquee-arrow { display: none !important; }
           }
           
           .mobile-skill-card {
