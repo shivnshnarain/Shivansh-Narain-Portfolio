@@ -832,12 +832,13 @@ button {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(60px, 8vw, 100px);
+  font-size: clamp(50px, 6.5vw, 100px);
   font-weight: 800;
   line-height: 1;
   margin-bottom: 24px;
   letter-spacing: -0.04em;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  white-space: nowrap !important; /* Force word to stay on one line */
 }
 
 /* Hover Interaction */
@@ -2476,6 +2477,7 @@ button {
   -webkit-text-fill-color: transparent;
   animation: title-shimmer 8s linear infinite reverse;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+  white-space: nowrap !important;
 }
 
 .gallery-hero-subtitle {
@@ -4060,21 +4062,32 @@ a.contact-info-value:hover {
 
 /* ======================== RESPONSIVE ======================== */
 /* ======================== RESPONSIVE ======================== */
+/* Fix for 1025px - 1300px to prevent large hero text from overflowing and wrapping */
+@media(max-width:1300px) and (min-width:1025px) {
+  .hero-left-side { padding-right: 12%; }
+  .hero-right-side { padding-left: 12%; }
+  .hero-title {
+    font-size: clamp(48px, 6vw, 80px);
+    letter-spacing: -0.05em;
+  }
+}
+
 @media(max-width:1024px) {
   .hero-half {
     padding: 0 24px;
   }
 
   .hero-left-side {
-    padding-right: 10%;
+    padding-right: 8%; /* Reduced from 10% for more space */
   }
 
   .hero-right-side {
-    padding-left: 10%;
+    padding-left: 8%; /* Reduced from 10% for more space */
   }
 
   .hero-title {
-    font-size: clamp(36px, 5vw, 60px);
+    font-size: clamp(38px, 5.5vw, 60px); /* Tuned clamp */
+    letter-spacing: -0.05em; /* Slightly tighter to prevent wrapping */
   }
 
   .about-grid {
@@ -4255,17 +4268,18 @@ a.contact-info-value:hover {
   /* Designer: Portrait is on the right. Text on left. */
   .hero-left-side .hero-content {
     padding-left: 24px;
-    padding-right: 40%;
+    padding-right: 32%; /* Reduced from 40% for more space */
   }
 
   /* Developer: Portrait is on the left. Text on left, but shifted right to avoid face. */
   .hero-right-side .hero-content {
-    padding-left: 35%;
+    padding-left: 32%; /* Reduced from 35% for more space */
     padding-right: 24px;
   }
 
   .hero-title {
-    font-size: clamp(38px, 10vw, 60px) !important;
+    font-size: clamp(32px, 8.5vw, 60px) !important;
+    letter-spacing: -0.05em;
     margin-bottom: 12px;
   }
 
