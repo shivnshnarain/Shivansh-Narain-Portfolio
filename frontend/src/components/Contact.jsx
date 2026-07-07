@@ -197,11 +197,13 @@ export default function Contact({ setActiveView }) {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="contact-form-card">
-            {/* Corner glows */}
-            <span className="corner-glow tl" />
-            <span className="corner-glow tr" />
-            <span className="corner-glow bl" />
-            <span className="corner-glow br" />
+            {/* Corner glows container to prevent overflow issues */}
+            <div className="corner-glow-container">
+              <span className="corner-glow tl" />
+              <span className="corner-glow tr" />
+              <span className="corner-glow bl" />
+              <span className="corner-glow br" />
+            </div>
 
             <h3 className="contact-form-title">Send a Message</h3>
             <p className="contact-form-subtitle">Fill out the form and I'll respond within 24 hours.</p>

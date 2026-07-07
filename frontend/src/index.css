@@ -3718,7 +3718,7 @@ a.contact-info-value:hover {
     0 20px 60px rgba(0, 0, 0, 0.08),
     0 0 30px rgba(244, 197, 66, 0.15),
     inset 0 0 40px rgba(244, 197, 66, 0.1);
-  overflow: hidden;
+  /* Removed overflow: hidden to fix Android blur bug. We will use an inner container for the corner glows. */
   
   /* Fix Samsung Android Backdrop Blur Bug with Overflow */
   -webkit-backface-visibility: hidden;
@@ -3739,6 +3739,15 @@ a.contact-info-value:hover {
 }
 
 /* Corner glows */
+.corner-glow-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .corner-glow {
   position: absolute;
   width: 120px;
@@ -4585,6 +4594,11 @@ html, body {
 }
 
 @media (max-width: 1024px) {
+  /* Fix Mobile/Tablet background-attachment which breaks backdrop-filter on iOS/Android */
+  .contact-bg-image {
+    background-attachment: scroll !important;
+  }
+
   /* Aggressive universal max-width for common containers to prevent viewport blowout */
   .container, .section, .contact-v2-inner, .about-grid, .about-text-col, .contact-v2-right, .contact-form-card, .cfv2-row {
     max-width: 100% !important;
