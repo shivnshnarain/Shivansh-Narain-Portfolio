@@ -69,7 +69,7 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
             <h3>Color Palette</h3>
             <div className="marquee-container">
               <div className="marquee-track">
-                <div className="marquee-group" style={{ gap: '12px', paddingRight: '12px' }}>
+                <div className="marquee-group designer-colors-group">
                   <div className="color-circle" style={{background: '#8B5CF6'}} title="Purple"></div>
                   <div className="color-circle" style={{background: '#EC4899'}} title="Pink"></div>
                   <div className="color-circle" style={{background: '#F97316'}} title="Orange"></div>
@@ -85,7 +85,7 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
                   <div className="color-circle" style={{background: '#F43F5E'}} title="Coral"></div>
                   <div className="color-circle" style={{background: '#14B8A6'}} title="Teal"></div>
                 </div>
-                <div className="marquee-group" style={{ gap: '12px', paddingRight: '12px' }}>
+                <div className="marquee-group designer-colors-group">
                   <div className="color-circle" style={{background: '#8B5CF6'}} title="Purple"></div>
                   <div className="color-circle" style={{background: '#EC4899'}} title="Pink"></div>
                   <div className="color-circle" style={{background: '#F97316'}} title="Orange"></div>
@@ -146,25 +146,25 @@ export default function DesignerDashboard({ sliderPosition, isMobile, designerOp
               <h3>Design Tools</h3>
               <div className="marquee-container">
                 <div className="marquee-track">
-                  <div className="marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
-                    <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" size={24} /></div>
-                    <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" size={24} /></div>
-                    <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" size={24} /></div>
-                    <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" size={24} /></div>
-                    <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" size={24} /></div>
-                    <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" size={20} /></div>
-                    <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" size={20} /></div>
-                    <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" size={20} /></div>
+                  <div className="marquee-group tools-icons-group">
+                    <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" /></div>
+                    <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
+                    <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
+                    <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
+                    <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
+                    <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" className="smaller-icon" /></div>
+                    <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" className="smaller-icon" /></div>
+                    <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" className="smaller-icon" /></div>
                   </div>
-                  <div className="marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
-                    <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" size={24} /></div>
-                    <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" size={24} /></div>
-                    <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" size={24} /></div>
-                    <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" size={24} /></div>
-                    <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" size={24} /></div>
-                    <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" size={20} /></div>
-                    <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" size={20} /></div>
-                    <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" size={20} /></div>
+                  <div className="marquee-group tools-icons-group">
+                    <div className="tool-icon" title="Adobe Photoshop"><TbBrandAdobePhotoshop color="#31A8FF" /></div>
+                    <div className="tool-icon" title="Adobe Illustrator"><TbBrandAdobeIllustrator color="#FF9A00" /></div>
+                    <div className="tool-icon" title="Adobe XD"><TbBrandAdobeXd color="#FF61F6" /></div>
+                    <div className="tool-icon" title="After Effects"><TbBrandAdobeAfterEffect color="#9999FF" /></div>
+                    <div className="tool-icon" title="Premiere Pro"><TbBrandAdobePremiere color="#EA77FF" /></div>
+                    <div className="tool-icon" title="Figma"><SiFigma color="#F24E1E" className="smaller-icon" /></div>
+                    <div className="tool-icon" title="Framer"><SiFramer color="#0055FF" className="smaller-icon" /></div>
+                    <div className="tool-icon" title="Blender"><SiBlender color="#F5792A" className="smaller-icon" /></div>
                   </div>
                 </div>
               </div>

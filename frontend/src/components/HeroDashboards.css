@@ -16,8 +16,8 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: clamp(12px, 1.5vw, 20px);
+  padding: clamp(12px, 1.8vw, 24px);
   box-shadow: 0 20px 40px rgb(0, 0, 0);
   pointer-events: auto;
   /* Re-enable clicks on widgets */
@@ -25,9 +25,9 @@
 }
 
 .glass-widget h3 {
-  font-size: 16px;
+  font-size: clamp(12px, 1.2vw, 16px);
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: clamp(12px, 1.5vw, 20px);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.9);
@@ -53,14 +53,14 @@
 }
 
 .tools-widget {
-  width: 280px;
+  width: clamp(200px, 22vw, 280px);
 }
 
 .skills-widget {
   position: absolute;
   top: 12%;
   right: 5%;
-  width: 280px;
+  width: clamp(200px, 22vw, 280px);
 }
 
 .achievements-widget {
@@ -69,7 +69,7 @@
   right: 5%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(8px, 1.2vw, 16px);
   pointer-events: auto;
   align-items: flex-end;
 }
@@ -78,7 +78,7 @@
   position: absolute;
   top: 48%;
   right: calc(5% + 180px);
-  width: 280px;
+  width: clamp(200px, 22vw, 280px);
 }
 
 .marquee-container {
@@ -101,6 +101,20 @@
   flex-shrink: 0;
 }
 
+.designer-colors-group {
+  gap: clamp(8px, 1vw, 12px);
+  padding-right: clamp(8px, 1vw, 12px);
+}
+
+.tools-icons-group {
+  gap: clamp(10px, 1.5vw, 16px);
+  padding-right: clamp(10px, 1.5vw, 16px);
+}
+
+.smaller-icon {
+  font-size: 0.85em; /* Some icons like figma/framer were slightly smaller */
+}
+
 @keyframes marqueeLeftToRight {
   0% {
     transform: translateX(-50%);
@@ -113,18 +127,18 @@
 /* Widgets Internals */
 .tools-icons {
   display: flex;
-  gap: 16px;
+  gap: clamp(8px, 1.2vw, 16px);
 }
 
 .tool-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: clamp(32px, 3.5vw, 48px);
+  height: clamp(32px, 3.5vw, 48px);
+  border-radius: clamp(8px, 1vw, 12px);
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: clamp(16px, 1.8vw, 24px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -169,18 +183,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px 24px !important;
-  min-width: 120px;
+  padding: clamp(10px, 1.2vw, 16px) clamp(12px, 1.8vw, 24px) !important;
+  min-width: clamp(80px, 10vw, 120px);
 }
 
 .stat-value {
-  font-size: 28px;
+  font-size: clamp(18px, 2.2vw, 28px);
   font-weight: 800;
   color: #FF1493;
 }
 
 .stat-label {
-  font-size: 13px;
+  font-size: clamp(10px, 1vw, 13px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -195,8 +209,8 @@
 }
 
 .color-circle {
-  width: 32px;
-  height: 32px;
+  width: clamp(20px, 2.5vw, 32px);
+  height: clamp(20px, 2.5vw, 32px);
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -217,8 +231,8 @@
   left: 8%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 380px;
+  gap: clamp(12px, 1.8vw, 24px);
+  width: clamp(260px, 28vw, 380px);
 }
 
 .terminal-widget {
@@ -258,15 +272,15 @@
 
 .term-title {
   margin-left: 16px;
-  font-size: 12px;
+  font-size: clamp(10px, 1vw, 12px);
   color: rgba(255, 255, 255, 0.5);
   font-family: monospace;
 }
 
 .terminal-body {
-  padding: 20px;
+  padding: clamp(12px, 1.5vw, 20px);
   font-family: 'Fira Code', monospace;
-  font-size: 13px;
+  font-size: clamp(10px, 1.2vw, 13px);
   line-height: 1.6;
 }
 
@@ -315,17 +329,17 @@
   width: 100%;
   background: rgba(10, 10, 12, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding: 20px;
+  padding: clamp(12px, 1.5vw, 20px);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: clamp(12px, 1.5vw, 20px);
 }
 
 .tech-widget {
   width: 100%;
   background: rgba(10, 10, 12, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding: 24px;
+  padding: clamp(12px, 1.8vw, 24px);
 }
 
 .tech-icons {
@@ -335,20 +349,20 @@
 }
 
 .profile-icon {
-  font-size: 32px;
+  font-size: clamp(20px, 2.5vw, 32px);
   color: #00FFB2;
   filter: drop-shadow(0 0 8px rgba(0, 255, 178, 0.5));
 }
 
 .tech-icon {
-  width: 60px;
-  height: 60px;
+  width: clamp(40px, 4.5vw, 60px);
+  height: clamp(40px, 4.5vw, 60px);
   background: #FFFFFF;
-  border-radius: 12px;
+  border-radius: clamp(8px, 1vw, 12px);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: clamp(20px, 2.5vw, 32px);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -385,6 +399,8 @@
 .dev-marquee-group {
   display: flex;
   flex-shrink: 0;
+  gap: clamp(10px, 1.5vw, 16px);
+  padding-right: clamp(10px, 1.5vw, 16px);
 }
 
 @keyframes marqueeRightToLeft {
@@ -565,12 +581,10 @@
 @media (max-width: 1400px) {
   .tools-widget {
     right: calc(2% + 140px);
-    width: 280px;
   }
 
   .skills-widget {
     right: 2%;
-    width: 260px;
   }
 
   .achievements-widget {
@@ -579,46 +593,55 @@
 
   .palette-widget {
     right: calc(2% + 140px);
-    width: 280px;
   }
 
   .terminal-widget {
     left: 2%;
-    width: 340px;
   }
 
   .profile-widget {
     left: 2%;
-    width: 340px;
   }
 
   .tech-widget {
     left: 2%;
-    width: 340px;
   }
 
   .github-widget {
     right: 2%;
-    width: 280px;
   }
 }
 
 @media (max-width: 992px) {
-
-  /* On mobile, center them or stack them, but since mobile sets it to display flex, we can just position them relative to the scrolling wrapper.
-     Wait, in Hero.jsx, mobile view just displays them based on the toggle.
-     We might want to hide some widgets on mobile to keep it clean. */
+  /* On tablet/mobile, we stack widgets vertically or horizontally based on space, without hiding them. */
   .tools-widget,
   .palette-widget,
   .github-widget,
-  .tech-widget {
-    display: none;
+  .tech-widget,
+  .profile-widget {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 20px auto;
+    max-width: 90vw !important;
+  }
+
+  .developer-grid {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
   }
 
   .skills-widget {
     position: relative;
     bottom: auto;
     left: auto;
+    right: auto;
     margin: 20px auto;
     max-width: 90vw !important;
   }
@@ -629,6 +652,7 @@
     right: auto;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 20px auto;
     max-width: 90vw !important;
   }
@@ -639,5 +663,13 @@
     left: auto;
     margin: 20px auto;
     max-width: 90vw !important;
+  }
+}
+
+/* Hide only on exceptionally small devices if it overflows violently */
+@media (max-width: 380px) {
+  .palette-widget,
+  .github-widget {
+    display: none;
   }
 }

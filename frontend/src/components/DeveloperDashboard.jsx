@@ -84,14 +84,14 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
           <h3>Tech Stack</h3>
           <div className="dev-marquee-container">
             <div className="dev-marquee-track left">
-              <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
+              <div className="dev-marquee-group">
                 <div className="tech-icon" title="HTML5"><FaHtml5 color="#E34F26" /></div>
                 <div className="tech-icon" title="CSS3"><FaCss3Alt color="#1572B6" /></div>
                 <div className="tech-icon" title="JavaScript"><FaJs color="#F7DF1E" /></div>
                 <div className="tech-icon" title="TypeScript"><SiTypescript color="#3178C6" /></div>
                 <div className="tech-icon" title="React"><FaReact color="#61DAFB" /></div>
               </div>
-              <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
+              <div className="dev-marquee-group">
                 <div className="tech-icon" title="HTML5"><FaHtml5 color="#E34F26" /></div>
                 <div className="tech-icon" title="CSS3"><FaCss3Alt color="#1572B6" /></div>
                 <div className="tech-icon" title="JavaScript"><FaJs color="#F7DF1E" /></div>
@@ -100,7 +100,7 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
               </div>
             </div>
             <div className="dev-marquee-track right">
-              <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
+              <div className="dev-marquee-group">
                 <div className="tech-icon" title="Node.js"><FaNodeJs color="#339933" /></div>
                 <div className="tech-icon" title="Express.js"><SiExpress color="#000000" /></div>
                 <div className="tech-icon" title="MongoDB"><SiMongodb color="#47A248" /></div>
@@ -108,7 +108,7 @@ export default function DeveloperDashboard({ sliderPosition, isMobile, developer
                 <div className="tech-icon" title="PostgreSQL"><SiPostgresql color="#4169E1" /></div>
                 <div className="tech-icon" title="Docker"><FaDocker color="#2496ED" /></div>
               </div>
-              <div className="dev-marquee-group" style={{ gap: '16px', paddingRight: '16px' }}>
+              <div className="dev-marquee-group">
                 <div className="tech-icon" title="Node.js"><FaNodeJs color="#339933" /></div>
                 <div className="tech-icon" title="Express.js"><SiExpress color="#000000" /></div>
                 <div className="tech-icon" title="MongoDB"><SiMongodb color="#47A248" /></div>
