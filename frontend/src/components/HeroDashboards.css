@@ -577,591 +577,96 @@
   }
 }
 
-/* =====================================================
-   RESPONSIVE SCALING — DESIGNER SIDE ONLY
-   Below 1280px (MacBook Air M3 breakpoint)
-   Desktop >= 1280px: untouched, all values are baseline
-   ===================================================== */
+/* Responsiveness adjustments */
+@media (max-width: 1400px) {
+  .tools-widget {
+    right: calc(2% + 140px);
+  }
 
-/* ---------------------------------------------------
-   LOCK: >=1280px — absolute desktop baseline
-   Force all designer widgets to their original fixed
-   desktop values so clamp() vw scaling doesn't apply.
-   --------------------------------------------------- */
-@media (min-width: 1280px) {
   .skills-widget {
-    width: 280px;
-    top: 12%;
-    right: 5%;
+    right: 2%;
   }
 
   .achievements-widget {
-    top: 38%;
-    right: 5%;
-    gap: 16px;
+    right: 2%;
   }
 
   .palette-widget {
-    top: 48%;
-    right: calc(5% + 180px);
-    width: 280px;
-  }
-
-  .tools-widget {
-    width: 280px;
-  }
-
-  .tool-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 24px;
-    border-radius: 12px;
-  }
-
-  .color-circle {
-    width: 32px;
-    height: 32px;
-  }
-
-  .stat-item {
-    padding: 16px 24px !important;
-    min-width: 120px;
-  }
-
-  .stat-value {
-    font-size: 28px;
-  }
-
-  .stat-label {
-    font-size: 13px;
-  }
-
-  .skill-info {
-    font-size: 13px;
-    margin-bottom: 8px;
-  }
-
-  .skill-bar-container {
-    margin-bottom: 16px;
-  }
-
-  .skill-track {
-    height: 6px;
-  }
-
-  .glass-widget {
-    border-radius: 20px;
-    padding: 24px;
-  }
-
-  .glass-widget h3 {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-  .tools-icons-group {
-    gap: 16px;
-    padding-right: 16px;
-  }
-
-  .designer-colors-group {
-    gap: 12px;
-    padding-right: 12px;
-  }
-}
-
-/* ---------------------------------------------------
-   1200px — Begin light scaling
-   --------------------------------------------------- */
-@media (max-width: 1279px) and (min-width: 1200px) {
-  .designer-dashboard .skills-widget {
-    width: 260px;
-    right: 3%;
-  }
-
-  .designer-dashboard .achievements-widget {
-    right: 3%;
-    gap: 12px;
-  }
-
-  .designer-dashboard .palette-widget {
-    width: 240px;
-    right: calc(3% + 160px);
-  }
-
-  .designer-dashboard .tools-widget {
-    width: 240px;
-  }
-
-  .designer-dashboard .tool-icon {
-    width: 42px;
-    height: 42px;
-    font-size: 21px;
-    border-radius: 10px;
-  }
-
-  .designer-dashboard .color-circle {
-    width: 28px;
-    height: 28px;
-  }
-
-  .designer-dashboard .stat-item {
-    padding: 14px 20px !important;
-    min-width: 108px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 24px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 12px;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 12px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 20px;
-    border-radius: 18px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
-}
-
-/* ---------------------------------------------------
-   1100px — Moderate scaling
-   --------------------------------------------------- */
-@media (max-width: 1199px) and (min-width: 1100px) {
-  .designer-dashboard .skills-widget {
-    width: 230px;
-    right: 2%;
-    top: 10%;
-  }
-
-  .designer-dashboard .achievements-widget {
-    right: 2%;
-    gap: 10px;
-    top: 36%;
-  }
-
-  .designer-dashboard .palette-widget {
-    width: 215px;
     right: calc(2% + 140px);
-    top: 46%;
   }
 
-  .designer-dashboard .tools-widget {
-    width: 215px;
+  .terminal-widget {
+    left: 2%;
   }
 
-  .designer-dashboard .tool-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    border-radius: 9px;
+  .profile-widget {
+    left: 2%;
   }
 
-  .designer-dashboard .color-circle {
-    width: 24px;
-    height: 24px;
+  .tech-widget {
+    left: 2%;
   }
 
-  .designer-dashboard .stat-item {
-    padding: 12px 16px !important;
-    min-width: 94px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 22px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 11px;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-
-  .designer-dashboard .skill-bar-container {
-    margin-bottom: 12px;
-  }
-
-  .designer-dashboard .skill-track {
-    height: 5px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 16px;
-    border-radius: 16px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 13px;
-    margin-bottom: 14px;
-  }
-
-  .designer-dashboard .tools-icons-group {
-    gap: 12px;
-    padding-right: 12px;
-  }
-
-  .designer-dashboard .designer-colors-group {
-    gap: 9px;
-    padding-right: 9px;
+  .github-widget {
+    right: 2%;
   }
 }
 
-/* ---------------------------------------------------
-   1024px — Compact scaling
-   --------------------------------------------------- */
-@media (max-width: 1099px) and (min-width: 1024px) {
-  .designer-dashboard .skills-widget {
-    width: 200px;
-    right: 2%;
-    top: 9%;
+@media (max-width: 992px) {
+  /* On tablet/mobile, we stack widgets vertically or horizontally based on space, without hiding them. */
+  .tools-widget,
+  .palette-widget,
+  .github-widget,
+  .tech-widget,
+  .profile-widget {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 20px auto;
+    max-width: 90vw !important;
   }
 
-  .designer-dashboard .achievements-widget {
-    right: 2%;
-    gap: 8px;
-    top: 34%;
+  .developer-grid {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
   }
 
-  .designer-dashboard .palette-widget {
-    width: 190px;
-    right: calc(2% + 118px);
-    top: 44%;
+  .skills-widget {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 20px auto;
+    max-width: 90vw !important;
   }
 
-  .designer-dashboard .tools-widget {
-    width: 190px;
+  .achievements-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 90vw !important;
   }
 
-  .designer-dashboard .tool-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-
-  .designer-dashboard .color-circle {
-    width: 20px;
-    height: 20px;
-  }
-
-  .designer-dashboard .stat-item {
-    padding: 10px 12px !important;
-    min-width: 82px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 19px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 10px;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 10px;
-    margin-bottom: 5px;
-  }
-
-  .designer-dashboard .skill-bar-container {
-    margin-bottom: 10px;
-  }
-
-  .designer-dashboard .skill-track {
-    height: 4px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 11px;
-    margin-bottom: 12px;
-  }
-
-  .designer-dashboard .tools-icons-group {
-    gap: 10px;
-    padding-right: 10px;
-  }
-
-  .designer-dashboard .designer-colors-group {
-    gap: 7px;
-    padding-right: 7px;
+  .terminal-widget {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 20px auto;
+    max-width: 90vw !important;
   }
 }
 
-/* ---------------------------------------------------
-   992px — Further reduction
-   --------------------------------------------------- */
-@media (max-width: 1023px) and (min-width: 992px) {
-  .designer-dashboard .skills-widget {
-    width: 185px;
-    right: 2%;
-    top: 8%;
-  }
-
-  .designer-dashboard .achievements-widget {
-    right: 2%;
-    gap: 7px;
-    top: 32%;
-  }
-
-  .designer-dashboard .palette-widget {
-    width: 175px;
-    right: calc(2% + 108px);
-    top: 42%;
-  }
-
-  .designer-dashboard .tools-widget {
-    width: 175px;
-  }
-
-  .designer-dashboard .tool-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
-    border-radius: 7px;
-  }
-
-  .designer-dashboard .color-circle {
-    width: 18px;
-    height: 18px;
-  }
-
-  .designer-dashboard .stat-item {
-    padding: 9px 11px !important;
-    min-width: 76px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 17px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 9px;
-    letter-spacing: 0.03em;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 10px;
-    margin-bottom: 5px;
-  }
-
-  .designer-dashboard .skill-bar-container {
-    margin-bottom: 9px;
-  }
-
-  .designer-dashboard .skill-track {
-    height: 4px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 12px;
-    border-radius: 13px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 10px;
-    margin-bottom: 10px;
-  }
-
-  .designer-dashboard .tools-icons-group {
-    gap: 8px;
-    padding-right: 8px;
-  }
-
-  .designer-dashboard .designer-colors-group {
-    gap: 6px;
-    padding-right: 6px;
-  }
-}
-
-/* ---------------------------------------------------
-   900px — Significant reduction
-   --------------------------------------------------- */
-@media (max-width: 991px) and (min-width: 820px) {
-  .designer-dashboard .skills-widget {
-    width: 165px;
-    right: 2%;
-    top: 8%;
-  }
-
-  .designer-dashboard .achievements-widget {
-    right: 2%;
-    gap: 6px;
-    top: 30%;
-  }
-
-  .designer-dashboard .palette-widget {
-    width: 155px;
-    right: calc(2% + 96px);
-    top: 40%;
-  }
-
-  .designer-dashboard .tools-widget {
-    width: 155px;
-  }
-
-  .designer-dashboard .tool-icon {
-    width: 26px;
-    height: 26px;
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  .designer-dashboard .color-circle {
-    width: 16px;
-    height: 16px;
-  }
-
-  .designer-dashboard .stat-item {
-    padding: 8px 10px !important;
-    min-width: 68px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 15px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 8px;
-    letter-spacing: 0.03em;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 9px;
-    margin-bottom: 4px;
-  }
-
-  .designer-dashboard .skill-bar-container {
-    margin-bottom: 8px;
-  }
-
-  .designer-dashboard .skill-track {
-    height: 3px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 10px;
-    border-radius: 12px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 9px;
-    margin-bottom: 8px;
-  }
-
-  .designer-dashboard .tools-icons-group {
-    gap: 6px;
-    padding-right: 6px;
-  }
-
-  .designer-dashboard .designer-colors-group {
-    gap: 5px;
-    padding-right: 5px;
-  }
-}
-
-/* ---------------------------------------------------
-   768px — Maximum responsive reduction
-   --------------------------------------------------- */
-@media (max-width: 819px) {
-  .designer-dashboard .skills-widget {
-    width: 145px;
-    right: 1%;
-    top: 7%;
-  }
-
-  .designer-dashboard .achievements-widget {
-    right: 1%;
-    gap: 5px;
-    top: 28%;
-  }
-
-  .designer-dashboard .palette-widget {
-    width: 136px;
-    right: calc(1% + 84px);
-    top: 38%;
-  }
-
-  .designer-dashboard .tools-widget {
-    width: 136px;
-  }
-
-  .designer-dashboard .tool-icon {
-    width: 23px;
-    height: 23px;
-    font-size: 11px;
-    border-radius: 5px;
-  }
-
-  .designer-dashboard .color-circle {
-    width: 14px;
-    height: 14px;
-  }
-
-  .designer-dashboard .stat-item {
-    padding: 7px 9px !important;
-    min-width: 60px;
-  }
-
-  .designer-dashboard .stat-value {
-    font-size: 13px;
-  }
-
-  .designer-dashboard .stat-label {
-    font-size: 7px;
-    letter-spacing: 0.02em;
-  }
-
-  .designer-dashboard .skill-info {
-    font-size: 8px;
-    margin-bottom: 3px;
-  }
-
-  .designer-dashboard .skill-bar-container {
-    margin-bottom: 6px;
-  }
-
-  .designer-dashboard .skill-track {
-    height: 3px;
-  }
-
-  .designer-dashboard .glass-widget {
-    padding: 8px;
-    border-radius: 10px;
-  }
-
-  .designer-dashboard .glass-widget h3 {
-    font-size: 8px;
-    margin-bottom: 7px;
-  }
-
-  .designer-dashboard .tools-icons-group {
-    gap: 5px;
-    padding-right: 5px;
-  }
-
-  .designer-dashboard .designer-colors-group {
-    gap: 4px;
-    padding-right: 4px;
-  }
-}
-
-/* Hide only on very small screens where layout is controlled entirely by mobile toggle */
+/* Hide only on exceptionally small devices if it overflows violently */
 @media (max-width: 380px) {
   .palette-widget,
   .github-widget {
