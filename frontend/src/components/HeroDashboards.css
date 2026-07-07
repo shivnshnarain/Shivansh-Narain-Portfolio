@@ -52,33 +52,35 @@
   inset: 0;
 }
 
+/* Designer card widths — fluid, capped at desktop values */
 .tools-widget {
-  width: clamp(200px, 22vw, 280px);
+  width: clamp(180px, 18vw, 280px);
 }
 
 .skills-widget {
   position: absolute;
-  top: 12%;
-  right: 5%;
-  width: clamp(200px, 22vw, 280px);
+  top: 10%;
+  right: 3%;
+  width: clamp(180px, 18vw, 280px);
 }
 
 .achievements-widget {
   position: absolute;
-  top: 38%;
-  right: 5%;
+  top: 44%;
+  right: 3%;
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1.2vw, 16px);
+  gap: clamp(6px, 1vw, 16px);
   pointer-events: auto;
   align-items: flex-end;
 }
 
 .palette-widget {
   position: absolute;
-  top: 48%;
-  right: calc(5% + 180px);
-  width: clamp(200px, 22vw, 280px);
+  top: 44%;
+  /* Offset left by the width of the stat column (clamp mirrors the stat-item min-width) plus gap */
+  right: calc(3% + clamp(86px, 11vw, 130px));
+  width: clamp(180px, 18vw, 280px);
 }
 
 .marquee-container {
@@ -150,7 +152,7 @@
 }
 
 .skill-bar-container {
-  margin-bottom: 16px;
+  margin-bottom: clamp(8px, 1.2vw, 16px);
 }
 
 .skill-bar-container:last-child {
@@ -160,13 +162,13 @@
 .skill-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 13px;
+  margin-bottom: clamp(4px, 0.6vw, 8px);
+  font-size: clamp(10px, 1vw, 13px);
   font-weight: 500;
 }
 
 .skill-track {
-  height: 6px;
+  height: clamp(3px, 0.5vw, 6px);
   background: rgba(0, 0, 0, 0.1);
   border-radius: 999px;
   overflow: hidden;
@@ -183,24 +185,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(10px, 1.2vw, 16px) clamp(12px, 1.8vw, 24px) !important;
-  min-width: clamp(80px, 10vw, 120px);
+  padding: clamp(8px, 1vw, 16px) clamp(10px, 1.5vw, 24px) !important;
+  min-width: clamp(70px, 9vw, 120px);
+  max-width: clamp(86px, 11vw, 130px);
 }
 
+/* Stat icon sizes — absent before, causing overflow */
+.stat-icon {
+  font-size: clamp(18px, 2vw, 28px);
+  margin-bottom: clamp(4px, 0.5vw, 8px);
+  flex-shrink: 0;
+}
+
+.icon-projects { color: #FF9A00; }
+.icon-clients  { color: #8B5CF6; }
+.icon-experience { color: #06B6D4; }
+
 .stat-value {
-  font-size: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(16px, 1.8vw, 28px);
   font-weight: 800;
   color: #FF1493;
+  line-height: 1;
 }
 
 .stat-label {
-  font-size: clamp(10px, 1vw, 13px);
+  font-size: clamp(9px, 0.8vw, 13px);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #ffea00;
-  /* High contrast warm gold/yellow */
   opacity: 1;
+  white-space: nowrap;
 }
 
 .palette-colors {
@@ -577,45 +592,88 @@
   }
 }
 
-/* Responsiveness adjustments */
+/* ================================================
+   RESPONSIVE BREAKPOINTS — DESIGNER SIDE ONLY
+   (Developer side not modified here)
+   ================================================ */
+
+/* 1400px — slight nudge inward for smaller monitors */
 @media (max-width: 1400px) {
-  .tools-widget {
-    right: calc(2% + 140px);
-  }
+  /* Developer side */
+  .terminal-widget { left: 2%; }
+  .profile-widget  { left: 2%; }
+  .tech-widget     { left: 2%; }
+  .github-widget   { right: 2%; }
 
+  /* Designer side — cards already fluid but tighten right inset */
+  .skills-widget      { right: 2%; }
+  .achievements-widget { right: 2%; }
+  .palette-widget     { right: calc(2% + clamp(86px, 11vw, 130px)); }
+}
+
+/* 1280px — reduce top positions so cards don't crowd vertically */
+@media (max-width: 1280px) {
   .skills-widget {
+    top: 8%;
     right: 2%;
   }
-
   .achievements-widget {
+    top: 40%;
     right: 2%;
   }
-
   .palette-widget {
-    right: calc(2% + 140px);
-  }
-
-  .terminal-widget {
-    left: 2%;
-  }
-
-  .profile-widget {
-    left: 2%;
-  }
-
-  .tech-widget {
-    left: 2%;
-  }
-
-  .github-widget {
-    right: 2%;
+    top: 40%;
+    right: calc(2% + clamp(78px, 10vw, 120px));
   }
 }
 
+/* 1200px — cards noticeably narrower due to clamp, also shift tops */
+@media (max-width: 1200px) {
+  .skills-widget {
+    top: 7%;
+  }
+  .achievements-widget {
+    top: 38%;
+  }
+  .palette-widget {
+    top: 38%;
+  }
+}
+
+/* 1100px — compress further, palette may need to shift up */
+@media (max-width: 1100px) {
+  .skills-widget {
+    top: 6%;
+  }
+  .achievements-widget {
+    top: 36%;
+  }
+  .palette-widget {
+    top: 36%;
+  }
+}
+
+/* 1024px — compact enough that cards should not overlap portrait at all */
+@media (max-width: 1024px) {
+  .skills-widget {
+    top: 6%;
+    right: 1%;
+  }
+  .achievements-widget {
+    top: 34%;
+    right: 1%;
+    gap: clamp(4px, 0.8vw, 10px);
+  }
+  .palette-widget {
+    top: 34%;
+    right: calc(1% + clamp(74px, 9.5vw, 110px));
+  }
+}
+
+/* 992px — switch Designer to flow layout (stacked, centered) */
 @media (max-width: 992px) {
-  /* On tablet/mobile, we stack widgets vertically or horizontally based on space, without hiding them. */
+  /* Developer side */
   .tools-widget,
-  .palette-widget,
   .github-widget,
   .tech-widget,
   .profile-widget {
@@ -637,13 +695,33 @@
     margin-top: 40px;
   }
 
-  .skills-widget {
+  .terminal-widget {
     position: relative;
-    bottom: auto;
+    top: auto;
     left: auto;
-    right: auto;
     margin: 20px auto;
     max-width: 90vw !important;
+  }
+
+  /* Designer side — switch to stacked flow */
+  .skills-widget {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 16px auto;
+    max-width: 90vw !important;
+    width: clamp(180px, 80vw, 320px) !important;
+  }
+
+  .palette-widget {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 16px auto;
+    max-width: 90vw !important;
+    width: clamp(180px, 80vw, 320px) !important;
   }
 
   .achievements-widget {
@@ -653,20 +731,23 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 20px auto;
+    gap: clamp(8px, 2vw, 16px);
+    margin: 16px auto;
     max-width: 90vw !important;
+    align-items: flex-start;
   }
 
-  .terminal-widget {
+  .achievements-widget .tools-widget {
     position: relative;
     top: auto;
-    left: auto;
-    margin: 20px auto;
+    right: auto;
+    margin: 8px auto;
     max-width: 90vw !important;
+    width: clamp(180px, 80vw, 320px) !important;
   }
 }
 
-/* Hide only on exceptionally small devices if it overflows violently */
+/* Hide only on extremely small phones where absolutely no space remains */
 @media (max-width: 380px) {
   .palette-widget,
   .github-widget {
