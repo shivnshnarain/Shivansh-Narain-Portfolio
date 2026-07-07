@@ -46,41 +46,49 @@
   color: #1A1A1A;
 }
 
-/* Positions around the main text */
+/* ===== DESIGNER GRID — Group scale approach =====
+   All cards keep their desktop coordinates. The entire
+   group scales from the top-right corner as one unit.
+   This matches how premium landing pages scale UI.
+   ================================================= */
 .designer-grid {
   position: absolute;
   inset: 0;
+  /* Scale the whole card group proportionally */
+  transform-origin: top right;
+  transform: scale(var(--designer-scale, 1)) translateZ(0);
+  will-change: transform;
 }
 
-/* Designer card widths — fluid, capped at desktop values */
+/* Desktop card positions — fixed px intentional;
+   responsive scaling is handled by --designer-scale above */
 .tools-widget {
-  width: clamp(180px, 18vw, 280px);
+  width: 280px;
 }
 
 .skills-widget {
   position: absolute;
-  top: 10%;
-  right: 3%;
-  width: clamp(180px, 18vw, 280px);
+  top: 12%;
+  right: 5%;
+  width: 280px;
 }
 
 .achievements-widget {
   position: absolute;
-  top: 44%;
-  right: 3%;
+  top: 38%;
+  right: 5%;
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 1vw, 16px);
+  gap: 16px;
   pointer-events: auto;
   align-items: flex-end;
 }
 
 .palette-widget {
   position: absolute;
-  top: 44%;
-  /* Offset left by the width of the stat column (clamp mirrors the stat-item min-width) plus gap */
-  right: calc(3% + clamp(86px, 11vw, 130px));
-  width: clamp(180px, 18vw, 280px);
+  top: 48%;
+  right: calc(5% + 140px);
+  width: 280px;
 }
 
 .marquee-container {
@@ -151,86 +159,85 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.skill-bar-container {
-  margin-bottom: clamp(8px, 1.2vw, 16px);
+/* ===== DESIGNER-SCOPED DESKTOP VALUES =====
+   These reset the shared clamp() classes back to
+   fixed desktop pixel values for Designer cards.
+   The group transform on .designer-grid handles all
+   responsive scaling — individual clamp() would
+   fight against the group scale and cause mismatches.
+   ============================================ */
+
+/* Override shared glass-widget for designer */
+.designer-dashboard .glass-widget {
+  border-radius: 20px;
+  padding: 24px;
 }
 
-.skill-bar-container:last-child {
-  margin-bottom: 0;
+.designer-dashboard .glass-widget h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: clamp(4px, 0.6vw, 8px);
-  font-size: clamp(10px, 1vw, 13px);
-  font-weight: 500;
+/* Skill bars */
+.designer-dashboard .skill-bar-container {
+  margin-bottom: 16px;
 }
 
-.skill-track {
-  height: clamp(3px, 0.5vw, 6px);
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 999px;
-  overflow: hidden;
+.designer-dashboard .skill-info {
+  font-size: 13px;
+  margin-bottom: 8px;
 }
 
-.skill-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #FF9A00, #FF1493);
-  border-radius: 999px;
+.designer-dashboard .skill-track {
+  height: 6px;
 }
 
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(8px, 1vw, 16px) clamp(10px, 1.5vw, 24px) !important;
-  min-width: clamp(70px, 9vw, 120px);
-  max-width: clamp(86px, 11vw, 130px);
+/* Achievement stat cards */
+.designer-dashboard .stat-item {
+  padding: 16px 24px !important;
+  min-width: 120px;
+  max-width: none;
 }
 
-/* Stat icon sizes — absent before, causing overflow */
-.stat-icon {
-  font-size: clamp(18px, 2vw, 28px);
-  margin-bottom: clamp(4px, 0.5vw, 8px);
-  flex-shrink: 0;
+.designer-dashboard .stat-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
 }
 
-.icon-projects { color: #FF9A00; }
-.icon-clients  { color: #8B5CF6; }
-.icon-experience { color: #06B6D4; }
-
-.stat-value {
-  font-size: clamp(16px, 1.8vw, 28px);
-  font-weight: 800;
-  color: #FF1493;
+.designer-dashboard .stat-value {
+  font-size: 28px;
   line-height: 1;
 }
 
-.stat-label {
-  font-size: clamp(9px, 0.8vw, 13px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #ffea00;
-  opacity: 1;
+.designer-dashboard .stat-label {
+  font-size: 13px;
+  letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
-.palette-colors {
-  display: flex;
-  gap: 12px;
+/* Color palette dots */
+.designer-dashboard .color-circle {
+  width: 32px;
+  height: 32px;
 }
 
-.color-circle {
-  width: clamp(20px, 2.5vw, 32px);
-  height: clamp(20px, 2.5vw, 32px);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Tool icons in marquee */
+.designer-dashboard .tool-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  border-radius: 12px;
+}
+
+/* Marquee group gaps */
+.designer-dashboard .designer-colors-group {
+  gap: 12px;
+  padding-right: 12px;
+}
+
+.designer-dashboard .tools-icons-group {
+  gap: 16px;
+  padding-right: 16px;
 }
 
 .color-circle:hover {
@@ -592,87 +599,121 @@
   }
 }
 
-/* ================================================
-   RESPONSIVE BREAKPOINTS — DESIGNER SIDE ONLY
-   (Developer side not modified here)
-   ================================================ */
+/* =====================================================
+   RESPONSIVE BREAKPOINTS
+   Developer side: individual clamp() handles scaling.
+   Designer side: group transform scale on .designer-grid
+   scales the ENTIRE card composition from top-right.
+   This is Apple-style — one scale value per breakpoint,
+   everything shrinks together proportionally.
+   ===================================================== */
 
-/* 1400px — slight nudge inward for smaller monitors */
-@media (max-width: 1400px) {
+/* 1380px — first nudge */
+@media (max-width: 1380px) {
   /* Developer side */
   .terminal-widget { left: 2%; }
   .profile-widget  { left: 2%; }
   .tech-widget     { left: 2%; }
   .github-widget   { right: 2%; }
 
-  /* Designer side — cards already fluid but tighten right inset */
-  .skills-widget      { right: 2%; }
-  .achievements-widget { right: 2%; }
-  .palette-widget     { right: calc(2% + clamp(86px, 11vw, 130px)); }
+  /* Designer group scale */
+  .designer-grid { --designer-scale: 0.95; }
 }
 
-/* 1280px — reduce top positions so cards don't crowd vertically */
+/* 1280px */
 @media (max-width: 1280px) {
-  .skills-widget {
-    top: 8%;
-    right: 2%;
-  }
-  .achievements-widget {
-    top: 40%;
-    right: 2%;
-  }
-  .palette-widget {
-    top: 40%;
-    right: calc(2% + clamp(78px, 10vw, 120px));
-  }
+  .designer-grid { --designer-scale: 0.88; }
 }
 
-/* 1200px — cards noticeably narrower due to clamp, also shift tops */
+/* 1200px */
 @media (max-width: 1200px) {
-  .skills-widget {
-    top: 7%;
-  }
-  .achievements-widget {
-    top: 38%;
-  }
-  .palette-widget {
-    top: 38%;
-  }
+  .designer-grid { --designer-scale: 0.82; }
 }
 
-/* 1100px — compress further, palette may need to shift up */
+/* 1150px */
+@media (max-width: 1150px) {
+  .designer-grid { --designer-scale: 0.77; }
+}
+
+/* 1100px */
 @media (max-width: 1100px) {
-  .skills-widget {
-    top: 6%;
-  }
-  .achievements-widget {
-    top: 36%;
-  }
-  .palette-widget {
-    top: 36%;
-  }
+  .designer-grid { --designer-scale: 0.73; }
 }
 
-/* 1024px — compact enough that cards should not overlap portrait at all */
+/* 1050px */
+@media (max-width: 1050px) {
+  .designer-grid { --designer-scale: 0.69; }
+}
+
+/* 1024px */
 @media (max-width: 1024px) {
-  .skills-widget {
-    top: 6%;
-    right: 1%;
-  }
-  .achievements-widget {
-    top: 34%;
-    right: 1%;
-    gap: clamp(4px, 0.8vw, 10px);
-  }
-  .palette-widget {
-    top: 34%;
-    right: calc(1% + clamp(74px, 9.5vw, 110px));
-  }
+  .designer-grid { --designer-scale: 0.66; }
 }
 
-/* 992px — switch Designer to flow layout (stacked, centered) */
+/* 992px — switch Designer to stacked flow layout.
+   Remove the group transform; let natural flow take over. */
 @media (max-width: 992px) {
-  /* Developer side */
+  /* Designer: disable group scale, switch to relative stacked layout */
+  .designer-grid {
+    transform: none;
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 16px;
+    width: 100%;
+  }
+
+  .skills-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(320px, 90vw) !important;
+    margin: 0 auto;
+  }
+
+  .palette-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(320px, 90vw) !important;
+    margin: 0 auto;
+  }
+
+  .achievements-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-start;
+    width: min(400px, 90vw);
+    margin: 0 auto;
+  }
+
+  .achievements-widget .tools-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(320px, 90vw) !important;
+    margin: 0 auto;
+    flex: 0 0 100%;
+  }
+
+  /* Developer side — stacked flow */
+  .developer-grid {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+
   .tools-widget,
   .github-widget,
   .tech-widget,
@@ -686,15 +727,6 @@
     max-width: 90vw !important;
   }
 
-  .developer-grid {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    align-items: center;
-    margin-top: 40px;
-  }
-
   .terminal-widget {
     position: relative;
     top: auto;
@@ -702,53 +734,27 @@
     margin: 20px auto;
     max-width: 90vw !important;
   }
-
-  /* Designer side — switch to stacked flow */
-  .skills-widget {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    margin: 16px auto;
-    max-width: 90vw !important;
-    width: clamp(180px, 80vw, 320px) !important;
-  }
-
-  .palette-widget {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    margin: 16px auto;
-    max-width: 90vw !important;
-    width: clamp(180px, 80vw, 320px) !important;
-  }
-
-  .achievements-widget {
-    position: relative;
-    top: auto;
-    right: auto;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(8px, 2vw, 16px);
-    margin: 16px auto;
-    max-width: 90vw !important;
-    align-items: flex-start;
-  }
-
-  .achievements-widget .tools-widget {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin: 8px auto;
-    max-width: 90vw !important;
-    width: clamp(180px, 80vw, 320px) !important;
-  }
 }
 
-/* Hide only on extremely small phones where absolutely no space remains */
-@media (max-width: 380px) {
+/* ≤768px — apply fluid clamp inside cards for the stacked layout */
+@media (max-width: 768px) {
+  .designer-dashboard .glass-widget {
+    padding: clamp(12px, 4vw, 20px);
+    border-radius: clamp(12px, 3vw, 20px);
+  }
+  .designer-dashboard .stat-item {
+    padding: clamp(10px, 3vw, 16px) clamp(12px, 4vw, 20px) !important;
+  }
+  .designer-dashboard .stat-value  { font-size: clamp(18px, 5vw, 28px); }
+  .designer-dashboard .stat-label  { font-size: clamp(9px,  2.5vw, 13px); }
+  .designer-dashboard .stat-icon   { font-size: clamp(18px, 5vw, 28px); }
+  .designer-dashboard .skill-info  { font-size: clamp(10px, 3vw, 13px); }
+  .designer-dashboard .tool-icon   { width: clamp(32px, 9vw, 48px); height: clamp(32px, 9vw, 48px); }
+  .designer-dashboard .color-circle { width: clamp(20px, 6vw, 32px); height: clamp(20px, 6vw, 32px); }
+}
+
+/* ≤480px — hide palette to avoid clutter on phones */
+@media (max-width: 480px) {
   .palette-widget,
   .github-widget {
     display: none;
