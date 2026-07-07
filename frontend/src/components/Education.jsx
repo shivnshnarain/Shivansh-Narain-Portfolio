@@ -886,7 +886,8 @@ export default function Education({ setActiveView }) {
             align-items: center;
           }
           .edu-badge {
-            width: 280px !important;
+            width: 100% !important;
+            max-width: 280px;
             height: 52px !important;
             justify-content: flex-start !important;
           }
@@ -898,8 +899,6 @@ export default function Education({ setActiveView }) {
             grid-template-columns: 1fr;
             gap: 16px;
             width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
           }
           .edu-badge {
             width: 100% !important;
@@ -914,8 +913,6 @@ export default function Education({ setActiveView }) {
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
           }
           .edu-badge {
             width: 100% !important;
@@ -930,38 +927,11 @@ export default function Education({ setActiveView }) {
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
           }
           .edu-badge {
             width: 100% !important;
             height: 52px !important;
             justify-content: center !important;
-          }
-        }
-
-        @media (max-width: 1024px) {
-          /* Fix Safari/Mobile bug where mask-image hides the absolute background layers */
-          .edu-card {
-            -webkit-mask-image: none !important;
-            isolation: auto !important;
-          }
-          /* Show both original image and a subtle sketch overlay since there's no hover on touch */
-          .edu-card-bg-layer.original {
-            opacity: 1 !important;
-          }
-          .edu-card-bg-layer.sketch {
-            opacity: 0.15 !important;
-            mix-blend-mode: overlay;
-          }
-          /* Fix invisible navigation arrows and modal buttons which were forced to black */
-          .cert-modal-header h3, 
-          .cert-icon-btn, 
-          .nav-btn,
-          .cert-icon-btn svg,
-          .nav-btn svg {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
           }
         }
 
@@ -978,6 +948,34 @@ export default function Education({ setActiveView }) {
           text-shadow: none !important;
           mix-blend-mode: normal !important;
           -webkit-text-fill-color: #000000 !important;
+        }
+
+        @media (max-width: 1024px) {
+          /* Fix Safari/Mobile bug where mask-image hides the absolute background layers */
+          .edu-card {
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+            isolation: auto !important;
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+          }
+          /* Show both original image and a subtle sketch overlay since there's no hover on touch */
+          .edu-card-bg-layer.original {
+            opacity: 1 !important;
+          }
+          .edu-card-bg-layer.sketch {
+            opacity: 0.15 !important;
+            mix-blend-mode: overlay;
+          }
+          /* Fix invisible navigation arrows and modal buttons which were forced to black by the override above */
+          #education .cert-modal-header h3, 
+          #education .cert-icon-btn, 
+          #education .nav-btn,
+          #education .cert-icon-btn svg,
+          #education .nav-btn svg {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+          }
         }
       `}</style>
     </motion.section>
