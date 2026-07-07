@@ -373,24 +373,27 @@
   }
 
   .gallery-stats-row {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 32px 40px !important;
     margin: 40px auto 0 auto !important;
     width: 100% !important;
-    max-width: 600px !important;
-    align-items: flex-start !important;
+    max-width: 100% !important;
   }
 
   .gallery-stat-item {
     align-items: center !important;
     text-align: center !important;
-    gap: 4px !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
+    min-width: 140px !important;
+    max-width: 250px !important;
   }
 
   .gallery-stat-value {
     justify-content: center !important;
-    font-size: 1.5rem !important;
+    font-size: clamp(1.4rem, 5vw, 1.6rem) !important;
   }
 
   .stat-divider {
@@ -400,9 +403,12 @@
   .gallery-stat-label {
     text-align: center !important;
     white-space: normal !important;
-    max-width: 90px;
+    max-width: none !important;
     line-height: 1.4 !important;
     margin: 0 auto;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    font-size: clamp(0.75rem, 2.5vw, 0.8rem) !important;
   }
 
   .gallery-internship-block {
