@@ -880,7 +880,7 @@ export default function Education({ setActiveView }) {
           font-size: 18px;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 479px) {
           .edu-learning-badges {
             flex-direction: column;
             align-items: center;
@@ -889,6 +889,38 @@ export default function Education({ setActiveView }) {
             width: 280px !important;
             height: 52px !important;
             justify-content: flex-start !important;
+          }
+        }
+
+        @media (min-width: 480px) and (max-width: 599px) {
+          .edu-learning-badges {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+          }
+          .edu-badge {
+            width: 100% !important;
+            height: 52px !important;
+            justify-content: center !important;
+          }
+        }
+
+        @media (min-width: 600px) and (max-width: 767px) {
+          .edu-learning-badges {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+          }
+          .edu-badge {
+            width: 100% !important;
+            height: 52px !important;
+            justify-content: center !important;
           }
         }
 
@@ -908,14 +940,38 @@ export default function Education({ setActiveView }) {
           }
         }
 
+        @media (max-width: 1024px) {
+          /* Fix Safari/Mobile bug where mask-image hides the absolute background layers */
+          .edu-card {
+            -webkit-mask-image: none !important;
+            isolation: auto !important;
+          }
+          /* Show both original image and a subtle sketch overlay since there's no hover on touch */
+          .edu-card-bg-layer.original {
+            opacity: 1 !important;
+          }
+          .edu-card-bg-layer.sketch {
+            opacity: 0.15 !important;
+            mix-blend-mode: overlay;
+          }
+          /* Fix invisible navigation arrows and modal buttons which were forced to black */
+          .cert-modal-header h3, 
+          .cert-icon-btn, 
+          .nav-btn,
+          .cert-icon-btn svg,
+          .nav-btn svg {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+          }
+        }
+
         /* --- Strict Text Color Override to defeat global inheritances --- */
         #education h1, #education h2, #education h3, #education h4, #education h5, #education h6,
         #education p, #education span, #education a, #education li, #education strong, 
         #education em, #education b, #education i, #education button, #education svg,
         .section-title, .section-subtitle, .edu-glass-btn, .edu-institution, .edu-year,
         .edu-degree, .edu-field, .edu-card-badge, .edu-badge, .edu-learning-title,
-        .edu-learning-text, .btn-view-cert, .edu-external-icon, .edu-badge-icon,
-        .cert-modal-header h3, .cert-icon-btn, .nav-btn {
+        .edu-learning-text, .btn-view-cert, .edu-external-icon, .edu-badge-icon {
           color: #000000 !important;
           opacity: 1 !important;
           filter: none !important;
