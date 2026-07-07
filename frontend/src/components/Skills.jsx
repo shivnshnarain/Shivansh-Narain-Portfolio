@@ -218,26 +218,6 @@ export default function Skills() {
     }
   };
 
-  const handleMarqueeNext = () => {
-    const el = document.querySelector('.marquee-content');
-    if (el) {
-      const anims = el.getAnimations();
-      if (anims.length > 0) {
-        anims[0].currentTime += 2000;
-      }
-    }
-  };
-
-  const handleMarqueePrev = () => {
-    const el = document.querySelector('.marquee-content');
-    if (el) {
-      const anims = el.getAnimations();
-      if (anims.length > 0) {
-        anims[0].currentTime -= 2000;
-      }
-    }
-  };
-
   // Subtle parallax effect for background logos
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -359,10 +339,6 @@ export default function Skills() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              <button className="carousel-nav-btn left marquee-arrow" onClick={handleMarqueePrev} aria-label="Previous skill">
-                <FaChevronLeft />
-              </button>
-
               <div className={`marquee-content ${pauseMarquee ? 'paused' : ''}`}>
                 <div className="marquee-group">
                   {categories.map((cat, index) => (
@@ -411,10 +387,6 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
-
-              <button className="carousel-nav-btn right marquee-arrow" onClick={handleMarqueeNext} aria-label="Next skill">
-                <FaChevronRight />
-              </button>
             </motion.div>
           )}
         </div>
@@ -767,9 +739,6 @@ export default function Skills() {
             .tech-tile-icon {
               font-size: 36px;
             }
-            .card-tools {
-              grid-template-columns: repeat(3, 1fr);
-            }
           }
 
           @media (max-width: 599px) {
@@ -785,13 +754,6 @@ export default function Skills() {
             .tech-tile-icon {
               font-size: 30px;
             }
-            .skill-card {
-              width: 300px;
-              min-height: 420px;
-            }
-            .card-tools {
-              grid-template-columns: repeat(2, 1fr);
-            }
           }
           
           @media (max-width: 480px) {
@@ -805,15 +767,6 @@ export default function Skills() {
             }
             .tech-tile-icon {
               font-size: 26px;
-            }
-            /* Adjust card size on very small screens to fit horizontally */
-            .skill-card {
-              width: 280px;
-              min-height: 420px;
-              padding: 24px;
-            }
-            .card-tools {
-              grid-template-columns: repeat(2, 1fr);
             }
           }
           
@@ -863,22 +816,6 @@ export default function Skills() {
             background: #FFFFFF;
             transform: scale(1.1);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-          }
-          
-          .marquee-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-          }
-          .marquee-arrow:hover, .marquee-arrow:active {
-            transform: translateY(-50%) scale(1.1);
-          }
-          .marquee-arrow.left { left: 16px; }
-          .marquee-arrow.right { right: 16px; }
-          
-          @media (min-width: 1025px) {
-            .marquee-arrow { display: none !important; }
           }
           
           .mobile-skill-card {
