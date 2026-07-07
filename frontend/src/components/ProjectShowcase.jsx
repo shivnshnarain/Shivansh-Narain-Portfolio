@@ -32,6 +32,48 @@ const PROJECTS = [
     description: 'Professional web application and interactive project platform.',
     liveUrl: 'https://helpmeprojects.com',
     image: '/assets/projects/helpmeprojects.jpg'
+  },
+  {
+    id: 5,
+    title: 'Gamaled',
+    description: 'Dynamic business platform delivering innovative digital solutions and services.',
+    liveUrl: 'https://gamaled.co.in',
+    image: '/assets/projects/gamaled.jpg'
+  },
+  {
+    id: 6,
+    title: 'DCLink',
+    description: 'Professional digital connectivity and networking solutions platform.',
+    liveUrl: 'https://dclink.in',
+    image: '/assets/projects/dclink.jpg'
+  },
+  {
+    id: 7,
+    title: 'ABC Design',
+    description: 'Creative design agency showcasing premium branding and visual identity services.',
+    liveUrl: 'https://www.abcdesign.co.in',
+    image: '/assets/projects/abcdesign.jpg'
+  },
+  {
+    id: 8,
+    title: 'NISM Smart Prep',
+    description: 'Comprehensive NISM exam preparation platform with smart study tools and resources.',
+    liveUrl: 'https://nismsmartprep.in',
+    image: '/assets/projects/nismsmartprep.jpg'
+  },
+  {
+    id: 9,
+    title: 'Housick',
+    description: 'Modern real estate and home services platform connecting buyers, sellers, and renters.',
+    liveUrl: 'https://housick.vercel.app',
+    image: '/assets/projects/housick.jpg'
+  },
+  {
+    id: 10,
+    title: 'Contrasys',
+    description: 'Specialized software solution for garment manufacturing, streamlining production and inventory.',
+    liveUrl: 'https://contrasys-software-for-garment-manu.vercel.app',
+    image: '/assets/projects/contrasys.jpg'
   }
 ];
 
